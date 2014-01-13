@@ -98,39 +98,6 @@
 <!-- Main content -->
 <div class="container_12">
 
-	<!-- Filter -->
-	<section class="filter grid_12">
-		<form action="#" class="black">
-
-			<div class="full">
-				<label>Destination</label>
-				<input type="text" name="destination" value="All" />
-			</div>
-
-			<div class="full">
-				<label>Transportation</label>
-				<input type="text" name="transportation" value="Plane" />
-			</div>
-
-			<div class="half">
-				<label>Date</label>
-				<input type="text" name="date" class="date" value="11/23/2011" />
-			</div>
-
-			<div class="half">
-				<label>Guests</label>
-				<input type="text" name="guests" value="2" />
-			</div>
-
-			<div class="half last">
-				<label>Rooms</label>
-				<input type="text" name="rooms" value="1" />
-			</div>
-
-			<input type="submit" value="Search" />
-
-		</form>
-	</section>
 
 	<div class="clearfix"></div>
 
@@ -153,41 +120,70 @@
 				<span>All inclusive</span>
 			</div>
 		</li>
-
 		<li class="grid_4">
-			<a href="hotel.html"><img src="img/placeholders/300x100/9.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Hotel Palma</a></h3>
+			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
+			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
 			<span class="price"><strong>1 899 €</strong> / 10 days</span>
 			<div>
-				<span><a href="#">Mallorca, Spain</a></span>
+				<span><a href="#">Singapore</a></span>
 				<span class="stars">
 					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
 					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
 					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
+					<img src="img/star_half.png" alt="" />
 					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
 				</span>
 				<span>All inclusive</span>
 			</div>
 		</li>
-
 		<li class="grid_4">
-			<a href="hotel.html"><img src="img/placeholders/300x100/13.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Holiday Inn</a></h3>
+			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
+			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
 			<span class="price"><strong>1 899 €</strong> / 10 days</span>
 			<div>
-				<span><a href="#">Cannes, France</a></span>
+				<span><a href="#">Singapore</a></span>
 				<span class="stars">
 					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
 					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
 					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
+					<img src="img/star_half.png" alt="" />
+					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
 				</span>
 				<span>All inclusive</span>
 			</div>
 		</li>
-
+		<li class="grid_4">
+			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
+			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
+			<span class="price"><strong>1 899 €</strong> / 10 days</span>
+			<div>
+				<span><a href="#">Singapore</a></span>
+				<span class="stars">
+					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
+					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
+					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
+					<img src="img/star_half.png" alt="" />
+					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
+				</span>
+				<span>All inclusive</span>
+			</div>
+		</li>
+		<li class="grid_4">
+			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
+			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
+			<span class="price"><strong>1 899 €</strong> / 10 days</span>
+			<div>
+				<span><a href="#">Singapore</a></span>
+				<span class="stars">
+					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
+					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
+					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
+					<img src="img/star_half.png" alt="" />
+					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
+				</span>
+				<span>All inclusive</span>
+			</div>
+		</li>
 		<li class="grid_4">
 			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
 			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
@@ -205,93 +201,6 @@
 			</div>
 		</li>
 
-		<li class="grid_4">
-			<a href="hotel.html"><img src="img/placeholders/300x100/9.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Hotel Palma</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Mallorca, Spain</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-		</li>
-
-		<li class="grid_4">
-			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Holiday Inn</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Cannes, France</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-		</li>
-
-		<li class="grid_4">
-			<a href="hotel.html"><img src="img/placeholders/300x100/8.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Singapore</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="img/star_half.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus.</p>
-		</li>
-
-		<li class="grid_4">
-			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Hotel Palma</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Mallorca, Spain</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus.</p>
-		</li>
-
-		<li class="grid_4">
-			<a href="hotel.html"><img src="img/placeholders/300x100/13.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Holiday Inn</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Cannes, France</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus.</p>
-		</li>
 
 	</ul>
 
