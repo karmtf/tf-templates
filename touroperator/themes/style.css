@@ -209,8 +209,8 @@ header {
 }
 	#panel {
 		background: url("../img/header.png") repeat-x;
-		height: 80px;
-		line-height: 80px;
+		height: 60px;
+		line-height: 60px;
 		margin-top: 10px;
 		-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;
 	}
@@ -219,15 +219,15 @@ header {
 			margin-left: 20px;
 			color: #fff;
 			text-shadow: 0px 2px 4px rgba(0,0,0,0.6);
-			font-size: 42px;
-			line-height: 85px;
+			font-size: 32px;
+			line-height: 10px;
 		}
 			h1 a {
 				color: inherit;
 			}
 		#panel nav {
 			float: right;
-			margin-right: 23px;
+			margin-right: 63px;
 			text-align: right;
 		}
 			#panel ul {
@@ -298,7 +298,7 @@ header {
 				display: inline-block;
 			}
 				#panel nav input {
-					width: 150px;
+					width: 160px;
 					background: rgba(0,0,0,0.4) url("../img/search.png") 128px center no-repeat;
 				}
 					.no-rgba #panel nav input {
@@ -313,10 +313,10 @@ header {
 		font-family: "Open Sans", sans-serif;
 		font-weight: 300;
 		font-size: 38px;
-		line-height: 60px;
+		line-height: 0px;
 		text-shadow: 0px 1px 2px #000;
 		width: 940px;
-		margin: 60px auto 70px auto;
+		margin: 30px auto 30px auto;
 		text-shadow: 0px 1px 2px #000;
 	}
 		header h2 .stars {

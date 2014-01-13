@@ -82,7 +82,6 @@
 .pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:94% !important;}
 }
 </style>
-<link rel="stylesheet" href="/static/css/themes/touroperator/font-awesome.css" />
 <header >
 	<!-- Heading -->
 	<h2>Travel Tips</h2>
@@ -90,189 +89,56 @@
 
 <!-- Main content -->
 <div class="container_12">
-
-	<!-- Image gallery -->
-	<section class="gallery grid_12">
-		
-		<!-- Slider navigation -->
-		<nav class="slider_nav">
-			<a href="#" class="left">&nbsp;</a>
-			<a href="#" class="right">&nbsp;</a>
-		</nav>
-
-		<!-- Slider -->
-		<div class="slider_wrapper">
-
-			<!-- Slider content -->
-			<div class="slider_content">
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-			</div>
-
-		</div>
-
-	</section>
-
-	<div class="clearfix"></div>
-	<hr class="dashed grid_12" />
-
-	<!-- Map -->
-	<section class="map grid_4">
-		<script>
-			$(function() {
-				markers = "La Tour Eiffel, Paris"; // Set the address for marker
-				$("a#map").attr("href", "http://maps.google.com/maps?q=" + escape(markers)).html("<img />");
-				$("a#map img").attr("src", "http://maps.google.com/maps/api/staticmap?markers=" + escape(markers) + "&size=300x200&sensor=false");
-			});
-		</script>
-		<a href="#" id="map"></a>
-	</section>
-
-	<!-- Simple text -->
-	<section class="text padded_left grid_8">
-		<h3 class="text_big">Where we will go</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam faucibus placerat risus, ac vulputate enim facilisis eu. In sodales lacinia elit, ut rhoncus risus consequat sit amet. Suspendisse potenti. Nam imperdiet lacinia aliquet. Donec odio risus, dignissim id placerat et, molestie sed ligula.</p>
-		<p>Vestibulum placerat rhoncus massa, vel viverra ligula placerat sit amet. Aenean nibh sem, placerat ac laoreet ac, ullamcorper in est. Nulla facilisi. Suspendisse potenti. Maecenas mollis dui id lacus semper sit amet accumsan augue rhoncus. Ut sed felis eget mi placerat accumsan ut vel risus.</p>
-		<p>Phasellus aliquam sodales pharetra. Donec ornare felis quis quam volutpat ut venenatis dui scelerisque. Quisque feugiat lacus vel odio pulvinar vel sagittis nisl gravida.</p>
-	</section>
-
-	<div class="clearfix"></div>
-	<hr class="dashed grid_12" />
-
-	<!-- Simple text -->
-	<section class="text padded_right grid_8">
-		<h3 class="text_big">What we will do</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam faucibus placerat risus, ac vulputate enim facilisis eu. In sodales lacinia elit, ut rhoncus risus consequat sit amet. Suspendisse potenti. Nam imperdiet lacinia aliquet. Donec odio risus, dignissim id placerat et, molestie sed ligula.</p>
-		<p>Vestibulum placerat rhoncus massa, vel viverra ligula placerat sit amet. Aenean nibh sem, placerat ac laoreet ac, ullamcorper in est. Nulla facilisi. Suspendisse potenti. Maecenas mollis dui id lacus semper sit amet accumsan augue rhoncus. Ut sed felis eget mi placerat accumsan ut vel risus.</p>
-		<p>Phasellus aliquam sodales pharetra. Donec ornare felis quis quam volutpat ut venenatis dui scelerisque. Quisque feugiat lacus vel odio pulvinar vel sagittis nisl gravida.</p>
-	</section>
-
-	<!-- Video -->
-	<section class="video grid_4">
-		<iframe src="http://player.vimeo.com/video/27246366?color=ffffff"></iframe>
-	</section>
-
-	<div class="clearfix"></div>
-	<hr class="dashed grid_12" />
-
-	<section class="trip_info grid_12">
-		
-		<!-- Available terms -->
-		<section class="last_minute">
-			<table>
-				<tr class="header">
-					<th>Date</th>
-					<th>Length</th>
-					<th>Price</th>
-				</tr>
-				<tr>
-					<td>15 Oct - 23 Oct</td>
-					<td>8 nights</td>
-					<td><span>sold out</span></td>
-				</tr>
-				<tr>
-					<td>02 Nov - 11 Nov</td>
-					<td>9 nights</td>
-					<td>899 €</td>
-				</tr>
-				<tr>
-					<td>02 Nov - 10 Nov</td>
-					<td>8 nights</td>
-					<td>799 €</td>
-				</tr>
-				<tr>
-					<td>15 Nov - 23 Nov</td>
-					<td>8 nights</td>
-					<td>699 €</td>
-				</tr>
-			</table>
-		</section>
-
-		<!-- Quotes -->
-		<section class="quotes">
-			
-			<blockquote>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</blockquote>
-			<span>John Doe, 09/2011</span>
-
-			<hr />
-			
-			<blockquote>“Consectetur adipiscing elit. Nullam gravida, odio vel pretium consequat, mi felis facilisis lacus.”</blockquote>
-			<span>John Smith, 09/2011</span>
-
-		</section>
-
-		<!-- Description -->
-		<section class="text">
-			<h2 class="section_heading">What's included</h2>
-			<p>Curabitur rutrum lacinia dui vitae tempus. Etiam porttitor, metus id rutrum placerat. </p>
-			<p>Maecenas mollis dui id lacus semper sit amet accumsan augue rhoncus. Ut sed felis eget mi placerat accumsan ut vel risus.</p>
-		</section>
-
-	</section>
+	<section class="categories grid_3">
+			<h3 class="text_big">Destination Tips</h3>
+		<ul>
+			<li><a href="#">London</a></li>
+			<li><a href="#">Malleswaram</a></li>
+		</ul>
 	
-</div> 
+	</section>
 
 
+	<!-- Results -->
+	<ul class="results_wide grid_9">
+	
+		<li>
+			<a href="hotel.html" class="thumb"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Aerial_view_of_the_London_Eye._MOD_45146076.jpg/150px-Aerial_view_of_the_London_Eye._MOD_45146076.jpg" alt="" /></a>
+			<h3><a href="hotel.html">London eye</a></h3>
+			<p>Riverside Bldg, County Hall, Westminster Bridge Rd, London SE1 7PB, Un... , Phone: +44 871 781 3000</p>
+			<p><font style="font-weight:bold">Expert Tip:</font>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus."</p>
+		</li>
+		<li>
+			<a href="hotel.html" class="thumb"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Aerial_view_of_the_London_Eye._MOD_45146076.jpg/150px-Aerial_view_of_the_London_Eye._MOD_45146076.jpg" alt="" /></a>
+			<h3><a href="hotel.html">London eye</a></h3>
+			<p>Riverside Bldg, County Hall, Westminster Bridge Rd, London SE1 7PB, Un... , Phone: +44 871 781 3000</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus.</p>
+			<p class="re-bot" style="padding:5px 0;text-align:left;color:#444;margin-top:5px;border-top:none">
+			
+			
+			<span style="margin-right:15px;font-weight:bold">1 shortlists</span>
+			
+			<a class="save-this active" style="cursor:pointer;padding-left:0">Add to trip</a>
+			
+			
+			<span class="right"><a href="http://www.londoneye.com" target="_blank">www.londoneye.com</a></span>			
+			
+			<span class="clearfix"></span>
+		</p>
+		</li>
 
 
+	</ul>
 
 
+	<!-- Pagination -->
+	<nav class="grid_9 prefix_3">
+		<a href="#" class="previous">Previous</a>
+		<a href="#" class="next">Next</a>
+	</nav>
 
+	<div class="clearfix"></div>
 
-
-
-<!--main-->
-<div class="main" role="main">
-	<div class="clearfix">
-		<!--main content-->
-		<div class="content clearfix">
-			<aside class="left-sidebar">
-				<div class="sidebar-user">
-					<h3 class="heading2" style="text-align:right;font-weight:bold">Top Destinations</h3>
-					<div>
-						<ul style="margin:0">
-						<% 
-							if(countries != null) {
-								for (Integer country : countries) {	
-							%>
-							<li class="tag" style="text-align:right;font-size:14px"><a href="/tours/tips?destId=<%=country%>"><%=LocationData.getCityNameFromId(country)%></a></li>
-							<% } 
-							}
-						%>
-						</ul>
-					</div>
-				</div>
-			</aside>
-			<section class="three-fourth">
-				<jsp:include page="/place/includes/city_general_details.jsp" />
-			</section>
-		</div>
-	<!--//main content-->
-	</div>
-</div>
-<!--//main-->
 
 
 <jsp:include page="/common/includes/viacom/footer_new.jsp" />

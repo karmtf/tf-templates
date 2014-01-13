@@ -59,8 +59,6 @@
 }
 </style>
 <link rel="stylesheet" href="/static/css/themes/touroperator/style.css" />
-<link rel="stylesheet" href="/static/css/themes/touroperator/style-custom.css" />
-<link rel="stylesheet" href="/static/css/themes/touroperator/foundation-responsive.css" />
 <link rel='stylesheet' id='Google-Font-Roboto+Condensed-css'  href='http://fonts.googleapis.com/css?family=Roboto+Condensed%3An%2Ci%2Cb%2Cbi&#038;subset=latin&#038;ver=3.6' type='text/css' media='all' />
 <!--[if IE 7]>
 <link rel="stylesheet" href="/static/css/themes/touroperator/ie7-style.css" />
@@ -68,7 +66,7 @@
 
 
  <!-- Header -->
-<header style="background-image:url(http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg);">
+<header>
 
 	<div class="container_12">
 

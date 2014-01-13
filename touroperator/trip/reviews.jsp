@@ -13,8 +13,8 @@
                  java.util.TreeMap,
                  java.util.Date'
 %>
-<%@page import="com.eos.b2c.util.ThreadSafeUtil"%>
 <%@page import="com.eos.b2c.holiday.data.PackageTag"%>
+<%@page import="com.eos.b2c.content.DestinationContentManager"%>
 <%@page import="com.via.content.ContentFileCategoryType"%>
 <%@page import="com.via.content.FileDataType"%>
 <%@page import="com.via.content.FileSizeGroupType"%>
@@ -27,8 +27,6 @@
 <!--header-->
 <%@page import="com.poc.server.partner.PartnerConfigManager"%>
 <%@page import="com.poc.server.secondary.database.model.PartnerConfigData"%>
-<%@page import="com.eos.b2c.secondary.database.model.Destination"%>
-<%@page import="com.poc.server.secondary.database.model.Review"%>
 <%@page import="com.eos.b2c.secondary.database.model.UserProfileData"%>
 <%@page import="com.eos.gds.util.StringUtility"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
@@ -40,18 +38,15 @@
 <%@page import="com.eos.b2c.util.DateUtility"%>
 <%@page import="com.poc.server.config.PackageConfigManager"%>
 <%@page import="com.poc.server.secondary.database.model.PackageConfigData"%>
-<%@page import="com.eos.b2c.content.DestinationContentManager"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.eos.ui.SessionManager"%>
-<%@page import="com.eos.b2c.util.RequestUtil"%>
 <%@page session="true" %>
 <%	
-	String title = "Expert Reviews";
+	String title = "Browse our best vacation package deals";
 	String keywords = "";
 	String description = "";
-    long destId = RequestUtil.getLongRequestParameter(request, "destId", -1L);
-	Map<Long, Map<Long, Review>> reviewsMap = (Map<Long, Map<Long, Review>>) request.getAttribute(Attributes.REVIEWS_WRAPPER.toString());
+	List<Integer> countries = (List<Integer>) request.getAttribute(Attributes.DESTINATION_LIST.toString());
 %>
 <html>
 <head>
@@ -68,7 +63,7 @@
 	<div class="body-wrapper">
 		<jsp:include page="/common/includes/viacom/header_new.jsp" />
 <style type="text/css">
-.tab-content {width:74.5%;}
+.tab-content {width:100%;}
 .pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:26%;min-height:350px;margin-right:20px !important;margin-bottom:20px !important}
 @media screen and (max-width: 960px) {
 .one-fourth{width:99% !important;height:400px;}
@@ -87,66 +82,100 @@
 .pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:94% !important;}
 }
 </style>
-<link rel="stylesheet" href="/static/css/themes/touroperator/font-awesome.css" />
+<header >
+	<!-- Heading -->
+	<h2>Travel Guide</h2>
+</header>
 
-<!--main-->
-<div class="main" role="main">
-	<div class="clearfix">
-		<!--main content-->
-		<div class="content clearfix">
-			<aside class="left-sidebar">
-				<div class="sidebar-user">
-					<h3 class="heading2" style="text-align:right;font-weight:bold">Destination Tips</h3>
-					<div>
-						<ul style="margin:0">
-						<% 
-							if(reviewsMap != null && !reviewsMap.isEmpty()) {
-								for (Long dest : reviewsMap.keySet()) {	
-								if(destId == -1L) {
-									destId = dest;
-								}								
-							%>
-							<li class="tag" style="text-align:right;font-size:14px"><a href="/tours/reviews?destId=<%=dest%>"><%=DestinationContentManager.getDestinationFromId(dest).getName()%></a></li>
-							<% } 
-							}
-						%>
-						</ul>
-					</div>
-				</div>
-			</aside>
-			<section class="three-fourth">
-				<div class="container">
-					<div class="row">
-						<div>
-							<div class="title-item-wrapper">
-								<h2 class="title-item-header" style="margin-bottom:30px;text-align:left"><span>Travel Tips for <%=DestinationContentManager.getDestinationFromId(destId).getName()%></span></h2>
-							</div>
-							<div class="clear"></div>
-						</div>					
-						<div class="locations">
-						<% 
-							if(reviewsMap != null && !reviewsMap.isEmpty()) {
-								Map<Long, Review> reviewsSubMap = reviewsMap.get(destId);
-								if(reviewsSubMap != null) {
-								for(long id : reviewsSubMap.keySet()) {
-									Review review = reviewsSubMap.get(id);
-									Destination dest = DestinationContentManager.getDestinationFromId(id);
-									String text = review.getExpertContent() + " - Posted on " + ThreadSafeUtil.getDDMMMMMyyyyDateFormat(false, false).format(review.getReviewTime());
-								    request.setAttribute(Attributes.DESTINATION.toString(), dest);
-						%>
-						<jsp:include page="/place/includes/place_short_view.jsp">
-							<jsp:param name="expertReview" value="<%=text%>" />
-						</jsp:include>
-						<% } } } %>
-						</div>
-					</div>
-				</div>
-			</section>
+<!-- Main content -->
+<div class="container_12">
+	<section class="categories grid_3">
+			<h3 class="text_big">Top Destination</h3>
+		<ul>
+			<li><a href="#">London</a></li>
+			<li><a href="#">Paris</a></li>
+			<li><a href="#">singapore</a></li>
+			<li><a href="#">Malleswaram</a></li>
+		</ul>
+	
+	</section>
+
+	<!-- Image gallery -->
+	<section class="grid_9">
+		
+		<!-- Slider navigation -->
+		<section class=gallery>
+		<nav class="slider_nav">
+			<a href="#" class="left">&nbsp;</a>
+			<a href="#" class="right">&nbsp;</a>
+		</nav>
+
+		<!-- Slider -->
+		<div class="slider_wrapper">
+
+			<!-- Slider content -->
+			<div class="slider_content">
+				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
+					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
+				</a>
+				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
+					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
+				</a>
+				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
+					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
+				</a>
+				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
+					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
+				</a>
+				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
+					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
+				</a>
+				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
+					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
+				</a>
+				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
+					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
+				</a>
+				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
+					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
+				</a>
+			</div>
+
 		</div>
-	<!--//main content-->
-	</div>
-</div>
-<!--//main-->
+	</section>
+
+	<div class="clearfix"></div>
+	<hr class="dashed" />
+
+	<!-- Map -->
+		<script>
+			$(function() {
+				markers = "La Tour Eiffel, Paris"; // Set the address for marker
+				$("a#map").attr("href", "http://maps.google.com/maps?q=" + escape(markers)).html("<img />");
+				$("a#map img").attr("src", "http://maps.google.com/maps/api/staticmap?markers=" + escape(markers) + "&size=300x200&sensor=false");
+			});
+		</script>
+		<a href="#" id="map"></a>
+
+	<!-- Simple text -->
+		<h3 class="text_big">Where we will go</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam faucibus placerat risus, ac vulputate enim facilisis eu. In sodales lacinia elit, ut rhoncus risus consequat sit amet. Suspendisse potenti. Nam imperdiet lacinia aliquet. Donec odio risus, dignissim id placerat et, molestie sed ligula.</p>
+		<p>Vestibulum placerat rhoncus massa, vel viverra ligula placerat sit amet. Aenean nibh sem, placerat ac laoreet ac, ullamcorper in est. Nulla facilisi. Suspendisse potenti. Maecenas mollis dui id lacus semper sit amet accumsan augue rhoncus. Ut sed felis eget mi placerat accumsan ut vel risus.</p>
+		<p>Phasellus aliquam sodales pharetra. Donec ornare felis quis quam volutpat ut venenatis dui scelerisque. Quisque feugiat lacus vel odio pulvinar vel sagittis nisl gravida.</p>
+	
+
+	<div class="clearfix"></div>
+	<hr class="dashed grid_12" />
+
+	<!-- Simple text -->
+		<h3 class="text_big">What we will do</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam faucibus placerat risus, ac vulputate enim facilisis eu. In sodales lacinia elit, ut rhoncus risus consequat sit amet. Suspendisse potenti. Nam imperdiet lacinia aliquet. Donec odio risus, dignissim id placerat et, molestie sed ligula.</p>
+		<p>Vestibulum placerat rhoncus massa, vel viverra ligula placerat sit amet. Aenean nibh sem, placerat ac laoreet ac, ullamcorper in est. Nulla facilisi. Suspendisse potenti. Maecenas mollis dui id lacus semper sit amet accumsan augue rhoncus. Ut sed felis eget mi placerat accumsan ut vel risus.</p>
+		<p>Phasellus aliquam sodales pharetra. Donec ornare felis quis quam volutpat ut venenatis dui scelerisque. Quisque feugiat lacus vel odio pulvinar vel sagittis nisl gravida.</p>
+	</section>
+
+
+
 <jsp:include page="/common/includes/viacom/footer_new.jsp" />
 </body>
 </html>
