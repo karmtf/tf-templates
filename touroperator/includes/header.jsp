@@ -70,7 +70,7 @@
 		<div id="panel" class="grid_12">
 
 			<!-- Title -->
-			<h1><a href="/tours/welcome">Apni Travel</a></h1>
+			<h1><a href="/tours/welcome">Apni Travels</a></h1>
 
 			<!-- Navigation -->
 			<nav>

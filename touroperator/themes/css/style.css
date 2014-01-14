@@ -227,7 +227,7 @@ header {
 			}
 		#panel nav {
 			float: right;
-			margin-right: 63px;
+			margin-right: 20px;
 			text-align: right;
 		}
 			#panel ul {
@@ -235,7 +235,7 @@ header {
 			}
 				#panel li {
 					display: inline-block;
-					padding: 0 10px;
+					padding: 0 2px;
 				}
 					#panel li a {
 						color: #fff;
@@ -294,15 +294,15 @@ header {
 									background: rgba(255,255,255,0.08);
 								}
 			#panel nav form {
-				margin-left: 30px;
+				margin-left: 10px;
 				display: inline-block;
 			}
 				#panel nav input {
-					width: 160px;
-					background: rgba(0,0,0,0.4) url("../img/search.png") 128px center no-repeat;
+					width: 260px;
+					background: rgba(0,0,0,0.4) url("../img/search.png") 238px center no-repeat;
 				}
 					.no-rgba #panel nav input {
-						background: #333 url("../img/search.png") 128px center no-repeat;
+						background: #333 url("../img/search.png") 238px center no-repeat;
 					}
 				#panel nav input[type=submit] {
 					display: none;
