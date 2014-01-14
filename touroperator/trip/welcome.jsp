@@ -172,69 +172,69 @@
 	<ul class="results">
 
 		<li class="short grid_3">
-			<a href="hotel.html"><img src="/static/img2/placeholders/1280x1024/12.jpg" alt="" /></a>
+			<a href="hotel.html"><img src="/static/img2/placeholders/220x100/8.jpg" alt="" /></a>
 			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
 			<span class="price"><strong>1 899 €</strong> / 10 days</span>
 			<div>
 				<span><a href="#">Singapore</a></span>
 				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="img/star_half.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_half.png" alt="" />
+				<img src="/static/css2/img/star_empty.png" alt="" />
 				</span>
 				<span>All inclusive</span>
 			</div>
 		</li>
 		<li class="short grid_3">
-			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
+			<a href="hotel.html"><img src="/static/img2/placeholders/220x100/9.jpg" alt="" /></a>
+			<h3><a href="hotel.html">Hotel Palma</a></h3>
+			<span class="stars">
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_half.png" alt="" />
+				<img src="/static/img2/star_empty.png" alt="" />
+			</span>
 			<div>
-				<span><a href="#">Singapore</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="img/star_half.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
+				<span><a href="#">Mallorca</a></span>
+				<span><strong>1 899 €</strong> / 10 days</span>
 			</div>
 		</li>
+
 		<li class="short grid_3">
-			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
+			<a href="hotel.html"><img src="/static/img2/placeholders/220x100/13.jpg" alt="" /></a>
+			<h3><a href="hotel.html">Holiday Inn</a></h3>
+			<span class="stars">
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_half.png" alt="" />
+				<img src="/static/img2/star_empty.png" alt="" />
+			</span>
 			<div>
-				<span><a href="#">Singapore</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="img/star_half.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
+				<span><a href="#">Cannes</a></span>
+				<span><strong>1 899 €</strong> / 10 days</span>
 			</div>
 		</li>
+
 		<li class="short grid_3">
-			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
+			<a href="hotel.html"><img src="/static/img2/placeholders/220x100/14.jpg" alt="" /></a>
+			<h3><a href="hotel.html">Hotel Grand</a></h3>
+			<span class="stars">
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_full.png" alt="" />
+				<img src="/static/img2/star_half.png" alt="" />
+				<img src="/static/img2/star_half.png" alt="" />
+			</span>
 			<div>
 				<span><a href="#">Singapore</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="img/star_half.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
+				<span><strong>1 899 €</strong> / 10 days</span>
 			</div>
 		</li>
+
 
 
 	</ul>
@@ -247,39 +247,39 @@
 	<section class="latest_articles">
 		
 		<article class="grid_4">
-			<a href="blogpost.html"><img src="http://www.wallsave.com/wallpapers/1024x768/damn/115146/damn-larryjw-small-linux-hq-jpg-115146.jpg" alt="" /></a>
+			<a href="blogpost.html"><img src="/static/img2/placeholders/300x100/1.jpg" alt="" /></a>
 			<h2><a href="blogpost.html">Around the world</a></h2>
 			<div class="info">
 				by <strong>John Doe</strong>
-				<img src="img/hseparator.png" alt="" />
+				<img src="/static/css2/img/hseparator.png" alt="" />
 				<strong>8</strong> comments
-				<img src="img/hseparator.png" alt="" />
+				<img src="/static/css2/img/hseparator.png" alt="" />
 				<strong>Nov 04</strong>
 			</div>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus. Suspendisse malesuada nisl nec magna fringilla ornare. Clabel urabitur molestie ligula a urna hendrerit quis porttitor enim ornare.</p>
 		</article>
 
 		<article class="grid_4">
-			<a href="blogpost.html"><img src="http://www.wallsave.com/wallpapers/1024x768/damn/115146/damn-larryjw-small-linux-hq-jpg-115146.jpg" alt="" /></a>
+			<a href="blogpost.html"><img src="/static/img2/placeholders/300x100/3.jpg" alt="" /></a>
 			<h2><a href="blogpost.html">Around the world</a></h2>
 			<div class="info">
 				by <strong>John Doe</strong>
-				<img src="img/hseparator.png" alt="" />
+				<img src="/static/css2/img/hseparator.png" alt="" />
 				<strong>8</strong> comments
-				<img src="img/hseparator.png" alt="" />
+				<img src="/static/css2/img/hseparator.png" alt="" />
 				<strong>Nov 04</strong>
 			</div>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus. Suspendisse malesuada nisl nec magna fringilla ornare. Clabel urabitur molestie ligula a urna hendrerit quis porttitor enim ornare.</p>
 		</article>
 
 		<article class="grid_4">
-			<a href="blogpost.html"><img src="http://www.wallsave.com/wallpapers/1024x768/damn/115146/damn-larryjw-small-linux-hq-jpg-115146.jpg" alt="" /></a>
+			<a href="blogpost.html"><img src="/static/img2/placeholders/300x100/4.jpg" alt="" /></a>
 			<h2><a href="blogpost.html">Around the world</a></h2>
 			<div class="info">
 				by <strong>John Doe</strong>
-				<img src="img/hseparator.png" alt="" />
+				<img src="/static/css2/img/hseparator.png" alt="" />
 				<strong>8</strong> comments
-				<img src="img/hseparator.png" alt="" />
+				<img src="/static/css2/img/hseparator.png" alt="" />
 				<strong>Nov 04</strong>
 			</div>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus. Suspendisse malesuada nisl nec magna fringilla ornare. Clabel urabitur molestie ligula a urna hendrerit quis porttitor enim ornare.</p>

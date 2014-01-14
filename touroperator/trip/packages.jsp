@@ -87,7 +87,6 @@
 .pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:94% !important;}
 }
 </style>
-<link rel="stylesheet" href="/static/css/themes/touroperator/font-awesome.css" />
 <!--main-->
 
 <header >
