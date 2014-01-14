@@ -105,7 +105,6 @@
 .pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:94% !important;}
 }
 </style>
-<link rel="stylesheet" href="/static/css/themes/touroperator/font-awesome.css" />
 <header >
 	<!-- Heading -->
 	<h2>Contact Us</h2>
@@ -126,20 +125,21 @@
 		<h2 class="text_big">Travel Agency</h2>
 
 		<p class="address">
-			<span><img src="img/address.png" alt="" /> 123 Wall Street , New York</span>
-			<span><img src="img/email.png" alt="" /> contact@travelagency.com</span>
-			<span><img src="img/phone.png" alt="" /> (111) 100-1000</span>
+			<span><img src="/static/css2/img/address.png" alt="" /> <%=partnerUser.m_street%><br>
+								<%=LocationData.getCityNameFromId(partnerUser.getCityId())%> - <%=partnerUser.m_pincode%></span>
+			<span><img src="/static/css2/img/email.png" alt="" /> <%=partnerUser.m_email%></span>
+			<span><img src="/static/css2/img/phone.png" alt="" /> <%=partnerUser.m_mobile%></span>
 		</p>
 
 		<hr class="dashed" />
 
-		<h3>Praesent laoreet sem sit amet urna dapibus?</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam faucibus placerat risus, ac vulputate enim facilisis eu. In sodales lacinia elit, ut rhoncus risus consequat sit amet. Suspendisse potenti. Nam imperdiet lacinia aliquet. Donec odio risus, dignissim id placerat et, molestie sed ligula.</p>
+		<h3>Some questions?</h3>
+		<p>Some Answer.</p>
 
 		<hr class="dashed" />
 
-		<h3>Aenean nibh sem, placerat ac laoreet ac?</h3>
-		<p>Vestibulum placerat rhoncus massa, vel viverra ligula placerat sit amet. Aenean nibh sem, placerat ac laoreet ac, ullamcorper in est. Nulla facilisi. Suspendisse potenti. Maecenas mollis dui id lacus semper sit amet accumsan augue rhoncus. Ut sed felis eget mi placerat accumsan ut vel risus.</p>
+		<h3>Some questions?</h3>
+		<p>Some Answer.</p>
 	</section>
 
 	<!-- Contact form -->
