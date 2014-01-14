@@ -170,71 +170,32 @@
 
 	<!-- Recommended trips -->
 	<ul class="results">
-
-		<li class="short grid_3">
-			<a href="hotel.html"><img src="/static/img2/placeholders/220x100/8.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Singapore</a></span>
-				<span class="stars">
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_half.png" alt="" />
-				<img src="/static/css2/img/star_empty.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-		</li>
-		<li class="short grid_3">
-			<a href="hotel.html"><img src="/static/img2/placeholders/220x100/9.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Hotel Palma</a></h3>
-			<span class="stars">
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_half.png" alt="" />
-				<img src="/static/img2/star_empty.png" alt="" />
-			</span>
-			<div>
-				<span><a href="#">Mallorca</a></span>
-				<span><strong>1 899 €</strong> / 10 days</span>
-			</div>
-		</li>
-
-		<li class="short grid_3">
-			<a href="hotel.html"><img src="/static/img2/placeholders/220x100/13.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Holiday Inn</a></h3>
-			<span class="stars">
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_half.png" alt="" />
-				<img src="/static/img2/star_empty.png" alt="" />
-			</span>
-			<div>
-				<span><a href="#">Cannes</a></span>
-				<span><strong>1 899 €</strong> / 10 days</span>
-			</div>
-		</li>
-
-		<li class="short grid_3">
-			<a href="hotel.html"><img src="/static/img2/placeholders/220x100/14.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Hotel Grand</a></h3>
-			<span class="stars">
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_full.png" alt="" />
-				<img src="/static/img2/star_half.png" alt="" />
-				<img src="/static/img2/star_half.png" alt="" />
-			</span>
-			<div>
-				<span><a href="#">Singapore</a></span>
-				<span><strong>1 899 €</strong> / 10 days</span>
-			</div>
-		</li>
-
+			<%
+				for(PackageConfigData packageConfiguration : packages) { 
+					List<Integer> cities = packageConfiguration.getDestinationCities();
+					String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
+					String imageUrl = packageConfiguration.getImageURL(request); 
+					String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
+					String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
+					Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
+					List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
+					List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
+					PackageOptionalConfig dealConfig = null;
+					if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
+						dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
+					}
+			%>
+			
+			<li class="short grid_3">
+				<a href="<%=pkgDetailUrl%>"><img src="<%=imageUrlComplete%>" alt="" /></a>
+				<h3><a href="<%=pkgDetailUrl%>"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 25)%></a></h3>
+				<span class="price"><strong><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></span>
+				<div>
+					<span><a href="#">Singapore</a></span>
+				</div>
+			</li>
+		
+		<% } %>
 
 
 	</ul>
@@ -242,6 +203,9 @@
 
 	<div class="clearfix"></div>
 	<hr class="dashed grid_12" />
+	<h3>Tips Before Travel</h3>
+	<div class="clearfix"></div>
+
 
 	<!-- Latest blog articles -->
 	<section class="latest_articles">

@@ -96,120 +96,42 @@
 
 <!-- Main content -->
 <div class="container_12">
-
-
 	<div class="clearfix"></div>
 
 	<!-- Results -->
 	<ul class="results">
-
-		<li class="grid_4">
-			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Singapore</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="img/star_half.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-		</li>
-		<li class="grid_4">
-			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Singapore</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="img/star_half.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-		</li>
-		<li class="grid_4">
-			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Singapore</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="img/star_half.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-		</li>
-		<li class="grid_4">
-			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Singapore</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="img/star_half.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-		</li>
-		<li class="grid_4">
-			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Singapore</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="img/star_half.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-		</li>
-		<li class="grid_4">
-			<a href="hotel.html"><img src="http://media.tumblr.com/c874e78655521741646ee58685c6e619/tumblr_inline_mvkxn8hAe01s6b0f0.jpg" alt="" /></a>
-			<h3><a href="hotel.html">Marina Bay Sands</a></h3>
-			<span class="price"><strong>1 899 €</strong> / 10 days</span>
-			<div>
-				<span><a href="#">Singapore</a></span>
-				<span class="stars">
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="http://static4.wikia.nocookie.net/__cb20110731175922/legendarywars/images/c/cf/Gold-star-graphic.png" alt="" />
-					<img src="img/star_half.png" alt="" />
-					<img src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Buzz-Outline-star-icon.png" alt="" />
-				</span>
-				<span>All inclusive</span>
-			</div>
-		</li>
-
+	
+		<% 
+			if(packages != null && !packages.isEmpty()) {
+				for(PackageConfigData packageConfiguration : packages) { 
+					List<Integer> cities = packageConfiguration.getDestinationCities();
+					String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
+					String imageUrl = packageConfiguration.getImageURL(request); 
+					String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
+					String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
+					Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
+					PackageOptionalConfig dealConfig = null;
+					if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
+						dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
+					}
+		%>
+					<li class="grid_4">
+						<a href="hotel.html"><img src="<%=imageUrlComplete%>" alt="" /></a>
+						<h3><a href="<%=pkgDetailUrl%>"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 25)%></a></h3>
+						<span class="price"><strong><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></span>
+						<div>
+							<% if(dealConfig != null) { %>
+							<span><a href="#"><%=Math.round(dealConfig.getPrice())%>% Off</a></span>
+							<% } else { %>
+							<span><a href="#">View More</a></span>
+							<% } %>
+						</div>
+					</li>
+		<% } } %>
 
 	</ul>
 
 	<div class="clearfix"></div>
-
-	<!-- Pagination -->
-	<nav class="grid_12">
-		<a href="#" class="previous">Previous</a>
-		<a href="#" class="next">Next</a>
-	</nav>
 	
 </div> 
 </div>

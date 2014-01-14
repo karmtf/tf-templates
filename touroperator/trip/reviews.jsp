@@ -115,89 +115,27 @@
 	<section class="categories grid_3">
 			<h3 class="text_big">Top Destination</h3>
 		<ul>
-			<li><a href="#">London</a></li>
-			<li><a href="#">Paris</a></li>
-			<li><a href="#">singapore</a></li>
-			<li><a href="#">Malleswaram</a></li>
+		
+<!--			<% 
+				if(countries != null) {
+					for (Integer country : countries) {	
+				%>
+				<li><a href="/tours/reviews?destId=<%=country%>"><%=LocationData.getCityNameFromId(country)%></a></li>
+				<% } 
+				}
+			%>
+-->
+
+			<li><a href="/tours/reviews?destId=3089">London</a></li>
+			<li><a href="/tours/reviews?destId=1373">Dublin</a></li>
+			<li><a href="/tours/reviews?destId=3285">Manchester</a></li>
 		</ul>
 	
 	</section>
 
 	<!-- Image gallery -->
-	<section class="grid_9">
-		
-		<!-- Slider navigation -->
-		<section class=gallery>
-		<nav class="slider_nav">
-			<a href="#" class="left">&nbsp;</a>
-			<a href="#" class="right">&nbsp;</a>
-		</nav>
-
-		<!-- Slider -->
-		<div class="slider_wrapper">
-
-			<!-- Slider content -->
-			<div class="slider_content">
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-			</div>
-
-		</div>
-	</section>
-
-	<div class="clearfix"></div>
-	<hr class="dashed" />
-
-	<!-- Map -->
-		<script>
-			$(function() {
-				markers = "La Tour Eiffel, Paris"; // Set the address for marker
-				$("a#map").attr("href", "http://maps.google.com/maps?q=" + escape(markers)).html("<img />");
-				$("a#map img").attr("src", "http://maps.google.com/maps/api/staticmap?markers=" + escape(markers) + "&size=300x200&sensor=false");
-			});
-		</script>
-		<a href="#" id="map"></a>
-
-	<!-- Simple text -->
-		<h3 class="text_big">Where we will go</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam faucibus placerat risus, ac vulputate enim facilisis eu. In sodales lacinia elit, ut rhoncus risus consequat sit amet. Suspendisse potenti. Nam imperdiet lacinia aliquet. Donec odio risus, dignissim id placerat et, molestie sed ligula.</p>
-		<p>Vestibulum placerat rhoncus massa, vel viverra ligula placerat sit amet. Aenean nibh sem, placerat ac laoreet ac, ullamcorper in est. Nulla facilisi. Suspendisse potenti. Maecenas mollis dui id lacus semper sit amet accumsan augue rhoncus. Ut sed felis eget mi placerat accumsan ut vel risus.</p>
-		<p>Phasellus aliquam sodales pharetra. Donec ornare felis quis quam volutpat ut venenatis dui scelerisque. Quisque feugiat lacus vel odio pulvinar vel sagittis nisl gravida.</p>
-	
-
-	<div class="clearfix"></div>
-	<hr class="dashed grid_12" />
-
-	<!-- Simple text -->
-		<h3 class="text_big">What we will do</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam faucibus placerat risus, ac vulputate enim facilisis eu. In sodales lacinia elit, ut rhoncus risus consequat sit amet. Suspendisse potenti. Nam imperdiet lacinia aliquet. Donec odio risus, dignissim id placerat et, molestie sed ligula.</p>
-		<p>Vestibulum placerat rhoncus massa, vel viverra ligula placerat sit amet. Aenean nibh sem, placerat ac laoreet ac, ullamcorper in est. Nulla facilisi. Suspendisse potenti. Maecenas mollis dui id lacus semper sit amet accumsan augue rhoncus. Ut sed felis eget mi placerat accumsan ut vel risus.</p>
-		<p>Phasellus aliquam sodales pharetra. Donec ornare felis quis quam volutpat ut venenatis dui scelerisque. Quisque feugiat lacus vel odio pulvinar vel sagittis nisl gravida.</p>
-	</section>
-
-
+	<jsp:include page="/templates/touroperator/trip/city_general_details.jsp" />
+</div>
 
 <jsp:include page="/common/includes/viacom/footer_new.jsp" />
 </body>

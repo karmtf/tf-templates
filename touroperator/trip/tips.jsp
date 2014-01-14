@@ -111,54 +111,29 @@
 <!-- Main content -->
 <div class="container_12">
 	<section class="categories grid_3">
-			<h3 class="text_big">Destination Tips</h3>
+			<h3 class="text_big">Top Destination</h3>
 		<ul>
-			<li><a href="#">London</a></li>
-			<li><a href="#">Malleswaram</a></li>
+		
+<!--			<% 
+				if(countries != null) {
+					for (Integer country : countries) {	
+				%>
+				<li><a href="/tours/tips?destId=<%=country%>"><%=LocationData.getCityNameFromId(country)%></a></li>
+				<% } 
+				}
+			%>
+-->
+
+			<li><a href="/tours/tips?destId=3089">London</a></li>
+			<li><a href="/tours/tips?destId=1373">Dublin</a></li>
+			<li><a href="/tours/tips?destId=3285">Manchester</a></li>
 		</ul>
 	
 	</section>
 
-
-	<!-- Results -->
-	<ul class="results_wide grid_9">
-	
-		<li>
-			<a href="hotel.html" class="thumb"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Aerial_view_of_the_London_Eye._MOD_45146076.jpg/150px-Aerial_view_of_the_London_Eye._MOD_45146076.jpg" alt="" /></a>
-			<h3><a href="hotel.html">London eye</a></h3>
-			<p>Riverside Bldg, County Hall, Westminster Bridge Rd, London SE1 7PB, Un... , Phone: +44 871 781 3000</p>
-			<p><font style="font-weight:bold">Expert Tip:</font>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus."</p>
-		</li>
-		<li>
-			<a href="hotel.html" class="thumb"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Aerial_view_of_the_London_Eye._MOD_45146076.jpg/150px-Aerial_view_of_the_London_Eye._MOD_45146076.jpg" alt="" /></a>
-			<h3><a href="hotel.html">London eye</a></h3>
-			<p>Riverside Bldg, County Hall, Westminster Bridge Rd, London SE1 7PB, Un... , Phone: +44 871 781 3000</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus.</p>
-			<p class="re-bot" style="padding:5px 0;text-align:left;color:#444;margin-top:5px;border-top:none">
-			
-			
-			<span style="margin-right:15px;font-weight:bold">1 shortlists</span>
-			
-			<a class="save-this active" style="cursor:pointer;padding-left:0">Add to trip</a>
-			
-			
-			<span class="right"><a href="http://www.londoneye.com" target="_blank">www.londoneye.com</a></span>			
-			
-			<span class="clearfix"></span>
-		</p>
-		</li>
-
-
-	</ul>
-
-
-	<!-- Pagination -->
-	<nav class="grid_9 prefix_3">
-		<a href="#" class="previous">Previous</a>
-		<a href="#" class="next">Next</a>
-	</nav>
-
-	<div class="clearfix"></div>
+	<!-- Image gallery -->
+			<jsp:include page="/templates/touroperator/trip/place_short_view.jsp" />
+</div>
 
 
 
