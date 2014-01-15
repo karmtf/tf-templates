@@ -130,17 +130,16 @@
 		<!-- Slider content -->
 		<ul class="homepage_slider">
 
-			<!-- First slide -->
-			<li>
-				<h2><a href="trip.html">The Indonesia Expedition from <strong>799 €</strong></a></h2>
-				<p>Ubud, Uluwatu, Batur, Besakih and Tenganan</p>
-			</li>
+			<%
+				for(PackageConfigData packageConfiguration : packages) { 
+					List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
 
-			<!-- Second slide -->
+			%>
 			<li>
-				<h2><a href="hotel.html">A wonderful week in Singapore from <strong>999 €</strong></a></h2>
-				<p>With accomodation in Marina Bay Sands</p>
+				<h2><a href="trip.html"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 25)%></strong></a></h2>
+				<p>Some city Information to be made Dynamic</p>
 			</li>
+			<% } %>
 
 		</ul>
 
@@ -172,10 +171,10 @@
 			
 			<li class="short grid_3">
 				<a href="<%=pkgDetailUrl%>"><img src="<%=imageUrlComplete%>" alt="" /></a>
-				<h3><a href="<%=pkgDetailUrl%>"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 25)%></a></h3>
-				<span class="price"><strong><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></span>
+				<h3><a href="<%=pkgDetailUrl%>"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 20)%></a></h3>
 				<div>
-					<span><a href="#">Singapore</a></span>
+					<span><a href="#">City to be dynamic</a></span>
+					<span><strong><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></span>
 				</div>
 			</li>
 		

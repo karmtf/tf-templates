@@ -116,14 +116,19 @@
 					}
 		%>
 					<li class="grid_4">
-						<a href="hotel.html"><img src="<%=imageUrlComplete%>" alt="" /></a>
+						<a href="<%=pkgDetailUrl%>"><img src="<%=imageUrlComplete%>" alt="" /></a>
 						<h3><a href="<%=pkgDetailUrl%>"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 25)%></a></h3>
+
+
 						<span class="price"><strong><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></span>
+
 						<div>
 							<% if(dealConfig != null) { %>
-							<span><a href="#"><%=Math.round(dealConfig.getPrice())%>% Off</a></span>
+							<div>
+							<span><a href="<%=pkgDetailUrl%>">Deal <%=Math.round(dealConfig.getPrice())%>% Off</a></span>
+							</div>
 							<% } else { %>
-							<span><a href="#">View More</a></span>
+							<span><a href="<%=pkgDetailUrl%>">View More</a></span>
 							<% } %>
 						</div>
 					</li>

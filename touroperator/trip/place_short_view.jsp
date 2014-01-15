@@ -6,6 +6,54 @@
 <%@page import="com.eos.b2c.engagement.unit.UserInputType"%>
 <%@page import="com.eos.b2c.secondary.database.model.Destination"%>
 
+<%
+	User user = SessionManager.getUser(request);
+	Destination place = (Destination) request.getAttribute(Attributes.DESTINATION.toString());
+	DestinationLocation location = (DestinationLocation) request.getAttribute(Attributes.DESTINATION_LOCATION.toString());
+	Destination city = DestinationContentManager.getDestinationCityByCityId(place.getMappedCityId());
+	String viewClass = StringUtils.trimToEmpty(request.getParameter("viewClass"));
+	boolean showCityName = Boolean.parseBoolean(request.getParameter("showCityName"));
+	String expertText = StringUtils.trimToEmpty(request.getParameter("expertReview"));
+
+	boolean isHidePlace = Boolean.parseBoolean(request.getParameter("isHidePlace"));
+	boolean showCollect = Boolean.parseBoolean(request.getParameter("showCollect")) && place.getDestinationType().isCollectable();
+	showCollect = UIHelper.isShowCollect(request, showCollect);
+
+	DestinationMatchParam destinationMatchParam = place.getSearchMatchParams();
+
+	boolean showImportantTags = Boolean.parseBoolean(request.getParameter("showImportantTags"));
+	boolean showURLAsSearchFilter = Boolean.parseBoolean(request.getParameter("showURLAsSearchFilter"));
+	List<PackageTag> importantTags = ReviewManager.getImportantTags(place.getOverallRatingMap());	
+	List<DestinationCuisineType> cuisines = ReviewManager.getImportantCuisines(place.getOverallRatingMap());
+	
+	Review recentReview = null; 
+    UserInputType inputType = UserInputType.HOLIDAY_PURPOSE;
+	if(place.getDestinationType() == DestinationType.RESTAURANT) {
+		inputType = UserInputType.CUISINE;
+	}
+	if(place.getOverallRatingMap() != null && place.getOverallRatingMap().get(inputType) != null) {
+		Collection<Review> applicableReviews = place.getOverallRatingMap().get(inputType).values();
+		for (Review review : applicableReviews) {
+			if(StringUtils.isNotBlank(review.getExpertContent())) {
+				recentReview = review;
+				break;
+			}
+		}
+	}
+	AbstractConfigStep currentConfigStep = (AbstractConfigStep) request.getAttribute(Attributes.CURRENT_CONFIG_STEP.toString());
+	boolean isPlaceSelected = false;	
+	boolean isConfig = false;
+	if(currentConfigStep != null && currentConfigStep instanceof DestinationConfigStep) { 
+		DestinationConfigStep destConfigStep = (DestinationConfigStep) currentConfigStep;
+		isConfig = (destConfigStep != null);
+		isPlaceSelected = isConfig && destConfigStep.isPlaceSelected(place);
+	}
+	
+	String destinationURL = showURLAsSearchFilter? DestinationContentBean.getDestinationCitySearchURLAsFilter(request, place): DestinationContentBean.getDestinationContentURL(request, place);
+	String descriptionText = UIHelper.extractRenderTextFromHTML(StringUtils.trimToEmpty(place.getDescription()));
+	String imageURL = UIHelper.getDestinationImageURLForDataType(request, place.getMainImage(), FileDataType.I200X100);
+%>
+
 <%@page import="com.eos.b2c.content.DestinationContentBean"%>
 <%@page import="com.eos.b2c.ui.util.UIHelper"%>
 <%@page import="com.via.content.FileDataType"%>
@@ -31,39 +79,32 @@
 <%@page import="com.poc.server.config.step.DestinationConfigStep"%>
 
 
-<div class="grid_9">
 	<!-- Results -->
 	<ul class="results_wide ">
-	
+
 		<li>
-			<a href="hotel.html" class="thumb"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Aerial_view_of_the_London_Eye._MOD_45146076.jpg/150px-Aerial_view_of_the_London_Eye._MOD_45146076.jpg" alt="" /></a>
-			<h3><a href="hotel.html">London eye</a></h3>
-			<p>Riverside Bldg, County Hall, Westminster Bridge Rd, London SE1 7PB, Un... , Phone: +44 871 781 3000</p>
-			<p><font style="font-weight:bold">Expert Tip:</font>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus."</p>
-		</li>
-		<li>
-			<a href="hotel.html" class="thumb"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Aerial_view_of_the_London_Eye._MOD_45146076.jpg/150px-Aerial_view_of_the_London_Eye._MOD_45146076.jpg" alt="" /></a>
-			<h3><a href="hotel.html">London eye</a></h3>
-			<p>Riverside Bldg, County Hall, Westminster Bridge Rd, London SE1 7PB, Un... , Phone: +44 871 781 3000</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus.</p>
+			<a href="<%=destinationURL%>" class="thumb"><img src="<%=UIHelper.getDestinationImageURLForDataType(request, place.getMainImage(), FileDataType.I200X100)%>" alt="" /></a>
+			<h3><a href="<%=destinationURL%>"><%=com.eos.gds.util.StringUtility.toCamelCase(DestinationContentManager.getDisplayNameForPlace(place))%></a></h3>
+			<p><%=UIHelper.cutLargeText(place.getAddress(),70)%></p>
+			<p><font style="font-weight:bold">Expert Tip:</font>"<%=StringUtility.truncateAtWord(expertText, 150, true).replaceAll("\\?","")%>"</p>
+
 			<p class="re-bot" style="padding:5px 0;text-align:left;color:#444;margin-top:5px;border-top:none">
 			
-			
-			<span style="margin-right:15px;font-weight:bold">1 shortlists</span>
-			
-			<a class="save-this active" style="cursor:pointer;padding-left:0">Add to trip</a>
-			
-			
-			<span class="right"><a href="http://www.londoneye.com" target="_blank">www.londoneye.com</a></span>			
-			
-			<span class="clearfix"></span>
+			<% if (place.getTotalVisitors() > 0) { %>
+			<span style="margin-right:15px;font-weight:bold"><%=place.getTotalVisitors()%> shortlists</span>
+			<% } %>
+			<a class="save-this active" style="cursor:pointer;padding-left:0">Shortlist</a>
+			<% if (destinationMatchParam != null && !StringUtils.isBlank(destinationMatchParam.getDisplayTextForDescType(DestinationMatchDescType.DISTANCE_PLACE, false))) { %>
+			<span style="color:#F78C0D;margin-left:10px;">
+				<%=destinationMatchParam.getDisplayTextForDescType(DestinationMatchDescType.DISTANCE_PLACE, false)%>
+			</span>
+			<% } %>
+			<% if(StringUtils.isNotBlank(place.getWebsiteUrl())) { %>
+			<span class="right"><a href="<%=UIHelper.cleanUrl(place.getWebsiteUrl())%>" target="_blank"><%=UIHelper.cutLargeText(place.getWebsiteUrl(),50)%></a></span>			
+			<% } %>
 		</p>
+
 		</li>
-
-
 	</ul>
-
-	<div class="clearfix"></div>
-</div>
 
 </article>

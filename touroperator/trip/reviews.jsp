@@ -107,7 +107,7 @@
 						destId = dest;
 					}								
 				%>
-				<li><a href="/tours/tips?destId=<%=dest%>"><%=DestinationContentManager.getDestinationFromId(dest).getName()%></a></li>
+				<li><a href="/tours/reviews?destId=<%=dest%>"><%=DestinationContentManager.getDestinationFromId(dest).getName()%></a></li>
 				<% } 
 				}
 			%>
@@ -115,13 +115,25 @@
 	
 	</section>
 
-	<!-- Image gallery -->
-			<jsp:include page="/templates/touroperator/trip/place_short_view.jsp" />
+
+			<% 
+				if(reviewsMap != null && !reviewsMap.isEmpty()) {
+					Map<Long, Review> reviewsSubMap = reviewsMap.get(destId);
+					if(reviewsSubMap != null) { %>
+						<div class="grid_9">
+			<%
+					for(long id : reviewsSubMap.keySet()) {
+						Review review = reviewsSubMap.get(id);
+						Destination dest = DestinationContentManager.getDestinationFromId(id);
+						String text = review.getExpertContent() + " - Posted on " + ThreadSafeUtil.getDDMMMMMyyyyDateFormat(false, false).format(review.getReviewTime());
+						request.setAttribute(Attributes.DESTINATION.toString(), dest);
+			%>
+			<jsp:include page="/templates/touroperator/trip/place_short_view.jsp">
+				<jsp:param name="expertReview" value="<%=text%>" />
+			</jsp:include>
+			<% } %></div> <%} } %>
 </div>
 
-	<!--//main content-->
-	</div>
-</div>
 <!--//main-->
 <jsp:include page="/common/includes/viacom/footer_new.jsp" />
 </body>
