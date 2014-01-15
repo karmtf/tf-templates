@@ -33,9 +33,11 @@
 	Map<DestinationType, List<Destination>> topPlacesMap = (Map<DestinationType, List<Destination>>)request.getAttribute(Attributes.TOP_PLACES.toString());
 	AbstractPage<UserWallItemWrapper> wallPaginationData = (AbstractPage<UserWallItemWrapper>) request.getAttribute(Attributes.PAGINATION_DATA.toString());
 	request.setAttribute(Attributes.DESTINATION.toString(), cityDestination);
-    Collection<ItineraryClub> itinClubs = (Collection<ItineraryClub>) request.getAttribute(Attributes.PACKAGE_ITINERARY.toString());	
-	//int totalReviews = ReviewManager.getTotalReviews(cityDestination.getOverallRatingMap(), UserInputType.TAG);
-	//ReviewBean.getAndSetUserInputRatingMap(request, cityDestination.getOverallRatingMap(), UserInputType.TAG);
+    Collection<ItineraryClub> itinClubs = (Collection<ItineraryClub>) request.getAttribute(Attributes.PACKAGE_ITINERARY.toString());
+    if (cityDestination != null) {
+		int totalReviews = ReviewManager.getTotalReviews(cityDestination.getOverallRatingMap(), UserInputType.TAG);
+		ReviewBean.getAndSetUserInputRatingMap(request, cityDestination.getOverallRatingMap(), UserInputType.TAG);
+	}
 	List<Review> reviews = (List<Review>) request.getAttribute(Attributes.REVIEW.toString());
 	List<MarketPlaceHotel> relatedHotels = (List<MarketPlaceHotel>) request.getAttribute(Attributes.RELATED_HOTELS.toString());
     String selectedTab =  request.getParameter("tab");
@@ -62,57 +64,47 @@
 .hide{display:none;}
 </style>
 <section class="grid_9">
-		<!-- Slider navigation -->
-		<section class=gallery>
-		<nav class="slider_nav">
-			<a href="#" class="left">&nbsp;</a>
-			<a href="#" class="right">&nbsp;</a>
-		</nav>
-
-		<!-- Slider -->
-		<div class="slider_wrapper">
-
-			<!-- Slider content -->
-			<div class="slider_content">
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-				<a href="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg">
-					<img src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" alt="" />
-				</a>
-				<a href="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg">
-					<img src="http://www.whitegadget.com/attachments/pc-wallpapers/136911d1367472699-scenery-scenery-pics-1920x1200.jpg" alt="" />
-				</a>
-			</div>
-
-		</div>
-	</section>
+	<iframe
+	   src="http://www.panoramio.com/wapi/template/list.html?tag=<%=cityDestination.getName()%>&width=670&height=150&columns=7&rows=1&orientation=horizontal"
+	   frameborder="0" width="670" height="150" scrolling="no" marginwidth="0" marginheight="0">
+	</iframe>
 
 	<div class="clearfix"></div>
 	<hr class="dashed" />
 
-	<!-- Simple text -->
-		<h3 class="text_big">Where we will go</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam faucibus placerat risus, ac vulputate enim facilisis eu. In sodales lacinia elit, ut rhoncus risus consequat sit amet. Suspendisse potenti. Nam imperdiet lacinia aliquet. Donec odio risus, dignissim id placerat et, molestie sed ligula.</p>
-		<p>Vestibulum placerat rhoncus massa, vel viverra ligula placerat sit amet. Aenean nibh sem, placerat ac laoreet ac, ullamcorper in est. Nulla facilisi. Suspendisse potenti. Maecenas mollis dui id lacus semper sit amet accumsan augue rhoncus. Ut sed felis eget mi placerat accumsan ut vel risus.</p>
-		<p>Phasellus aliquam sodales pharetra. Donec ornare felis quis quam volutpat ut venenatis dui scelerisque. Quisque feugiat lacus vel odio pulvinar vel sagittis nisl gravida.</p>
-	
+		<p><%=StringUtils.trimToEmpty(cityDestination.getDescription().replaceAll("\\?",""))%></p>
 
+<% if(tips != null && !tips.isEmpty()) { %>
+			<h2 style="font-weight:bold">Travel Tips for <%=cityDestination.getName()%></h2><br>
+			<% for (TravelTip tip : tips) { %>
+				<h2 ><%=tip.getType().getDisplayName()%></h2>
+					<% for(String text : tip.getTips()) { %>
+					<ul>
+						<li><%=text%></li>
+					</ul>
+					<% } %>
+			<% } %>
+<% } %>
+
+<!--//General information-->
+<% 
+	if (topPlacesMap != null) { 
+		for(Iterator iter = topPlacesMap.entrySet().iterator(); iter.hasNext();) {
+			Map.Entry<DestinationType, List<Destination>> entry = (Map.Entry<DestinationType, List<Destination>>) iter.next();
+			DestinationType type = entry.getKey();
+			List<Destination> thingsToDoList = entry.getValue();
+%>
+
+		<h2 style="font-weight:bold">Top <%=type.getDesc()%></h2>
+		<%
+	request.setAttribute(Attributes.DESTINATION_LIST.toString(), thingsToDoList);
+%>
+<div class="clearfix"></div>
+<div>
+	<a href="<%=DestinationContentBean.getDestinationTagURL(request, cityDestination, type)%>" style="font-size:12px;">View all <%=type.getDesc()%></a>
+</div>
+<% } } %>	
+		
 
 </section>
 
@@ -121,15 +113,4 @@
 <div class="clearfix"></div>
 <div style="height:100px"></div>
 <!--//sidebar-->
-<script type="text/javascript">
-$jQ(document).ready(function() {
-	$jQ("#cityDescCtr").truncate({max_length:400});
-});
-function screenshotPreview() {
-	GENERAL_TOOLTIP.createTooltip('a.screenshot', {positionBy:'mouse',tooltipClass:'imgPrv', loadData: function(tipBody, el) {
-		var x = $jQ(el).attr("rel");
-		var u='<div><img src="'+x+'" class="big" style="-moz-box-shadow:0 2px 4px rgba(51, 51, 51, 0.23);-webkit-box-shadow:0 2px 4px rgba(51, 51, 51, 0.23);box-shadow:0 2px 4px rgba(51, 51, 51, 0.23); border:5px solid #fff;"/></div>';
-		tipBody.html(u);
-	}});
-};
-</script>
+

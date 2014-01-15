@@ -58,8 +58,9 @@
 .content {padding-top:20px;}
 }
 </style>
-	<link rel="stylesheet" href="/static/css2/css/style.css">
 
+<!-- Load CSS -->
+<link rel="stylesheet" href="/static/css2/css/style.css">
 
  <!-- Header -->
 <header>

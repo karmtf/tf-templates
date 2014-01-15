@@ -76,27 +76,6 @@
 <html>
 <head>
 
-	<!-- Load CSS -->
-	<link rel="stylesheet" href="/static/css2/css/style.css">
-	<link rel="stylesheet" href="/static/css2/fancybox/jquery.fancybox-1.3.4.css">
-	<link rel="stylesheet" href="/static/css2/css/smoothness/jquery-ui-1.8.16.custom.css">
-
-	<!-- Page icon -->
-	<link rel="shortcut icon" href="favicon.png">
-
-	<!-- Load Modernizr -->
-	<script src="/static/css2/js/libs/modernizr-2.0.min.js"></script>
-
-	<!-- Load JavaScript -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/static/css2/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
-	<script src="/static/css2/js/libs/jquery-ui-1.8.16.custom.min.js"></script>
-	<script src="/static/css2/js/script.js"></script>
-	<script src="/static/css2/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-	<script src="/static/css2/js/datepicker.js"></script>
-	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	
-
 <TITLE><%=title%></TITLE>
 <!--  featured_search_results, /hotel/includes/featured_hotel_details -->
 <meta name="keywords" content="<%=keywords%>" />
@@ -131,6 +110,11 @@
 .pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:94% !important;}
 }
 </style>
+
+<!-- Load JavaScript -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="/static/css2/js/script.js"></script>
+	
 
 <!--main-->
 <header style="background-image:url(/static/img2/placeholders/1280x1024/12.jpg);">
@@ -203,52 +187,37 @@
 
 	<div class="clearfix"></div>
 	<hr class="dashed grid_12" />
-	<h3>Tips Before Travel</h3>
-	<div class="clearfix"></div>
 
+	<% if(tips != null && !tips.isEmpty()) { %>
 
 	<!-- Latest blog articles -->
 	<section class="latest_articles">
-		
-		<article class="grid_4">
-			<a href="blogpost.html"><img src="/static/img2/placeholders/300x100/1.jpg" alt="" /></a>
-			<h2><a href="blogpost.html">Around the world</a></h2>
-			<div class="info">
-				by <strong>John Doe</strong>
-				<img src="/static/css2/img/hseparator.png" alt="" />
-				<strong>8</strong> comments
-				<img src="/static/css2/img/hseparator.png" alt="" />
-				<strong>Nov 04</strong>
-			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus. Suspendisse malesuada nisl nec magna fringilla ornare. Clabel urabitur molestie ligula a urna hendrerit quis porttitor enim ornare.</p>
-		</article>
+		<h3>Tips Before Travel</h3>
 
-		<article class="grid_4">
-			<a href="blogpost.html"><img src="/static/img2/placeholders/300x100/3.jpg" alt="" /></a>
-			<h2><a href="blogpost.html">Around the world</a></h2>
-			<div class="info">
-				by <strong>John Doe</strong>
-				<img src="/static/css2/img/hseparator.png" alt="" />
-				<strong>8</strong> comments
-				<img src="/static/css2/img/hseparator.png" alt="" />
-				<strong>Nov 04</strong>
-			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus. Suspendisse malesuada nisl nec magna fringilla ornare. Clabel urabitur molestie ligula a urna hendrerit quis porttitor enim ornare.</p>
-		</article>
+		<% 
+			int count = 0;
+			for(TravelTip tip : tips) {
+				if(count > 3) {
+					break;
+				}
+				String destURL = DestinationContentBean.getDestinationContentURL(request, DestinationContentManager.getDestinationFromId(tip.getDestId()));
+				Destination destination = DestinationContentManager.getDestinationFromId(tip.getDestId());
+				if(tip.getType() == TravelerTipType.FOOD || tip.getType() == TravelerTipType.CLOTHING || 
+				tip.getType() == TravelerTipType.SHOPPING || tip.getType() == TravelerTipType.TRANSPORT || 
+				tip.getType() == TravelerTipType.ACCOMMMODATION || tip.getType() == TravelerTipType.CARRY)  {
+		%>
+					<article class="grid_3">
+						<a href="/tours/tips?destId=<%=destination.getMappedCityId()%>"><img src="http://images.tripfactory.com/static/img/poccom/icons/<%=tip.getType().name().toLowerCase()%>tip.jpg" alt="" /></a>
+						<h2><a href="/tours/tips?destId=<%=destination.getMappedCityId()%>"><%=tip.getType().getDisplayName()%> in <%=DestinationContentManager.getDestinationNameFromId(tip.getDestId())%></a></h2>
+						<div class="info">
+							<strong><%=df.format(tip.getGenerationTime())%></strong>
+						</div>
+						<p><%=UIHelper.cutLargeText(tip.getTips().get(0), 45)%></p>
+					</article>
+		<% count++;} } %>
 
-		<article class="grid_4">
-			<a href="blogpost.html"><img src="/static/img2/placeholders/300x100/4.jpg" alt="" /></a>
-			<h2><a href="blogpost.html">Around the world</a></h2>
-			<div class="info">
-				by <strong>John Doe</strong>
-				<img src="/static/css2/img/hseparator.png" alt="" />
-				<strong>8</strong> comments
-				<img src="/static/css2/img/hseparator.png" alt="" />
-				<strong>Nov 04</strong>
-			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum nunc at mauris condimentum rhoncus. Proin fermentum ligula vitae elit laoreet a ullamcorper lorem cursus. Suspendisse malesuada nisl nec magna fringilla ornare. Clabel urabitur molestie ligula a urna hendrerit quis porttitor enim ornare.</p>
-		</article>
 
+	<% } %>
 	</section>
 	
 </div> 

@@ -50,27 +50,6 @@
 %>
 <html>
 <head>
-
-	<!-- Load CSS -->
-	<link rel="stylesheet" href="/static/css2/css/style.css">
-	<link rel="stylesheet" href="/static/css2/fancybox/jquery.fancybox-1.3.4.css">
-	<link rel="stylesheet" href="/static/css2/css/smoothness/jquery-ui-1.8.16.custom.css">
-
-	<!-- Page icon -->
-	<link rel="shortcut icon" href="favicon.png">
-
-	<!-- Load Modernizr -->
-	<script src="/static/css2/js/libs/modernizr-2.0.min.js"></script>
-
-	<!-- Load JavaScript -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/static/css2/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
-	<script src="/static/css2/js/libs/jquery-ui-1.8.16.custom.min.js"></script>
-	<script src="/static/css2/js/script.js"></script>
-	<script src="/static/css2/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-	<script src="/static/css2/js/datepicker.js"></script>
-	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
 <TITLE><%=title%></TITLE>
 <!--  featured_search_results, /hotel/includes/featured_hotel_details -->
 <meta name="keywords" content="<%=keywords%>" />
@@ -111,10 +90,10 @@
 <!-- Main content -->
 <div class="container_12">
 	<section class="categories grid_3">
-			<h3 class="text_big">Top Destination</h3>
+			<h3 class="text_big">Destination Tips</h3>
 		<ul>
 		
-<!--			<% 
+			<% 
 				if(countries != null) {
 					for (Integer country : countries) {	
 				%>
@@ -122,17 +101,12 @@
 				<% } 
 				}
 			%>
--->
-
-			<li><a href="/tours/tips?destId=3089">London</a></li>
-			<li><a href="/tours/tips?destId=1373">Dublin</a></li>
-			<li><a href="/tours/tips?destId=3285">Manchester</a></li>
 		</ul>
 	
 	</section>
 
 	<!-- Image gallery -->
-			<jsp:include page="/templates/touroperator/trip/place_short_view.jsp" />
+			<jsp:include page="/templates/touroperator/trip/city_general_details.jsp" />
 </div>
 
 
