@@ -208,7 +208,7 @@ header {
 	-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
 }
 	#panel {
-		background: url("../img/header.png") repeat-x;
+		background-color:black;
 		height: 60px;
 		line-height: 60px;
 		margin-top: 10px;
@@ -311,7 +311,7 @@ header {
 				}
 	header h2 {
 		display: block;
-		color: #fff;
+		color: #222;
 		font-family: "Open Sans", sans-serif;
 		font-weight: 300;
 		font-size: 38px;
@@ -981,6 +981,7 @@ article {
 			.address span img {
 				vertical-align: middle;
 				margin-right: 15px;
+				display:inline;
 			}
 	.padded_left {
 		padding-left: 10px;

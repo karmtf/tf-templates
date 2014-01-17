@@ -117,29 +117,23 @@
 <!-- Main content -->
 <div class="container_12">
 
-	<div class="clearfix"></div>
-	<hr class="dashed grid_12" />
-
 	<!-- About -->
 	<section class="about text grid_8">
-		<h2 class="text_big">Travel Agency</h2>
-
+		<hr class="dashed" />
+		
+	
 		<p class="address">
-			<span><img src="/static/css2/img/address.png" alt="" /> <%=partnerUser.m_street%><br>
-								<%=LocationData.getCityNameFromId(partnerUser.getCityId())%> - <%=partnerUser.m_pincode%></span>
-			<span><img src="/static/css2/img/email.png" alt="" /> <%=partnerUser.m_email%></span>
-			<span><img src="/static/css2/img/phone.png" alt="" /> <%=partnerUser.m_mobile%></span>
+				<%=partnerUser.m_street%><br>
+				<%=LocationData.getCityNameFromId(partnerUser.getCityId())%> - <%=partnerUser.m_pincode%><br>
+				Email : <%=partnerUser.m_email%><br>
+				Phone : <%=partnerUser.m_mobile%>
 		</p>
 
 		<hr class="dashed" />
 
-		<h3>Some questions?</h3>
-		<p>Some Answer.</p>
+		<h3>Services provided by us?</h3>
+		<p>Some Answer, <br>1. Not sure which bean can give answer. <br>2. Also this is needed?</p>
 
-		<hr class="dashed" />
-
-		<h3>Some questions?</h3>
-		<p>Some Answer.</p>
 	</section>
 
 	<!-- Contact form -->

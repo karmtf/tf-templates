@@ -64,12 +64,12 @@
 <link rel="stylesheet" href="/static/css2/css/style.css">
 
  <!-- Header -->
-<header>
+<header id="panel">
 
 	<div class="container_12">
 
 		<!-- Title and navigation panel -->
-		<div id="panel" class="grid_12">
+		<div  class="grid_12">
 
 			<!-- Title -->
 			<a href="/">
@@ -87,10 +87,10 @@
 						<a href="/tours/packages">Packages</a>
 					</li>
 					<li>
-						<a href="/tours/reviews">Travel Guide</a>
+						<a href="/tours/tips">Travel Guide</a>
 					</li>
 					<li>
-						<a href="/tours/tips">Travel Tips</a>
+						<a href="/tours/reviews">Travel Tips</a>
 					</li>
 					<li>
 						<a href="/tours/contactus" class="selected">Contact</a>

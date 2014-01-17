@@ -91,14 +91,41 @@
 
 <header >
 	<!-- Heading -->
-	<h2>Showing All packages</h2>
+		<% if(destId > 0) { %>
+		<h2><span><%=DestinationContentManager.getDestinationNameFromId(destId)%> Packages</span></h2>
+		<% } else { %>
+		<h2><span>Showing All Packages</span></h2>
+		<% } %>
 </header>
 
 <!-- Main content -->
 <div class="container_12">
-	<div class="clearfix"></div>
+
+	<section class="categories grid_3">
+			<h3 class="text_big">Top Destination</h3>
+		<ul>
+			<% 
+				if(regions != null) {
+					for (Long country : regions.keySet()) {
+				%>
+				<li><a href="/tours/packages?destId=<%=country%>"><%=DestinationContentManager.getDestinationNameFromId(country)%></li>
+				<%
+					List<Long> states = regions.get(country);
+					if(!states.isEmpty() && states.size() > 3) {
+						for(Long stateId : states) {
+				%>
+				<li><a href="/tours/packages?destId=<%=stateId%>"><%=DestinationContentManager.getDestinationNameFromId(stateId)%></li>							
+				<% } } %>
+				<% } 
+				}
+			%>
+		
+		</ul>
+	
+	</section>
 
 	<!-- Results -->
+	<div class="grid_9">
 	<ul class="results">
 	
 		<% 
@@ -115,7 +142,7 @@
 						dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
 					}
 		%>
-					<li class="grid_4">
+					<li class="grid_3">
 						<a href="<%=pkgDetailUrl%>"><img src="<%=imageUrlComplete%>" alt="" /></a>
 						<h3><a href="<%=pkgDetailUrl%>"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 25)%></a></h3>
 
@@ -135,6 +162,7 @@
 		<% } } %>
 
 	</ul>
+	</div>
 
 	<div class="clearfix"></div>
 	

@@ -87,21 +87,7 @@
 			<h3><a href="<%=destinationURL%>"><%=com.eos.gds.util.StringUtility.toCamelCase(DestinationContentManager.getDisplayNameForPlace(place))%></a></h3>
 			<p><%=UIHelper.cutLargeText(place.getAddress(),70)%></p>
 			<p><font style="font-weight:bold">Expert Tip:</font>"<%=StringUtility.truncateAtWord(expertText, 150, true).replaceAll("\\?","")%>"</p>
-
-			<p class="re-bot" style="padding:5px 0;text-align:left;color:#444;margin-top:5px;border-top:none">
-			
-			<% if (place.getTotalVisitors() > 0) { %>
-			<span style="margin-right:15px;font-weight:bold"><%=place.getTotalVisitors()%> shortlists</span>
-			<% } %>
-			<a class="save-this active" style="cursor:pointer;padding-left:0">Shortlist</a>
-			<% if (destinationMatchParam != null && !StringUtils.isBlank(destinationMatchParam.getDisplayTextForDescType(DestinationMatchDescType.DISTANCE_PLACE, false))) { %>
-			<span style="color:#F78C0D;margin-left:10px;">
-				<%=destinationMatchParam.getDisplayTextForDescType(DestinationMatchDescType.DISTANCE_PLACE, false)%>
-			</span>
-			<% } %>
-			<% if(StringUtils.isNotBlank(place.getWebsiteUrl())) { %>
-			<span class="right"><a href="<%=UIHelper.cleanUrl(place.getWebsiteUrl())%>" target="_blank"><%=UIHelper.cutLargeText(place.getWebsiteUrl(),50)%></a></span>			
-			<% } %>
+		
 		</p>
 
 		</li>

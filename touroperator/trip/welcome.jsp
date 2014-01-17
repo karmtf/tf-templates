@@ -226,5 +226,7 @@ $jQ(document).ready(function() {
 });
 $jQ(".slideshow .slides").cycle({fx: 'fade', speed: 1000, timeout: 5000, pause: 1});
 </script>
+<jsp:include page="/common/includes/viacom/footer_new.jsp" />
+
 </body>
 </html>
