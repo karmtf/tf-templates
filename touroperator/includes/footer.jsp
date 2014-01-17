@@ -18,13 +18,13 @@
 		</nav>
 
 		<p class="address grid_4">
-			<strong>apniwali dot com </strong><br />
+			<strong>website</strong><br />
 			<span>Somewhere in bangalore</span><br />
 			<span><a href="mailto:karmveer@apniwali.com">karmveer@apniwali.com</a></span>
 		</p>
 
 		<p class="copyright grid_8">
-			© 2014 apniwali Travel Agency
+			© 2014 <%=SettingsController.getApplicationName()%>
 		</p>
 
 	</div></footer>

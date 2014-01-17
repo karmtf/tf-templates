@@ -299,6 +299,8 @@ header {
 			}
 				#panel nav input {
 					width: 260px;
+					font-size: 12px;
+					color: #fff;
 					background: rgba(0,0,0,0.4) url("../img/search.png") 238px center no-repeat;
 				}
 					.no-rgba #panel nav input {

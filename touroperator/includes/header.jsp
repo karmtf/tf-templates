@@ -40,6 +40,7 @@
 <%@page import="com.eos.b2c.secondary.database.model.Destination"%>
 <%@page import="com.eos.b2c.content.DestinationContentManager"%>
 <%@page import="com.eos.b2c.content.DestinationContentBean"%>
+<%@page import="com.poc.server.search.SellableContentSearchBean"%>
 <style type="text/css">
 .main-nav {background:#fff;display:none;}
 .main-nav li {padding:0px 15px;background:#fff}
@@ -71,7 +72,10 @@
 		<div id="panel" class="grid_12">
 
 			<!-- Title -->
-			<h1><a href="/tours/welcome">Apni Travels</a></h1>
+			<a href="/">
+				<img src="<%=PartnerConfigBean.getPartnerConfigLogoURL(request, partnerConfigData)%>" alt="<%=SettingsController.getApplicationName()%>" style="display:inline;height:30px" />
+			</a>						
+
 
 			<!-- Navigation -->
 			<nav>
@@ -94,8 +98,8 @@
 				</ul>
 
 				<!-- Search -->
-				<form action="#" class="black">
-					<input name="search" type="text" placeholder="Search..." />
+				<form action="<%=SellableContentSearchBean.getSearchBaseURL(request)%>" class="black">
+					<input name="q" type="text" placeholder="Search for anything in travel" />
 					<input type="submit" />
 				</form>
 			</nav>
