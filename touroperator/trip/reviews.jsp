@@ -89,7 +89,7 @@
 </style>
 <header >
 	<!-- Heading -->
-	<h2>Travel Guide</h2>
+	<h2>Travel Tips</h2>
 </header>
 
 <link rel="stylesheet" href="/static/css/themes/touroperator/font-awesome.css" />

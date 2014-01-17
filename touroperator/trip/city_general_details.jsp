@@ -64,6 +64,8 @@
 .hide{display:none;}
 </style>
 <section class="grid_9">
+	<h2><%=cityDestination.getName()%></h2>
+
 	<iframe
 	   src="http://www.panoramio.com/wapi/template/list.html?tag=<%=cityDestination.getName()%>&width=670&height=150&columns=7&rows=1&orientation=horizontal"
 	   frameborder="0" width="670" height="150" scrolling="no" marginwidth="0" marginheight="0">
@@ -75,9 +77,9 @@
 		<p><%=StringUtils.trimToEmpty(cityDestination.getDescription().replaceAll("\\?",""))%></p>
 
 <% if(tips != null && !tips.isEmpty()) { %>
-			<h2 style="font-weight:bold">Travel Tips for <%=cityDestination.getName()%></h2><br>
+			<h3 style="font-weight:bold">Travel Tips for <%=cityDestination.getName()%></h3>
 			<% for (TravelTip tip : tips) { %>
-				<h2 ><%=tip.getType().getDisplayName()%></h2>
+				<h3 ><%=tip.getType().getDisplayName()%></h3>
 					<% for(String text : tip.getTips()) { %>
 					<ul>
 						<li><%=text%></li>
@@ -95,7 +97,7 @@
 			List<Destination> thingsToDoList = entry.getValue();
 %>
 
-		<h2 style="font-weight:bold">Top <%=type.getDesc()%></h2>
+		<h3 style="font-weight:bold">Top <%=type.getDesc()%></h3>
 		<%
 	request.setAttribute(Attributes.DESTINATION_LIST.toString(), thingsToDoList);
 %>

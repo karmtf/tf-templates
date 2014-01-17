@@ -163,10 +163,10 @@ h2 {
 		padding: 0 20px;
 	}
 	body section .text_big {
-		font-size: 15px;
+		font-size: 16px;
 		font-weight: bold;
 		text-shadow: 0px 1px 1px #fff;
-		color: #666;
+		color: #222;
 		margin-bottom: 15px;
 	}
 
@@ -777,7 +777,7 @@ article {
 			margin: 20px 20px 10px 0;
 		}
 			.results_wide h3 a {
-				color: #666;
+				color: #222;
 			}
 		.results_wide .price {
 			float: right;

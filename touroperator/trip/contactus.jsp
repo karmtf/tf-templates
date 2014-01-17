@@ -23,7 +23,14 @@
 <%@page import="com.via.content.FileDataType"%>
 <%@page import="com.via.content.FileSizeGroupType"%>
 <%@page import="com.eos.b2c.ui.util.Attributes"%>
+<%@page import="com.poc.server.partner.PartnerConfigBean"%>
+<%@page import="com.eos.b2c.ui.UIConfig"%>
+<%@page import="org.apache.commons.lang.StringUtils"%>
+<%@page import="com.poc.server.settings.SettingsController"%>
 <%@page import="com.poc.server.config.PackageDataBean"%>
+<%@page import="com.eos.b2c.holiday.data.TravelerTipType"%>
+<%@page import="com.poc.server.model.PackageOptionalConfig"%>
+<%@page import="com.poc.server.model.SellableUnitType"%>
 <%@page import="com.eos.b2c.ui.staticfile.StaticFile"%>
 <%@page import="com.eos.b2c.data.LocationData"%>
 <%@page import="com.eos.b2c.util.SystemProperties"%>
@@ -32,6 +39,8 @@
 <%@page import="com.poc.server.partner.PartnerConfigManager"%>
 <%@page import="com.poc.server.secondary.database.model.PartnerConfigData"%>
 <%@page import="com.eos.b2c.secondary.database.model.UserProfileData"%>
+<%@page import="com.eos.b2c.secondary.database.model.Destination"%>
+<%@page import="com.eos.b2c.content.DestinationContentManager"%>
 <%@page import="com.eos.gds.util.StringUtility"%>
 <%@page import="com.eos.accounts.database.model.UserPreference"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
@@ -45,6 +54,7 @@
 <%@page import="com.eos.b2c.util.DateUtility"%>
 <%@page import="com.poc.server.config.PackageConfigManager"%>
 <%@page import="com.poc.server.secondary.database.model.PackageConfigData"%>
+<%@page import="com.eos.b2c.secondary.database.model.TravelTip"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
 <%@page import="org.json.JSONObject"%>
@@ -58,6 +68,11 @@
 	String description = "";
 	JSONObject json = null;
 	PartnerConfigData partnerConfigData = PartnerConfigManager.getCurrentPartnerConfig();
+	UserProfileData profile = (UserProfileData)request.getAttribute(Attributes.USER_PROFILE_DATA.toString());
+	List<TravelServicesType> services =  null;
+	if (profile != null) {
+		services = profile.getTravelServices();
+	}
 	User user = SessionManager.getUser(request);
 	User partnerUser = null;
 	if (partnerConfigData != null && partnerConfigData.getConfig() != null) {
@@ -131,8 +146,20 @@
 
 		<hr class="dashed" />
 
+		<% if (services != null) {%>
+
 		<h3>Services provided by us?</h3>
-		<p>Some Answer, <br>1. Not sure which bean can give answer. <br>2. Also this is needed?</p>
+		<ul >
+			<%	int k = 0;
+				for(TravelServicesType service : services) { 
+					if(k > 7) {
+						break;
+					}
+			%>
+			<li><%=service.getDisplayName()%></li>
+			<% k++;} %>									
+		</ul>
+		<% } %>
 
 	</section>
 

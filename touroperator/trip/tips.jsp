@@ -84,13 +84,13 @@
 </style>
 <header >
 	<!-- Heading -->
-	<h2>Travel Tips</h2>
+	<h2>Travel Guide</h2>
 </header>
 
 <!-- Main content -->
 <div class="container_12">
 	<section class="categories grid_3">
-			<h3 class="text_big">Destination Tips</h3>
+			<h2 class="text_big">Top Destinations</h2>
 		<ul>
 		
 			<% 
