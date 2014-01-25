@@ -406,14 +406,15 @@ rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-wid
                             <div class="home pull-left btn-link"><a href="/" data-hint="Home" class="hint--bottom"><img src="/static/css/themes/touroperator4/img/home.gif"></a></div>
                             <div class="nav-collapse collapse">
                                 <ul class="nav">
-                                  <li class=""><a href="#" id="show_slide1">About Hammock <span class="caret caret1" id="caret1"></span></a> </li>
-                                  <li class=""><a href="#" id="show_slide2">Hammock &amp; Corporate <span class="caret caret1" id="caret2"></span></a></li>
-                                  <li class=""><a href="#" id="show_slide3">Last minute deals <span class="caret caret1" id="caret3"></span></a></li>
+                                  <li class=""><a href="/" id="show_slide1">About Hammock <span class="caret caret1" id="caret1"></span></a> </li>
+                                  <!--<li class=""><a href="#" id="show_slide2">Hammock &amp; Corporate <span class="caret caret1" id="caret2"></span></a></li>-->
+                                  <li class=""><a href="/" id="show_slide3">Last minute deals <span class="caret caret1" id="caret3"></span></a></li>
                                 </ul>
-                                <ul class="nav pull-right">
+                                <!--<ul class="nav pull-right">
                                      <li><a href="http://hammockholidays.com/account/login">Login</a></li>
                                         <li class="active"> <a href="http://hammockholidays.com/account/create">Sign up for free!</a> </li>
-                            </ul></div>
+								</ul>-->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -552,7 +553,7 @@ rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-wid
          </ul>
       </div>
       <div class="span3">
-      <div class="logo_holder"><a href="http://hammockholidays.com/" class="navbar-brand logo"><img src="http://images.tripfactory.com/static/img/poccom/tripfactory_logo_orig.png" alt="hammock holidays" style="height:0px;width:150px"></a></div></div>
+      <div class="logo_holder"><a href="http://hammockholidays.com/" class="navbar-brand logo"><img src="http://images.tripfactory.com/static/img/poccom/tripfactory_logo_orig.png" alt="hammock holidays" style="height:50px;width:150px"></a></div></div>
 
         <div class="span4">
       <div class="navbar-search_holder">
