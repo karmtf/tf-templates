@@ -93,7 +93,7 @@
 		<div class="row-fluid slider">
 		<div class="span12">
           <div class="carousel slide max_width_1600" id="myCarousel" onmouseover="return nav_show()" onmouseout="return nav_hide()">
-              <div class="carousel-inner" style="margin-top: 98px;">
+              <div class="carousel-inner" style="margin-top: 0px;">
 					
 					
 						<%
@@ -139,7 +139,7 @@
     <div class="container wrapper">
     <!-------------------------- span4 -------------------------->
     
-      <div class="span4 clearfix">
+      <div class="span12 clearfix">
         <div class="row-fluid">
           <div class="span12">
           	<div class="header1">
@@ -191,7 +191,6 @@
                         <div class="span12">
                         
                         
-                        
 						<%
 						for(PackageConfigData packageConfiguration : packages) { 
 								List<Integer> cities = packageConfiguration.getDestinationCities();
@@ -208,27 +207,29 @@
 								}
 						%>
                         
-                        <div class="thumbnail">
+					<div class="thumbnail span3">
 								  <div class="row-fluid">
 								  <div class="span12 gradient_holder share_hover">
 								   <a href="<%=pkgDetailUrl%>">
+								   <% if (imageUrlComplete.equals("")) {%>
+									 <img class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/e/ec/Ara_ararauna_Luc_Viatour.jpg" data-original="http://upload.wikimedia.org/wikipedia/commons/e/ec/Ara_ararauna_Luc_Viatour.jpg" style="display: inline;">
+								   <%  } else {%>									
 									 <img class="lazy" src="<%=imageUrlComplete%>" data-original="<%=imageUrlComplete%>" style="display: inline;">
+								   <%  }%>
 									   <div class="gradient"></div>
 									   <div class="tourimg_content3 offset1">
 										 <span class="tourimg_text_style3"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></span><br>
 									   
-										   <% if(dealConfig != null) { %>
-                                                        <span class="tourimg_text_style3"><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></span>
-                                                <% } else { %>
-                                                        <span class="tourimg_text_style3"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></span>
+										<% if(dealConfig != null) { %>
+                                            <span class="tourimg_text_style3"><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></span>
+                                        <% } else { %>
+											<span class="tourimg_text_style3"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></span>
                                         <% } %>
-										   
-										   
 									</div>
-									 </a>
-									 </div></div>
+								 </a>
+								 </div></div>
 								 <div class="caption_new"></div>
-								 </div>
+						</div>
 
                         
                         
@@ -240,6 +241,94 @@
             </div>
         </div>
       </div>              
+      </div>              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- TIPS-->
+<div class="row-fluid margin_top15">
+  <div class="span12">
+    <div class="container wrapper">
+    <!-------------------------- span4 -------------------------->
+    
+      <div class="span12 clearfix">
+        <div class="row-fluid">
+          <div class="span12">
+          	<div class="header1">
+              <div class="row-fluid">
+              </div>
+              <div class="row-fluid">
+                <div class="span12">
+                <h1>Tips before travel</h1>
+                  
+                </div>
+              </div>
+            </div>
+              
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="caret"></div>
+              </div>
+            </div>
+            <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
+                     <div class="row-fluid new_thumbnail">
+                        <div class="span12">
+                        
+                        
+					<% 
+							int countTips = 0;
+							for(TravelTip tip : tips) {
+									if(countTips > 3) {
+													break;
+									}
+									String destURL = DestinationContentBean.getDestinationContentURL(request, DestinationContentManager.getDestinationFromId(tip.getDestId()));
+									Destination destination = DestinationContentManager.getDestinationFromId(tip.getDestId());
+									if(tip.getType() == TravelerTipType.FOOD || tip.getType() == TravelerTipType.CLOTHING || 
+									tip.getType() == TravelerTipType.SHOPPING || tip.getType() == TravelerTipType.TRANSPORT || 
+									tip.getType() == TravelerTipType.ACCOMMMODATION || tip.getType() == TravelerTipType.CARRY)  {
+					%>                        
+					<div class="thumbnail span3">
+								 <div class="row-fluid">
+								 <div class="span12 gradient_holder share_hover">
+								 <a href="/tours/tips?destId=<%=destination.getMappedCityId()%>">
+									 <img class="lazy" src="http://images.tripfactory.com/static/img/poccom/icons/<%=tip.getType().name().toLowerCase()%>tip.jpg" data-original="http://images.tripfactory.com/static/img/poccom/icons/<%=tip.getType().name().toLowerCase()%>tip.jpg" style="display: inline;">
+									   <div class="gradient"></div>
+									   <div class="tourimg_content3 offset1">
+									</div>
+								 </a>
+								</div>
+								</div>
+								<h2 style="font-weight:bold;margin-bottom:-20px"><a href="/tours/tips?destId=<%=destination.getMappedCityId()%>"><%=tip.getType().getDisplayName()%> in <%=DestinationContentManager.getDestinationNameFromId(tip.getDestId())%></a></h2>
+                                <h4 style="color:#999;font-size:11px;margin-bottom:-10px"><%=df.format(tip.getGenerationTime())%></h4>
+                                <h4 style="color:#111;font-size:14px"><%=UIHelper.cutLargeText(tip.getTips().get(0), 45)%></h4>
+								
+								
+								
+								 <div class="caption_new"></div>
+						</div>
+
+                      <% countTips++;} %>
+                      <% } %>  
+                        
+
+                       <a href="/tours/tips"><button type="button" class="btn btn-success view-all">View All Tips</button></a></div>
+                    </div>
+                    </div><div class="mCSB_scrollTools" style="position: absolute; display: none;"><a class="mCSB_buttonUp" oncontextmenu="return false;"></a><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position:relative;"></div></div><div class="mCSB_draggerRail"></div></div><a class="mCSB_buttonDown" oncontextmenu="return false;"></a></div></div></div>
+            </div>
+
+
 
 
 
@@ -331,5 +420,7 @@ $jQ(document).ready(function() {
 });
 $jQ(".slideshow .slides").cycle({fx: 'fade', speed: 1000, timeout: 5000, pause: 1});
 </script>
+<jsp:include page="/common/includes/viacom/footer_new.jsp" />
+
 </body>
 </html>
