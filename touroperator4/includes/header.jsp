@@ -406,14 +406,9 @@ rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-wid
                             <div class="home pull-left btn-link"><a href="/" data-hint="Home" class="hint--bottom"><img src="/static/css/themes/touroperator4/img/home.gif"></a></div>
                             <div class="nav-collapse collapse">
                                 <ul class="nav">
-                                  <li class=""><a href="/" id="show_slide1">About Hammock <span class="caret caret1" id="caret1"></span></a> </li>
-                                  <!--<li class=""><a href="#" id="show_slide2">Hammock &amp; Corporate <span class="caret caret1" id="caret2"></span></a></li>-->
+                                  <li class=""><a href="/" id="show_slide1">About us <span class="caret caret1" id="caret1"></span></a> </li>
                                   <li class=""><a href="/" id="show_slide3">Last minute deals <span class="caret caret1" id="caret3"></span></a></li>
                                 </ul>
-                                <!--<ul class="nav pull-right">
-                                     <li><a href="http://hammockholidays.com/account/login">Login</a></li>
-                                        <li class="active"> <a href="http://hammockholidays.com/account/create">Sign up for free!</a> </li>
-								</ul>-->
                             </div>
                         </div>
                     </div>
@@ -421,122 +416,6 @@ rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-wid
 	</div>
   </div>
 </div>
-
-<div class="per_details_holder" id="div1" style="display:none">
-    <div class="per_details_box">
-        <div class="top_arrow">
-            <img src="/static/css/themes/touroperator4/img/top_arrow.png">
-        </div>
-        <div class="per_name2"></div>
-        <div class="per_email"></div>
-    <!--    <div class="per_ap"><a href="">Account</a></div>-->
-        <div class="view_resume"><a href="http://hammockholidays.com/account/my_account">View Account</a></div>
-    </div>
-</div>
-
-
-<!-------------------------- slide_up3 -------------------------->
-<div id="slide_up3" class="slide" style="display: none;">
-	<div class="row-fluid" style="background-color: #fff;">
-  		       
-              <div class="span12">
-                                    <div class="container margin_top15"><br>
-                                    <div class="row-fluid"> <div class="span3 deal">
-                              <a href="http://hammockholidays.com/last_minute_deals/view_deal/5"><img src="/static/css/themes/touroperator4/img/5_0_ambatty-exterior1_t.jpg" title="Know more">
-                            <div class="gradient2"></div>
-                            <div class="prize_tag">
-                                  <div class="tag_text1">Actual Price: 19,400</div>
-                                  <div class="tag_text2">Hammock Price: 14,499</div>
-                          </div>
-                           <div class="deal_text1">Ambatty Greens Resort</div>
-                            <div class="deal_text2">in Coorg</div>
-                            <br>
-                            <br>
-                            
-                          </a></div><a href="http://hammockholidays.com/last_minute_deals/view_deal/5">
-                          
-                         </a><div class="span3 deal"><a href="http://hammockholidays.com/last_minute_deals/view_deal/5">
-                              </a><a href="http://hammockholidays.com/last_minute_deals/view_deal/8"><img src="./Hammock Holidays_files/8_0_Tea_Nest_t.jpg" title="Know more">
-                            <div class="gradient2"></div>
-                            <div class="prize_tag">
-                                  <div class="tag_text1">Actual Price: 8,514</div>
-                                  <div class="tag_text2">Hammock Price: 7,600</div>
-                          </div>
-                           <div class="deal_text1">Tea Nest</div>
-                            <div class="deal_text2">in Coonoor</div>
-                            <br>
-                            <br>
-                            
-                          </a></div><a href="http://hammockholidays.com/last_minute_deals/view_deal/8">
-                          
-                         </a><div class="span3 deal"><a href="http://hammockholidays.com/last_minute_deals/view_deal/7">
-                              </a><a href="http://hammockholidays.com/last_minute_deals/view_deal/40"><img src="./Hammock Holidays_files/40_0_agraharam-resort2_t.jpg" title="Know more">
-                            <div class="gradient2"></div>
-                            <div class="prize_tag">
-                                  <div class="tag_text1">Actual Price: 14,999</div>
-                                  <div class="tag_text2">Hammock Price: 10,999</div>
-                          </div>
-                           <div class="deal_text1">Agraharam Resort</div>
-                            <div class="deal_text2">in Wayanad, North Kerala</div>
-                            <br>
-                            <br>
-                            
-                          </a></div><a href="http://hammockholidays.com/last_minute_deals/view_deal/40">
-                          
-                        <div class="hide_pannel hide_pannel2"><img id="arrow_up3" width="80" height="26" src="./Hammock Holidays_files/hide.png"></div></a><div class="read_more pull-right"><a href="http://hammockholidays.com/last_minute_deals/view_deal/40"></a><a href="http://hammockholidays.com/last_minute_deals">More deals</a></div></div>                </div>
-         
-   	  </div>
-        
-  </div>
-</div>
-<!-------------------------- slide_up3 -------------------------->
-
-<!-- slide up 2 -->
-<div id="slide_up2" class="slide" style="display: none;">
-	<div class="row-fluid" style="background-color: #fff;">
-  		<div class="span12">
-    		<div class="container">
-               	<div class="span3">
-                <h1><a href="http://hammockholidays.com/holidayplanners/hammock_cerp">CERP</a></h1>
-                <a href="http://hammockholidays.com/holidayplanners/hammock_cerp"><img src="./Hammock Holidays_files/cerp_top.jpg" title="Know more"></a>
-                        <p>Corporate Employee Reward Program (CERP) is the best way to reward &amp; recognize your team with an array of exclusive offers.<a href="http://hammockholidays.com/holidayplanners/hammock_cerp">More</a></p>
-                        <div class="hide_pannel"><img src="./Hammock Holidays_files/hide.png" width="80" height="26" id="arrow_up2"></div><br>
-              </div>
-                <div class="span3">
-                <h1><a href="http://hammockholidays.com/holidayplanners/hammock_corpe">CORPé</a></h1>
-                <a href="http://hammockholidays.com/holidayplanners/hammock_corpe"><img src="/static/css/themes/touroperator4/img/mice_top.jpg" title="Know more"></a>
-                        <p>CORPé is backed by 17 years of experience and being a pioneer in the domestic Travel &amp; Leisure space, we can facilitate corporate events on a pan India level.<a href="http://hammockholidays.com/holidayplanners/hammock_corpe">More</a></p>
-              </div>
-                
-                 
-    		</div>
-    	</div>
-    </div>
-</div>
-<!-- slide up 2 -->
-
-<!-- slide up 1 -->
-<div id="slide_up1" class="slide" style="display: none;">
-	<div class="row-fluid" style="background-color: #fff;">
-  		<div class="span12">
-    		<div class="container">
-               	<div class="span3">
-                <h1><a href="http://hammockholidays.com/holidayplanners/about_hammock">Hammock Info</a></h1>
-                <a href="http://hammockholidays.com/holidayplanners/about_hammock"><img src="/static/css/themes/touroperator4/img/about.jpg" title="Know more"></a>
-                        <p>Hammock Leisure Holidays Pvt. Ltd. was set up in 1996, by professionals from the service industry. We are primarily holiday... <a href="http://hammockholidays.com/holidayplanners/about_hammock">More</a></p>
-						<div class="hide_pannel"><img src="/static/css/themes/touroperator4/img/hide.png" width="80" height="26" id="arrow_up1"></div><br>
-              </div>
-                 <div class="span3">
-                <h1><a href="http://hammockholidays.com/holidayplanners/career">Career</a></h1>
-                <a href="http://hammockholidays.com/holidayplanners/career"> <img src="/static/css/themes/touroperator4/img/recognition.jpg" title="Know more"></a>
-                        <p>We like our team members to be passionate, innovative, assiduous, smart and creative. Our work place... <a href="http://hammockholidays.com/holidayplanners/career">More</a></p>
-              </div>
-    		</div>
-    	</div>
-    </div>
-</div>
-<!-- slide up 1 -->
-
 
 
 
@@ -553,7 +432,7 @@ rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-wid
          </ul>
       </div>
       <div class="span3">
-      <div class="logo_holder"><a href="http://hammockholidays.com/" class="navbar-brand logo"><img src="http://images.tripfactory.com/static/img/poccom/tripfactory_logo_orig.png" alt="hammock holidays" style="height:50px;width:150px"></a></div></div>
+      <div class="logo_holder"><a href="/" class="navbar-brand logo"><img src="<%=PartnerConfigBean.getPartnerConfigLogoURL(request, partnerConfigData)%>"  style="height:50px;width:150px"></a></div></div>
 
         <div class="span4">
       <div class="navbar-search_holder">

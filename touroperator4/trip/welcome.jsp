@@ -87,8 +87,242 @@
 <div class="body-outer-wrapper">
 	<div class="body-wrapper">
 		<jsp:include page="/common/includes/viacom/header_new.jsp" />
+		
+		
+		
+		<div class="row-fluid slider">
+		<div class="span12">
+          <div class="carousel slide max_width_1600" id="myCarousel" onmouseover="return nav_show()" onmouseout="return nav_hide()">
+              <div class="carousel-inner" style="margin-top: 98px;">
+					
+					
+						<%
+							int count = 0;
+							for(PackageConfigData packageConfiguration : packages) { 
+									List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
+									String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
+									String imageUrl = packageConfiguration.getImageURL(request); 
+									Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
+									PackageOptionalConfig dealConfig = null;
+									if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
+											dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
+									}
+                        %>
+						<% count = count + 1;
+							if (count == 1) { %>
+							<div class="item active slider_holder">
+						<%	} else { %>
+							<div class="item">
+						<%  } %>
+						
+                           <!--<img alt="" class="lazy" src="<%=imageUrl%>" data-original="<%=imageUrl%>" style="display: block;"> -->
+                           <img alt="" class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" data-original="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" style="display: block;height:387px;width:1300px"> 
+                           <div class="slider_content" onmouseover="size_show()">
+                           <img src="/static/css/themes/touroperator4/img/camera.png">
+                           <div class="slider_text size_show" onmouseout="size_hide()"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 25)%><a href="<%=pkgDetailUrl%>"> Know more</a></div>
+                          </div>
+                          </div>
+						
+						<% }%>
+               </div>
+               <a class="left carousel-control" data-slide="prev" href="http://hammockholidays.com/#myCarousel" style="display: none;" id="right_link"><img src="/static/css/themes/touroperator4/img/slider_arrow_left.png" width="31" height="46"></a>
+               <a class="right carousel-control" data-slide="next" href="http://hammockholidays.com/#myCarousel" style="display: none;" id="left_link"><img src="/static/css/themes/touroperator4/img/slider_arrow_right.png" width="31" height="46"></a>
+               </div></div></div>   
+
+
+
+
+
+
+<div class="row-fluid margin_top15">
+  <div class="span12">
+    <div class="container wrapper">
+    <!-------------------------- span4 -------------------------->
+    
+      <div class="span4 clearfix">
+        <div class="row-fluid">
+          <div class="span12">
+          	<div class="header1">
+              <div class="row-fluid">
+              </div>
+              <div class="row-fluid">
+                <div class="span12">
+                
+                  <div class="btn-group">
+               
+                     <button class="btn btn-inverse dropdown-toggle dropdown" data-toggle="dropdown" data-hover="dropdown">Special packages. 
+                     <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+
+						<%
+						for(PackageConfigData packageConfiguration : packages) { 
+								List<Integer> cities = packageConfiguration.getDestinationCities();
+								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
+								String imageUrl = packageConfiguration.getImageURL(request); 
+								String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
+								String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
+								Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
+								List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
+								List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
+								PackageOptionalConfig dealConfig = null;
+								if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
+										dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
+								}
+						%>
+                        <li><a href="<%=pkgDetailUrl%>"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></a></li>
+						
+						<% } %>
+   
+                        </ul>
+                  </div>
+
+                  
+                </div>
+              </div>
+            </div>
+              
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="caret"></div>
+              </div>
+            </div>
+            <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
+                     <div class="row-fluid new_thumbnail">
+                        <div class="span12">
+                        
+                        
+                        
+						<%
+						for(PackageConfigData packageConfiguration : packages) { 
+								List<Integer> cities = packageConfiguration.getDestinationCities();
+								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
+								String imageUrl = packageConfiguration.getImageURL(request); 
+								String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
+								String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
+								Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
+								List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
+								List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
+								PackageOptionalConfig dealConfig = null;
+								if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
+										dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
+								}
+						%>
+                        
+                        <div class="thumbnail">
+								  <div class="row-fluid">
+								  <div class="span12 gradient_holder share_hover">
+								   <a href="<%=pkgDetailUrl%>">
+									 <img class="lazy" src="<%=imageUrlComplete%>" data-original="<%=imageUrlComplete%>" style="display: inline;">
+									   <div class="gradient"></div>
+									   <div class="tourimg_content3 offset1">
+										 <span class="tourimg_text_style3"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></span><br>
+									   
+										   <% if(dealConfig != null) { %>
+                                                        <span class="tourimg_text_style3"><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></span>
+                                                <% } else { %>
+                                                        <span class="tourimg_text_style3"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></span>
+                                        <% } %>
+										   
+										   
+									</div>
+									 </a>
+									 </div></div>
+								 <div class="caption_new"></div>
+								 </div>
+
+                        
+                        
+                        <% } %>
+
+                       <a href="/tours/packages"><button type="button" class="btn btn-success view-all">View All Packages</button></a></div>
+                    </div>
+                    </div><div class="mCSB_scrollTools" style="position: absolute; display: none;"><a class="mCSB_buttonUp" oncontextmenu="return false;"></a><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position:relative;"></div></div><div class="mCSB_draggerRail"></div></div><a class="mCSB_buttonDown" oncontextmenu="return false;"></a></div></div></div>
+            </div>
+        </div>
+      </div>              
+
+
+
+
+
+
+
+
+		
+		
+		
 	</div>
 </div>
+
+
+
+  <script>
+  console.log(1234);
+      $('a.tooltips').tooltip();
+        //on click show send to friend form
+  function send_to_friend(i){ 
+         $('#send_to_friend_form'+i).toggle('show');
+         return false;
+  } 
+  
+ $(document).mouseup(function (e)
+  {
+    var container = $(".send_to_friend_form");
+
+    if (container.has(e.target).length === 0)
+    {
+        container.slideUp();
+    }
+});
+ 
+ //on click show equire form 
+   function mywishlist_enquire(i){       
+       console.log(i);
+         $('#enquire_now'+i).toggle('show');
+         return false;
+   }
+   
+  
+    function close_send_to_friend(i){
+       $('#send_to_friend_form'+i).slideUp('show');
+         return false;
+   }
+   
+   function close_pack_enq(i){
+        $('#enquire_now'+i).slideUp('show');
+         return false;
+   }
+     function close_pack_enq_1(i){
+         console.log(i);
+        $('#pack_enquire'+i).slideUp('show');
+         return false;
+   }
+      ///////// for tool tip
+
+    function size_show(){
+                $(".size_show").show();
+	}
+
+    function size_hide(){
+                $(".size_show").hide();
+	}
+    
+    function nav_show(){
+                    $("#right_link").css({'display': 'block'});
+                    $("#left_link").css({'display': 'block'});
+                    return false;
+	}
+	
+    function nav_hide(){
+                    $("#right_link").css({'display': 'none'});
+                    $("#left_link").css({'display': 'none'});
+                    return false;
+        }	
+               		
+  </script>
+
+
+
 
 <jsp:include page="/includes/footTags.jsp"/>
 <script type="text/javascript">
