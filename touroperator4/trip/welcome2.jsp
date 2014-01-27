@@ -93,7 +93,7 @@
 		<div class="row-fluid slider">
 		<div class="span12">
           <div class="carousel slide max_width_1600" id="myCarousel" onmouseover="return nav_show()" onmouseout="return nav_hide()">
-              <div class="carousel-inner" style="margin-top: 98px;">
+              <div class="carousel-inner" style="margin-top: 0px;">
 					
 					
 						<%
@@ -118,15 +118,15 @@
                            <!--<img alt="" class="lazy" src="<%=imageUrl%>" data-original="<%=imageUrl%>" style="display: block;"> -->
                            <img alt="" class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" data-original="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" style="display: block;height:387px;width:1300px"> 
                            <div class="slider_content" onmouseover="size_show()">
-                           <img src="/static/css/themes/touroperator4/images/camera.png">
+                           <img src="/static/css/themes/touroperator4/img/camera.png">
                            <div class="slider_text size_show" onmouseout="size_hide()"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 25)%><a href="<%=pkgDetailUrl%>"> Know more</a></div>
                           </div>
                           </div>
 						
 						<% }%>
                </div>
-               <a class="left carousel-control" data-slide="prev" href="http://hammockholidays.com/#myCarousel" style="display: none;" id="right_link"><img src="/static/css/themes/touroperator4/images/slider_arrow_left.png" width="31" height="46"></a>
-               <a class="right carousel-control" data-slide="next" href="http://hammockholidays.com/#myCarousel" style="display: none;" id="left_link"><img src="/static/css/themes/touroperator4/images/slider_arrow_right.png" width="31" height="46"></a>
+               <a class="left carousel-control" data-slide="prev" href="http://hammockholidays.com/#myCarousel" style="display: none;" id="right_link"><img src="/static/css/themes/touroperator4/img/slider_arrow_left.png" width="31" height="46"></a>
+               <a class="right carousel-control" data-slide="next" href="http://hammockholidays.com/#myCarousel" style="display: none;" id="left_link"><img src="/static/css/themes/touroperator4/img/slider_arrow_right.png" width="31" height="46"></a>
                </div></div></div>   
 
 
@@ -139,259 +139,7 @@
     <div class="container wrapper">
     <!-------------------------- span4 -------------------------->
     
-      <div class="span4 clearfix">
-        <div class="row-fluid">
-          <div class="span12">
-          	<div class="header1">
-              <div class="row-fluid">
-              </div>
-              <div class="row-fluid">
-                <div class="span12">
-                
-                  <div class="btn-group">
-               
-                     <button class="btn btn-inverse dropdown-toggle dropdown" data-toggle="dropdown" data-hover="dropdown">Special packages. 
-                     <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-
-							<%
-							for(PackageConfigData packageConfiguration : packages) { 
-								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
-							%>
-								<li><a href="<%=pkgDetailUrl%>"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></a></li>
-							<% } %>
-                         </ul>
-                  </div>
-
-                  
-                </div>
-              </div>
-            </div>
-              
-            <div class="row-fluid">
-              <div class="span12">
-                <div class="caret"></div>
-              </div>
-            </div>
-            <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
-                     <div class="row-fluid new_thumbnail">
-                        <div class="span12">
-                        
-                        
-                        
-						<%
-						int countPackage = 0;
-						for(PackageConfigData packageConfiguration : packages) { 
-								countPackage++;
-								List<Integer> cities = packageConfiguration.getDestinationCities();
-								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
-								String imageUrl = packageConfiguration.getImageURL(request); 
-								String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
-								String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
-								Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
-								List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
-								List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
-								PackageOptionalConfig dealConfig = null;
-								if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
-										dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
-								}
-						%>
-                        
-                        
-                        <% if(countPackage == 3) { %>
-                        
-                                                
-                        <div class="plan_your_trip_form">
-                                         <h1>Contact us to plan your trip</h1>
-                                             <span id="enq_error"></span>   
-						<form name="contact" class="bs-docs-example form-horizontal plan_a_tour" action="http://hammockholidays.com/main/contactform_sendmail" method="post">
-						<div class="plan_your_trip">
-                                                  <input type="hidden" name="hidden_val" id="hidden_val">
-                                              <input type="hidden" name="source" value="plan_a_tour">  
-                                                    <table width="100%" border="0" cellpadding="0">        
-                                    			<tbody><tr>
-                                                 <td><label for="inputEmail" class="control-label">Name*</label></td>
-                                               </tr>
-                                                <tr>
-						<td><input type="text" id="inputEmail" name="name" pattern="[a-zA-Z ]+" title="Please Enter only letters of the alphabet" value="" required="">
-                                                    <p class="err-msg"></p>
-													</td>
-                                           		</tr>
-                                      
-                                            	<tr>
-                                                <td>
-                                               <label for="inputEmail" class="control-label">Email*</label>
-                                              		
-                                                   <input type="email" id="inputEmail" required="" title="Please Enter Valid Email ID" name="email" value="">
-                                                   <p class="err-msg"></p>
-												   </td>
-                                             	</tr>
-                                  
-                                             <tr><td>
-                                               <label for="inputPassword" class="control-label">Mobile*</label>
-                                            	
-                                                 <input type="text" id="inputPassword" name="mobile" pattern="[0-9+ ]+" title="Please Enter only Numbers" value="" required="">
-                                                 <p class="err-msg"></p>
-												</td>
-                                           	 </tr>   
-                                   	
-                                             <tr><td>
-                                               <label for="inputPassword" class="control-label">How can i help you?</label>
-                                                
-                                                 <textarea id="inputEmail" name="message"></textarea>
-                                                </td>    
-                                          	 </tr> 
-                                         	<tr>
-                                                <td> <button class="btn2" type="submit" name="submit" value="Submit">Submit</button></td>  
-											</tr> 
-                                            </tbody></table>
-											</div>
-                                        </form>
-                                    </div>
-                        
-                        
-                        <% } %>
-                        
-                        <div class="thumbnail">
-								  <div class="row-fluid">
-								  <div class="span12 gradient_holder share_hover">
-								   <a href="<%=pkgDetailUrl%>">
-									 <img class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" data-original="<%=imageUrlComplete%>" style="display: inline;height:209px;width:370px">
-									   <div class="gradient"></div>
-									   <div class="tourimg_content3 offset1">
-									   
-										   
-									</div>
-							<div class="prize_tag" style="top:190px">
-
-								<% if(dealConfig != null) { %>
-												<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
-										<% } else { %>
-												<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
-								<% } %>
-
-							</div>
-                            <div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
-                            <div class="deal_text2"></div>
-									 </a>
-									 </div></div>
-								 <div class="caption_new"></div>
-								 </div>
-
-                        
-                        
-                        <% } %>
-
-                       <a href="/tours/packages"><button type="button" class="btn btn-success view-all">View All Packages</button></a></div>
-                    </div>
-                    </div><div class="mCSB_scrollTools" style="position: absolute; display: none;"><a class="mCSB_buttonUp" oncontextmenu="return false;"></a><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position:relative;"></div></div><div class="mCSB_draggerRail"></div></div><a class="mCSB_buttonDown" oncontextmenu="return false;"></a></div></div></div>
-            </div>
-        </div>
-      </div>              
-    <!-------------------------- span4 Ends -------------------------->
-
-
-    <!-------------------------- span3 Starts-------------------------->
-    
-      <div class="span3 clearfix">
-        <div class="row-fluid">
-          <div class="span12">
-          	<div class="header1">
-              <div class="row-fluid">
-              </div>
-              <div class="row-fluid">
-                <div class="span12">
-                
-                  <div class="btn-group">
-               
-                     <button class="btn btn-inverse dropdown-toggle dropdown" data-toggle="dropdown" data-hover="dropdown">Special packages. 
-                     <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-
-						<%
-						for(PackageConfigData packageConfiguration : packages) { 
-								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
-						%>
-                        <li><a href="<%=pkgDetailUrl%>"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></a></li>
-						
-						<% } %>
-   
-                        </ul>
-                  </div>
-
-                  
-                </div>
-              </div>
-            </div>
-              
-            <div class="row-fluid">
-              <div class="span12">
-                <div class="caret"></div>
-              </div>
-            </div>
-            <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
-                     <div class="row-fluid new_thumbnail">
-                        <div class="span12">
-                        
-                        
-                        
-						<%
-						for(PackageConfigData packageConfiguration : packages) { 
-								List<Integer> cities = packageConfiguration.getDestinationCities();
-								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
-								String imageUrl = packageConfiguration.getImageURL(request); 
-								String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
-								String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
-								Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
-								List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
-								List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
-								PackageOptionalConfig dealConfig = null;
-								if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
-										dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
-								}
-						%>
-                        
-                        <div class="thumbnail">
-								  <div class="row-fluid">
-								  <div class="span12 gradient_holder share_hover">
-								   <a href="<%=pkgDetailUrl%>">
-									 <img class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" data-original="<%=imageUrlComplete%>" style="display: inline;height:153px;width:270px">
-									   <div class="gradient"></div>
-									   <div class="tourimg_content3 offset1">
-									   
-										   
-									</div>
-							<div class="prize_tag" style="top:134px">
-
-								<% if(dealConfig != null) { %>
-												<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
-										<% } else { %>
-												<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
-								<% } %>
-
-							</div>
-                            <div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
-                            <div class="deal_text2"></div>
-									 </a>
-									 </div></div>
-								 <div class="caption_new"></div>
-								 </div>
-
-                        
-                        
-                        <% } %>
-
-                       <a href="/tours/packages"><button type="button" class="btn btn-success view-all">View All Packages</button></a></div>
-                    </div>
-                    </div><div class="mCSB_scrollTools" style="position: absolute; display: none;"><a class="mCSB_buttonUp" oncontextmenu="return false;"></a><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position:relative;"></div></div><div class="mCSB_draggerRail"></div></div><a class="mCSB_buttonDown" oncontextmenu="return false;"></a></div></div></div>
-            </div>
-        </div>
-      </div>              
-
-    <!-------------------------- span3 ends-------------------------->
-    <!-------------------------- span5 starts -------------------------->
-    
-      <div class="span5 clearfix">
+      <div class="span12 clearfix">
         <div class="row-fluid">
           <div class="span12">
           	<div class="header1">
@@ -443,7 +191,6 @@
                         <div class="span12">
                         
                         
-                        
 						<%
 						for(PackageConfigData packageConfiguration : packages) { 
 								List<Integer> cities = packageConfiguration.getDestinationCities();
@@ -460,31 +207,29 @@
 								}
 						%>
                         
-                        <div class="thumbnail">
+					<div class="thumbnail span3">
 								  <div class="row-fluid">
 								  <div class="span12 gradient_holder share_hover">
 								   <a href="<%=pkgDetailUrl%>">
-									 <img class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" data-original="<%=imageUrlComplete%>" style="display: inline;height:265px;width:470px">
+								   <% if (imageUrlComplete.equals("")) {%>
+									 <img class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/e/ec/Ara_ararauna_Luc_Viatour.jpg" data-original="http://upload.wikimedia.org/wikipedia/commons/e/ec/Ara_ararauna_Luc_Viatour.jpg" style="display: inline;">
+								   <%  } else {%>									
+									 <img class="lazy" src="<%=imageUrlComplete%>" data-original="<%=imageUrlComplete%>" style="display: inline;">
+								   <%  }%>
 									   <div class="gradient"></div>
 									   <div class="tourimg_content3 offset1">
+										 <span class="tourimg_text_style3"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></span><br>
 									   
-										   
+										<% if(dealConfig != null) { %>
+                                            <span class="tourimg_text_style3"><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></span>
+                                        <% } else { %>
+											<span class="tourimg_text_style3"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></span>
+                                        <% } %>
 									</div>
-							<div class="prize_tag" style="top:229px">
-
-								<% if(dealConfig != null) { %>
-												<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
-										<% } else { %>
-												<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
-								<% } %>
-
-							</div>
-                            <div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
-                            <div class="deal_text2"></div>
-									 </a>
-									 </div></div>
+								 </a>
+								 </div></div>
 								 <div class="caption_new"></div>
-								 </div>
+						</div>
 
                         
                         
@@ -496,6 +241,96 @@
             </div>
         </div>
       </div>              
+      </div>              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- TIPS-->
+<div class="row-fluid margin_top15">
+  <div class="span12">
+    <div class="container wrapper">
+    <!-------------------------- span4 -------------------------->
+    
+      <div class="span12 clearfix">
+        <div class="row-fluid">
+          <div class="span12">
+          	<div class="header1">
+              <div class="row-fluid">
+              </div>
+              <div class="row-fluid">
+                <div class="span12">
+                <h1>Tips before travel</h1>
+                  
+                </div>
+              </div>
+            </div>
+              
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="caret"></div>
+              </div>
+            </div>
+            <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
+                     <div class="row-fluid new_thumbnail">
+                        <div class="span12">
+                        
+                        
+					<% 
+							int countTips = 0;
+							for(TravelTip tip : tips) {
+									if(countTips > 3) {
+													break;
+									}
+									String destURL = DestinationContentBean.getDestinationContentURL(request, DestinationContentManager.getDestinationFromId(tip.getDestId()));
+									Destination destination = DestinationContentManager.getDestinationFromId(tip.getDestId());
+									if(tip.getType() == TravelerTipType.FOOD || tip.getType() == TravelerTipType.CLOTHING || 
+									tip.getType() == TravelerTipType.SHOPPING || tip.getType() == TravelerTipType.TRANSPORT || 
+									tip.getType() == TravelerTipType.ACCOMMMODATION || tip.getType() == TravelerTipType.CARRY)  {
+					%>                        
+					<div class="thumbnail span3">
+								 <div class="row-fluid">
+								 <div class="span12 gradient_holder share_hover">
+								 <a href="/tours/tips?destId=<%=destination.getMappedCityId()%>">
+									 <img class="lazy" src="http://images.tripfactory.com/static/img/poccom/icons/<%=tip.getType().name().toLowerCase()%>tip.jpg" data-original="http://images.tripfactory.com/static/img/poccom/icons/<%=tip.getType().name().toLowerCase()%>tip.jpg" style="display: inline;">
+									   <div class="gradient"></div>
+									   <div class="tourimg_content3 offset1">
+									</div>
+								 </a>
+								</div>
+								</div>
+								<h2 style="font-weight:bold;margin-bottom:-20px"><a href="/tours/tips?destId=<%=destination.getMappedCityId()%>"><%=tip.getType().getDisplayName()%> in <%=DestinationContentManager.getDestinationNameFromId(tip.getDestId())%></a></h2>
+                                <h4 style="color:#999;font-size:11px;margin-bottom:-10px"><%=df.format(tip.getGenerationTime())%></h4>
+                                <h4 style="color:#111;font-size:14px"><%=UIHelper.cutLargeText(tip.getTips().get(0), 45)%></h4>
+								
+								
+								
+								 <div class="caption_new"></div>
+						</div>
+
+                      <% countTips++;} %>
+                      <% } %>  
+                        
+
+                       <a href="/tours/tips"><button type="button" class="btn btn-success view-all">View All Tips</button></a></div>
+                    </div>
+                    </div><div class="mCSB_scrollTools" style="position: absolute; display: none;"><a class="mCSB_buttonUp" oncontextmenu="return false;"></a><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position:relative;"></div></div><div class="mCSB_draggerRail"></div></div><a class="mCSB_buttonDown" oncontextmenu="return false;"></a></div></div></div>
+            </div>
+
+
+
+
 
 
 
@@ -586,5 +421,6 @@ $jQ(document).ready(function() {
 $jQ(".slideshow .slides").cycle({fx: 'fade', speed: 1000, timeout: 5000, pause: 1});
 </script>
 <jsp:include page="/common/includes/viacom/footer_new.jsp" />
+
 </body>
 </html>
