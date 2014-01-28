@@ -139,19 +139,24 @@
     <div class="container wrapper">
 
 
-
-    <!-------------------------- span4 -------------------------->
+    <!-------------------------- list starts -------------------------->
     
-      <div class="span4 clearfix">
-        <div class="row-fluid">
-          <div class="span12">
-          	<div class="header1">
+	<div class="span12 clearfix">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="header1">
+					<div class="row-fluid">
+						<div class="span12">
+                    <h1><a href="/tours/packages"> Special</a></h1>
+                </div>
+              </div>
+                          	
               <div class="row-fluid">
                 <div class="span12">
                 
                   <div class="btn-group">
                
-                     <button class="btn btn-inverse dropdown-toggle dropdown" data-toggle="dropdown" data-hover="dropdown">Special packages. 
+                     <button class="btn btn-inverse dropdown-toggle dropdown" data-toggle="dropdown" data-hover="dropdown">Special packages for you. 
                      <span class="caret"></span></button>
                         <ul class="dropdown-menu">
 
@@ -172,6 +177,27 @@
             <div class="row-fluid">
               <div class="span12">
                 <div class="caret"></div>
+              </div>
+            </div>
+
+        </div>
+      </div>     
+         
+    <!-------------------------- list Ends -------------------------->
+
+
+
+
+
+
+    <!-------------------------- span4 Starts-------------------------->
+    
+      <div class="span4 clearfix">
+        <div class="row-fluid">
+          <div class="span12">
+              
+            <div class="row-fluid">
+              <div class="span12">
               </div>
             </div>
             <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
@@ -297,37 +323,9 @@
       <div class="span3 clearfix">
         <div class="row-fluid">
           <div class="span12">
-          	<div class="header1">
-              <div class="row-fluid">
-              </div>
-              <div class="row-fluid">
-                <div class="span12">
-                
-                  <div class="btn-group">
-               
-                     <button class="btn btn-inverse dropdown-toggle dropdown" data-toggle="dropdown" data-hover="dropdown">Special packages. 
-                     <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-
-						<%
-						for(PackageConfigData packageConfiguration : packages) { 
-								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
-						%>
-                        <li><a href="<%=pkgDetailUrl%>"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></a></li>
-						
-						<% } %>
-   
-                        </ul>
-                  </div>
-
-                  
-                </div>
-              </div>
-            </div>
               
             <div class="row-fluid">
               <div class="span12">
-                <div class="caret"></div>
               </div>
             </div>
             <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
@@ -395,48 +393,9 @@
       <div class="span5 clearfix">
         <div class="row-fluid">
           <div class="span12">
-          	<div class="header1">
-              <div class="row-fluid">
-              </div>
-              <div class="row-fluid">
-                <div class="span12">
-                
-                  <div class="btn-group">
-               
-                     <button class="btn btn-inverse dropdown-toggle dropdown" data-toggle="dropdown" data-hover="dropdown">Special packages. 
-                     <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-
-						<%
-						for(PackageConfigData packageConfiguration : packages) { 
-								List<Integer> cities = packageConfiguration.getDestinationCities();
-								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
-								String imageUrl = packageConfiguration.getImageURL(request); 
-								String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
-								String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
-								Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
-								List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
-								List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
-								PackageOptionalConfig dealConfig = null;
-								if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
-										dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
-								}
-						%>
-                        <li><a href="<%=pkgDetailUrl%>"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></a></li>
-						
-						<% } %>
-   
-                        </ul>
-                  </div>
-
-                  
-                </div>
-              </div>
-            </div>
               
             <div class="row-fluid">
               <div class="span12">
-                <div class="caret"></div>
               </div>
             </div>
             <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
