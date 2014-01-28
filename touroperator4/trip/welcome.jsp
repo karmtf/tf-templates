@@ -137,14 +137,15 @@
 <div class="row-fluid margin_top15">
   <div class="span12">
     <div class="container wrapper">
+
+
+
     <!-------------------------- span4 -------------------------->
     
       <div class="span4 clearfix">
         <div class="row-fluid">
           <div class="span12">
           	<div class="header1">
-              <div class="row-fluid">
-              </div>
               <div class="row-fluid">
                 <div class="span12">
                 
