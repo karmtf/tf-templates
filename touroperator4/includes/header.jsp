@@ -365,10 +365,9 @@ color: #008000;
               <div class="span12" >
                                     <div class="container margin_top15"><br />
                                     <div class="row-fluid"> 
-                           
-                           
                         <%
 						int countLastMinDeal = 0;
+						if(packages != null) {
 						for(PackageConfigData packageConfiguration : packages) { 
 								countLastMinDeal++;
 								List<Integer> cities = packageConfiguration.getDestinationCities();
@@ -385,43 +384,27 @@ color: #008000;
 								}
 								if (countLastMinDeal < 5) {
 						%>
-                           
                            <div class="span3 deal">
 						   <a href="<%=pkgDetailUrl%>"><img class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" data-original="<%=imageUrlComplete%>" style="display: inline;height:153px;width:270px">
                             <div class="gradient2"></div>
 							<div class="prize_tag" style="top:134px">
-
 								<% if(dealConfig != null) { %>
 												<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
 										<% } else { %>
 												<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
 								<% } %>
-
 							</div>
                             <div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
-							
-							
 							 <% if(dealConfig != null) { %>
 								<div class="deal_text2"><%=packageConfiguration.getNumberOfNights()%> nights</div>
-                             <% } else { %>
-                                <div class="deal_text2"></div>
                              <% } %>
-							
-
-                            <br />
-                            <br />
+                            <br />                            <br />
                             
                           </div>
-                          
-                           
-                           
-                        <% } else { break; } }%> 
+                        <% } else { break; } } }%> 
 
-
-                        <div class="hide_pannel hide_pannel2"><img id="arrow_up3" width="80" height="26" src="http://hammockholidays.com/images/hide.png" /></div><div class="read_more pull-right"><a href="/tours/packages">More packages</a></div></div>                </div>
-         
+                <div class="hide_pannel hide_pannel2"><img id="arrow_up3" width="80" height="26" src="http://hammockholidays.com/images/hide.png" /></div><div class="read_more pull-right"><a href="/tours/packages">More packages</a></div></div></div>
    	  </div>
-        
   </div>
 </div>
 <!-------------------------- slide_up3 -------------------------->
@@ -462,7 +445,7 @@ color: #008000;
     <div class="container">
       <div class="navbar span5">
         <ul class="nav nav2">
-<!--          <li><a href="/tours/welcome">Home</a></li>	-->
+				<!--<li><a href="/tours/welcome">Home</a></li>-->
 					<li><a href="/tours/packages">Packages</a></li>
 					<li><a href="/tours/tips">Travel Guide</a></li>
 					<li><a href="/tours/reviews">Travel Tips</a></li>

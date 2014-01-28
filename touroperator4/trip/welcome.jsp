@@ -133,25 +133,23 @@
 
 
 
+<!-------------------------- list starts -------------------------->
 
 <div class="row-fluid margin_top15">
   <div class="span12">
     <div class="container wrapper">
-
-
-    <!-------------------------- list starts -------------------------->
-    
+  
 	<div class="span12 clearfix">
-		<div class="row-fluid">
+		<div class="row-fluid" style="margin-bottom:-40px">
 			<div class="span12">
 				<div class="header1">
-					<div class="row-fluid">
+					<div class="row-fluid" >
 						<div class="span12">
-                    <h1><a href="/tours/packages"> Special</a></h1>
+                    <h1 style="margin-bottom:-30px"><a href="/tours/packages"> Special</a></h1>
                 </div>
               </div>
                           	
-              <div class="row-fluid">
+              <div class="row-fluid" >
                 <div class="span12">
                 
                   <div class="btn-group">
@@ -174,7 +172,7 @@
               </div>
             </div>
               
-            <div class="row-fluid">
+            <div class="row-fluid" style="margin-bottom:-40px">
               <div class="span12">
                 <div class="caret"></div>
               </div>
@@ -182,13 +180,14 @@
 
         </div>
       </div>     
-         
+    </div>
+  </div>
+</div>     
     <!-------------------------- list Ends -------------------------->
 
-
-
-
-
+<div class="row-fluid margin_top15">
+  <div class="span12">
+    <div class="container wrapper">
 
     <!-------------------------- span4 Starts-------------------------->
     
@@ -430,7 +429,7 @@
 									   
 										   
 									</div>
-							<div class="prize_tag" style="top:229px">
+							<div class="prize_tag" style="top:248px">
 
 								<% if(dealConfig != null) { %>
 												<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
