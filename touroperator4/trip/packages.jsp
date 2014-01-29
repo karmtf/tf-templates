@@ -81,7 +81,7 @@
 			<div class="span3 margin_left0">
 				<div class="row-fluid header1">
 					<div class="span12">
-						<h1 style="color:#0088CC !important;margin-bottom:-30px">Explore Places  <a href="http://hammockholidays.com/main/package/World" data-hint="World" class="pull-right hint--top"><span class="globe_icon pull-right"></span></a> <a href="http://hammockholidays.com/main/package/Special" data-hint="Specials" class="pull-right hint--top"><span class="special_icon pull-right"></span></a></h1>    
+						<h1 style="color:#0088CC !important;margin-bottom:-30px">Explore Places</h1>    
 					</div>
 				</div>
 				<div class="row-fluid">
@@ -112,91 +112,62 @@
       
       
 <div class="row-fluid margin_top15">
-  <div class="span9">
-    <div class="container wrapper">
-
-    <!-------------------------- span starts -------------------------->
-    
-      <div class="span4 clearfix">
-        <div class="row-fluid">
-          <div class="span12">
-              
-            <div class="row-fluid">
-              <div class="span12">
-              </div>
-            </div>
-            <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
-                     <div class="row-fluid new_thumbnail">
-                        <div class="span12">
+	<div class="span9">
+		<div class="container wrapper">
+		<!-------------------------- span starts -------------------------->
+			<div class="span9 clearfix">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="row-fluid">
+							<div class="span12"></div>
+						</div>
+						<div class="row-fluid new_thumbnail">
+							<div class="span12">
                         
+							<%
+							for(PackageConfigData packageConfiguration : packages) { 
+									List<Integer> cities = packageConfiguration.getDestinationCities();
+									String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
+									String imageUrl = packageConfiguration.getImageURL(request); 
+									String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
+									String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
+									Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
+									List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
+									List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
+									PackageOptionalConfig dealConfig = null;
+									if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
+											dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
+									}
+							%>
                         
-                        
-						<%
-						for(PackageConfigData packageConfiguration : packages) { 
-								List<Integer> cities = packageConfiguration.getDestinationCities();
-								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
-								String imageUrl = packageConfiguration.getImageURL(request); 
-								String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
-								String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
-								Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
-								List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
-								List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
-								PackageOptionalConfig dealConfig = null;
-								if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
-										dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
-								}
-						%>
-                        
-                        <div class="thumbnail">
-								  <div class="row-fluid">
-								  <div class="span12 gradient_holder share_hover">
-								   <a href="<%=pkgDetailUrl%>">
-									 <img class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" data-original="<%=imageUrlComplete%>" style="display: inline;height:265px;width:470px">
-									   <div class="gradient"></div>
-									   <div class="tourimg_content3 offset1">
-									   
-										   
+							<div class="thumbnail span5" style="margin-left:0px;margin-right:43px;width:initial">
+								<div class="row-fluid">
+									<div class="span12 gradient_holder share_hover">
+										<a href="<%=pkgDetailUrl%>">
+											<img class="lazy" src="<%=imageUrlComplete%>" data-original="<%=imageUrlComplete%>" style="display: inline;height:209px;width:391px">
+											<div class="gradient"></div>
+											<div class="tourimg_content3 offset1"></div>
+											<div class="prize_tag" style="top:190px">
+												<% if(dealConfig != null) { %>
+													<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
+												<% } else { %>
+													<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
+												<% } %>
+											</div>
+											<div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
+											<div class="deal_text2"></div>
+										 </a>
 									</div>
-							<div class="prize_tag" style="top:248px">
-
-								<% if(dealConfig != null) { %>
-												<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
-										<% } else { %>
-												<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
-								<% } %>
-
+								</div>
+								<div class="caption_new"></div>
 							</div>
-                            <div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
-                            <div class="deal_text2"></div>
-									 </a>
-									 </div></div>
-								 <div class="caption_new"></div>
-								 </div>
-
-                        
-                        
-                        <% } %>
-
-                       </div>
-                    </div>
-                    </div><div class="mCSB_scrollTools" style="position: absolute; display: none;"><a class="mCSB_buttonUp" oncontextmenu="return false;"></a><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position:relative;"></div></div><div class="mCSB_draggerRail"></div></div><a class="mCSB_buttonDown" oncontextmenu="return false;"></a></div></div></div>
-            </div>
-        </div>
-      </div>              
-
-
-
-      
-      </div>
-    </div>
-    </div>  
-    </div>
-		
-		
-		
-		
-		
-	</div>
+							<% } %>
+						</div>
+					</div>
+				</div>              
+			</div>
+		</div>
+	</div>  
 </div>
 
 <!--//main-->
