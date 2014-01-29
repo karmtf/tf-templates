@@ -460,6 +460,9 @@ p, p span {
     width: 176px;
     
 }
+.wrapper1 {
+	background-color: #fff;
+}
 .carousel {
 	margin-bottom: 10px !important;
 }
@@ -2552,6 +2555,16 @@ a.tooltip_h span b {
 }
 .button_more a:hover {
 	color: #999 !important;
+}
+.contact1 h1 {
+	font-size: 28px !important;
+	color: #909090;
+	font-weight: normal;
+	margin-top: 20px;
+	padding-bottom: 0px;
+}
+.contact1 {
+	background-color: #eaeaea;
 }
 .contact_holder {
 	display: block;

@@ -52,6 +52,8 @@
 <%@page import="com.via.database.page.AbstractPage"%>
 <%@page import="com.eos.b2c.user.wall.UserWallItemWrapper"%>
 <%@ page session="true" %>
+<link href="/static/css/themes/touroperator4/css/master-main.css" rel="stylesheet" type="text/css">
+
 <%	
 	String title = "Contact us";
 	String keywords = "";
@@ -83,28 +85,124 @@
 <div class="body-outer-wrapper">
 	<div class="body-wrapper">
 		<jsp:include page="/common/includes/viacom/header_new.jsp" />
-<style type="text/css">
-.tab-content {width:74.5%;}
-.pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:26%;min-height:350px;margin-right:20px !important;margin-bottom:20px !important}
-.textwidget {width:40%}
-@media screen and (max-width: 960px) {
-.one-fourth{width:99% !important;height:400px;}
-.pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:33% !important;}
-}
-@media screen and (max-width: 600px) {
-.one-fourth{width:99% !important;height:400px;}
-.pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:46% !important;}
-.textwidget {width:100%}
-}
-@media screen and (max-width: 540px) {
-.one-fourth{width:99% !important;height:400px;}
-.pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:94% !important;}
-}
-@media screen and (max-width: 480px) {
-.one-fourth{width:99% !important;height:400px;}
-.pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:94% !important;}
-}
-</style>
+
+
+
+
+
+
+
+
+<div class="row-fluid" style="margin-top:100px">
+  <div class="span12">
+    <div class="container contact1 wrapper1 margin_top15">
+    
+      <div class="row-fluid contact_us">
+      <h1>Contact Us</h1>
+      
+      
+        </div>
+
+    </div>
+
+  </div>
+        <div class="container contact1 wrapper1 margin_top15" >
+
+       <div class="row-fluid">
+                  <div class="span12">
+                      <div id="thank_you"> 
+                      
+                      
+                      
+                      <div class="span6">
+                    <div class=" contact_contents">
+                        <h1 >Address</h1>
+                        <p>Hammock Leisure Holidays Pvt Ltd<br />
+                            3291, 1st Floor, 12th Main,<br />
+                            HAL II Stage, Indiranagar,<br />
+                            Bangalore - 560 008<br />
+                            (near Snap Fitness) 
+                            </p>
+                          <h1>Phone</h1>
+                          <p>+ 91 - 80 - 4202 3333, 2521 9000</p>
+                          <h1>Fax</h1>
+                          <p>+ 91 - 80 - 4204 3902</p>
+                          <h1>Email</h1>
+                          <p><a href="mailto:leisure@hammockholidays.com"> leisure@hammockholidays.com</a></p> 
+                          <h1>Office Timings</h1>
+                          <p>Monday to Friday : 09:30 hrs to 18:00 hrs<br />
+                                Saturdays : 09:30 hrs to 15:00 hrs<br />
+                                Closed on Sundays, National & Public holidays.</p>
+                      </div>
+                </div>
+                      
+                      
+                      
+                        
+                        <div class="span6 contact_form ">
+                                <span id="enq_error"></span>  
+                               
+                             <form class="contact_form" name="contact_form" action="http://hammockholidays.com/main/contactform_sendmail" method="post" >
+                                 <div id="cnt_error"></div>  
+                            
+                              <input type="hidden" name="source" id="hidden_val" type="text" value="contact_page" />
+                             <div class="row-fluid">
+                                <div class="span6">
+                                <label>Name*</label>
+                                <input type="text" class="span12" placeholder="Your Name" name="name"  pattern="[a-zA-Z ]+" title="Please Enter only letters of the alphabet" value="" required/>
+                                 <p class="err-msg"></p>
+                                </div>
+                                <div class="span6">
+                                <label>Phone Number*</label>
+                                <input type="text" class="span12" placeholder="Your Phone Number" name="mobile" value="" pattern="[0-9]+" required  title="Please Enter only numbers"/>
+                                <p class="err-msg"></p>
+                                </div>
+                            </div>
+                          <div class="row-fluid">
+                                <div class="span6">
+                                <label>Email ID*</label>
+                                <input type="email" class="span12" placeholder="Your Email ID" required title="Please Enter Valid Email ID" name="email" value="" />
+                                <p class="err-msg"></p>
+                                </div>
+                                <div class="span6">
+                                <label>City*</label>
+                                <input type="text" class="span12" placeholder="Your City" name="city"  pattern="[a-zA-Z ]+" title="Please Enter only letters of the alphabet" value="" required/>
+                                <p class="err-msg"></p>
+                                </div>
+                          </div>
+                          <div class="row-fluid">
+                                <div class="span12">
+                                <label>Place You Love</label>
+                                <textarea class="span12"  id="inputEmail" placeholder="Place You Love" name="message"></textarea>
+                                </div>
+                            </div>
+                        <div class="controls">
+                            <button class="btn2 margin_left0" type="submit" name="submit" >Submit</button>
+                        </div>
+                              </form> 
+                         </div>           
+                        </div>
+                     
+                 </div>
+          </div>
+      </div>
+
+        </div>     
+        </div>
+      <!-- about holder -->
+		</div>
+ 
+
+
+
+
+
+
+
+
+	</div>
+</div>
+
 
 <script type="text/javascript">
 $jQ(".contact-submit").click(function () {
