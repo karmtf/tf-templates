@@ -185,276 +185,193 @@
 </div>     
     <!-------------------------- list Ends -------------------------->
 
+
+
+
+
 <div class="row-fluid margin_top15">
-  <div class="span12">
-    <div class="container wrapper">
-
-    <!-------------------------- span4 Starts-------------------------->
-    
-      <div class="span4 clearfix">
-        <div class="row-fluid">
-          <div class="span12">
-              
-            <div class="row-fluid">
-              <div class="span12">
-              </div>
-            </div>
-            <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
-                     <div class="row-fluid new_thumbnail">
-                        <div class="span12">
+	<div class="span4">
+		<div class="container wrapper">
+		<!-------------------------- span4 starts -------------------------->
+			<div class="span4 clearfix">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="row-fluid">
+							<div class="span12"></div>
+						</div>
+						<div class="row-fluid new_thumbnail">
+							<div class="span12">
                         
+							<%
+							for(PackageConfigData packageConfiguration : packages) { 
+									List<Integer> cities = packageConfiguration.getDestinationCities();
+									String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
+									String imageUrl = packageConfiguration.getImageURL(request); 
+									String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
+									String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
+									Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
+									List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
+									List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
+									PackageOptionalConfig dealConfig = null;
+									if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
+											dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
+									}
+							%>
                         
-                        
-						<%
-						int countPackage = 0;
-						for(PackageConfigData packageConfiguration : packages) { 
-								countPackage++;
-								List<Integer> cities = packageConfiguration.getDestinationCities();
-								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
-								String imageUrl = packageConfiguration.getImageURL(request); 
-								String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
-								String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
-								Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
-								List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
-								List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
-								PackageOptionalConfig dealConfig = null;
-								if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
-										dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
-								}
-						%>
-                        
-                        
-                        <% if(countPackage == 3) { %>
-                        
-                                                
-                        <div class="plan_your_trip_form">
-                                         <h1>Contact us to plan your trip</h1>
-                                             <span id="enq_error"></span>   
-						<form name="contact" class="bs-docs-example form-horizontal plan_a_tour" action="http://hammockholidays.com/main/contactform_sendmail" method="post">
-						<div class="plan_your_trip">
-                                                  <input type="hidden" name="hidden_val" id="hidden_val">
-                                              <input type="hidden" name="source" value="plan_a_tour">  
-                                                    <table width="100%" border="0" cellpadding="0">        
-                                    			<tbody><tr>
-                                                 <td><label for="inputEmail" class="control-label">Name*</label></td>
-                                               </tr>
-                                                <tr>
-						<td><input type="text" id="inputEmail" name="name" pattern="[a-zA-Z ]+" title="Please Enter only letters of the alphabet" value="" required="">
-                                                    <p class="err-msg"></p>
-													</td>
-                                           		</tr>
-                                      
-                                            	<tr>
-                                                <td>
-                                               <label for="inputEmail" class="control-label">Email*</label>
-                                              		
-                                                   <input type="email" id="inputEmail" required="" title="Please Enter Valid Email ID" name="email" value="">
-                                                   <p class="err-msg"></p>
-												   </td>
-                                             	</tr>
-                                  
-                                             <tr><td>
-                                               <label for="inputPassword" class="control-label">Mobile*</label>
-                                            	
-                                                 <input type="text" id="inputPassword" name="mobile" pattern="[0-9+ ]+" title="Please Enter only Numbers" value="" required="">
-                                                 <p class="err-msg"></p>
-												</td>
-                                           	 </tr>   
-                                   	
-                                             <tr><td>
-                                               <label for="inputPassword" class="control-label">How can i help you?</label>
-                                                
-                                                 <textarea id="inputEmail" name="message"></textarea>
-                                                </td>    
-                                          	 </tr> 
-                                         	<tr>
-                                                <td> <button class="btn2" type="submit" name="submit" value="Submit">Submit</button></td>  
-											</tr> 
-                                            </tbody></table>
+							<div class="thumbnail" style="margin-left:0px;margin-right:4px">
+								<div class="row-fluid">
+									<div class="span12 gradient_holder share_hover">
+										<a href="<%=pkgDetailUrl%>">
+											<img class="lazy" src="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" data-original="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" style="display: inline;">
+											<div class="gradient"></div>
+											<div class="tourimg_content3 offset1"></div>
+											<div class="prize_tag" style="top:210px">
+												<% if(dealConfig != null) { %>
+													<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
+												<% } else { %>
+													<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
+												<% } %>
 											</div>
-                                        </form>
-                                    </div>
-                        
-                        
-                        <% } %>
-                        
-                        <div class="thumbnail">
-								  <div class="row-fluid">
-								  <div class="span12 gradient_holder share_hover">
-								   <a href="<%=pkgDetailUrl%>">
-									 <img class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" data-original="<%=imageUrlComplete%>" style="display: inline;height:209px;width:370px">
-									   <div class="gradient"></div>
-									   <div class="tourimg_content3 offset1">
-									   
-										   
+											<div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
+											<div class="deal_text2"></div>
+										 </a>
 									</div>
-							<div class="prize_tag" style="top:190px">
-
-								<% if(dealConfig != null) { %>
-												<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
-										<% } else { %>
-												<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
-								<% } %>
-
+								</div>
+								<div class="caption_new"></div>
 							</div>
-                            <div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
-                            <div class="deal_text2"></div>
-									 </a>
-									 </div></div>
-								 <div class="caption_new"></div>
-								 </div>
-
-                        
-                        
-                        <% } %>
-
-                       <a href="/tours/packages"><button type="button" class="btn btn-success view-all">View All Packages</button></a></div>
-                    </div>
-                    </div><div class="mCSB_scrollTools" style="position: absolute; display: none;"><a class="mCSB_buttonUp" oncontextmenu="return false;"></a><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position:relative;"></div></div><div class="mCSB_draggerRail"></div></div><a class="mCSB_buttonDown" oncontextmenu="return false;"></a></div></div></div>
-            </div>
-        </div>
-      </div>              
+							<% } %>
+						</div>
+					</div>
+				</div>              
+			</div>
+		</div>
+	</div>  
+</div>
     <!-------------------------- span4 Ends -------------------------->
 
 
-    <!-------------------------- span3 Starts-------------------------->
-    
-      <div class="span3 clearfix">
-        <div class="row-fluid">
-          <div class="span12">
-              
-            <div class="row-fluid">
-              <div class="span12">
-              </div>
-            </div>
-            <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
-                     <div class="row-fluid new_thumbnail">
-                        <div class="span12">
+
+
+
+
+	<div class="span3">
+		<div class="container wrapper">
+		<!-------------------------- span3 starts -------------------------->
+			<div class="span3 clearfix">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="row-fluid">
+							<div class="span12"></div>
+						</div>
+						<div class="row-fluid new_thumbnail">
+							<div class="span12">
                         
+							<%
+							for(PackageConfigData packageConfiguration : packages) { 
+									List<Integer> cities = packageConfiguration.getDestinationCities();
+									String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
+									String imageUrl = packageConfiguration.getImageURL(request); 
+									String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
+									String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
+									Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
+									List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
+									List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
+									PackageOptionalConfig dealConfig = null;
+									if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
+											dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
+									}
+							%>
                         
-                        
-						<%
-						for(PackageConfigData packageConfiguration : packages) { 
-								List<Integer> cities = packageConfiguration.getDestinationCities();
-								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
-								String imageUrl = packageConfiguration.getImageURL(request); 
-								String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
-								String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
-								Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
-								List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
-								List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
-								PackageOptionalConfig dealConfig = null;
-								if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
-										dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
-								}
-						%>
-                        
-                        <div class="thumbnail">
-								  <div class="row-fluid">
-								  <div class="span12 gradient_holder share_hover">
-								   <a href="<%=pkgDetailUrl%>">
-									 <img class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" data-original="<%=imageUrlComplete%>" style="display: inline;height:153px;width:270px">
-									   <div class="gradient"></div>
-									   <div class="tourimg_content3 offset1">
-									   
-										   
+							<div class="thumbnail" style="margin-left:0px;margin-right:4px">
+								<div class="row-fluid">
+									<div class="span12 gradient_holder share_hover">
+										<a href="<%=pkgDetailUrl%>">
+											<img class="lazy" src="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" data-original="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" style="display: inline;">
+											<div class="gradient"></div>
+											<div class="tourimg_content3 offset1"></div>
+											<div class="prize_tag" style="top:130px">
+												<% if(dealConfig != null) { %>
+													<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
+												<% } else { %>
+													<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
+												<% } %>
+											</div>
+											<div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
+											<div class="deal_text2"></div>
+										 </a>
 									</div>
-							<div class="prize_tag" style="top:134px">
-
-								<% if(dealConfig != null) { %>
-												<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
-										<% } else { %>
-												<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
-								<% } %>
-
+								</div>
+								<div class="caption_new"></div>
 							</div>
-                            <div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
-                            <div class="deal_text2"></div>
-									 </a>
-									 </div></div>
-								 <div class="caption_new"></div>
-								 </div>
+							<% } %>
+						</div>
+					</div>
+				</div>              
+			</div>
+		</div>
+	</div>  
+</div>
 
-                        
-                        
-                        <% } %>
 
-                       <a href="/tours/packages"><button type="button" class="btn btn-success view-all">View All Packages</button></a></div>
-                    </div>
-                    </div><div class="mCSB_scrollTools" style="position: absolute; display: none;"><a class="mCSB_buttonUp" oncontextmenu="return false;"></a><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position:relative;"></div></div><div class="mCSB_draggerRail"></div></div><a class="mCSB_buttonDown" oncontextmenu="return false;"></a></div></div></div>
-            </div>
-        </div>
-      </div>              
 
-    <!-------------------------- span3 ends-------------------------->
-    <!-------------------------- span5 starts -------------------------->
-    
-      <div class="span5 clearfix">
-        <div class="row-fluid">
-          <div class="span12">
-              
-            <div class="row-fluid">
-              <div class="span12">
-              </div>
-            </div>
-            <div id="content_1" class="content_1 mCustomScrollbar _mCS_1"><div class="mCustomScrollBox mCS-light" id="mCSB_1" style="position:relative; height:100%; overflow:hidden; max-width:100%;"><div class="mCSB_container mCS_no_scrollbar" style="position: relative; top: 0px;">
-                     <div class="row-fluid new_thumbnail">
-                        <div class="span12">
+
+	<div class="span5">
+		<div class="container wrapper">
+		<!-------------------------- span5 starts -------------------------->
+			<div class="span5 clearfix">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="row-fluid">
+							<div class="span12"></div>
+						</div>
+						<div class="row-fluid new_thumbnail">
+							<div class="span12">
                         
+							<%
+							for(PackageConfigData packageConfiguration : packages) { 
+									List<Integer> cities = packageConfiguration.getDestinationCities();
+									String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
+									String imageUrl = packageConfiguration.getImageURL(request); 
+									String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
+									String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
+									Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
+									List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
+									List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
+									PackageOptionalConfig dealConfig = null;
+									if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
+											dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
+									}
+							%>
                         
-                        
-						<%
-						for(PackageConfigData packageConfiguration : packages) { 
-								List<Integer> cities = packageConfiguration.getDestinationCities();
-								String pkgDetailUrl = PackageDataBean.getPackageDetailsURL(request, packageConfiguration);
-								String imageUrl = packageConfiguration.getImageURL(request); 
-								String imageUrlComplete = UIHelper.getImageURLForDataType(request, imageUrl, FileDataType.I300X150, true);
-								String pkgValidityText = StringUtils.trimToNull(PackageConfigManager.getPackageValidityDisplayText(packageConfiguration));
-								Map<SellableUnitType, List<PackageOptionalConfig>> dealsMap = packageConfiguration.getPackageOptionalsMap();
-								List<CityConfig> cityConfigs = packageConfiguration.getCityConfigs();
-								List<ExtraOptionConfig> extraOptions = packageConfiguration.getExtraOptions();
-								PackageOptionalConfig dealConfig = null;
-								if(dealsMap != null && dealsMap.get(SellableUnitType.INSTANT_DISCOUNT) != null) {
-										dealConfig = dealsMap.get(SellableUnitType.INSTANT_DISCOUNT).get(0);
-								}
-						%>
-                        
-                        <div class="thumbnail">
-								  <div class="row-fluid">
-								  <div class="span12 gradient_holder share_hover">
-								   <a href="<%=pkgDetailUrl%>">
-									 <img class="lazy" src="http://upload.wikimedia.org/wikipedia/commons/4/46/Greenland_scenery.jpg" data-original="<%=imageUrlComplete%>" style="display: inline;height:265px;width:470px">
-									   <div class="gradient"></div>
-									   <div class="tourimg_content3 offset1">
-									   
-										   
+							<div class="thumbnail" style="margin-left:0px;margin-right:4px">
+								<div class="row-fluid">
+									<div class="span12 gradient_holder share_hover">
+										<a href="<%=pkgDetailUrl%>">
+											<img class="lazy" src="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" data-original="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" style="display: inline;">
+											<div class="gradient"></div>
+											<div class="tourimg_content3 offset1"></div>
+											<div class="prize_tag" style="top:230px">
+												<% if(dealConfig != null) { %>
+													<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
+												<% } else { %>
+													<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
+												<% } %>
+											</div>
+											<div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
+											<div class="deal_text2"></div>
+										 </a>
 									</div>
-							<div class="prize_tag" style="top:248px">
-
-								<% if(dealConfig != null) { %>
-												<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
-										<% } else { %>
-												<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
-								<% } %>
-
+								</div>
+								<div class="caption_new"></div>
 							</div>
-                            <div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
-                            <div class="deal_text2"></div>
-									 </a>
-									 </div></div>
-								 <div class="caption_new"></div>
-								 </div>
+							<% } %>
+						</div>
+					</div>
+				</div>              
+			</div>
+		</div>
+	</div>  
 
-                        
-                        
-                        <% } %>
-
-                       <a href="/tours/packages"><button type="button" class="btn btn-success view-all">View All Packages</button></a></div>
-                    </div>
-                    </div><div class="mCSB_scrollTools" style="position: absolute; display: none;"><a class="mCSB_buttonUp" oncontextmenu="return false;"></a><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position:relative;"></div></div><div class="mCSB_draggerRail"></div></div><a class="mCSB_buttonDown" oncontextmenu="return false;"></a></div></div></div>
-            </div>
-        </div>
-      </div>              
 
 
 

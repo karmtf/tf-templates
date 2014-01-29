@@ -140,11 +140,11 @@
 									}
 							%>
                         
-							<div class="thumbnail span5" style="margin-left:0px;margin-right:43px;width:initial">
+							<div class="thumbnail span5" style="margin-left:0px;margin-right:43px">
 								<div class="row-fluid">
 									<div class="span12 gradient_holder share_hover">
 										<a href="<%=pkgDetailUrl%>">
-											<img class="lazy" src="<%=imageUrlComplete%>" data-original="<%=imageUrlComplete%>" style="display: inline;height:209px;width:391px">
+											<img class="lazy" src="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" data-original="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" style="display: inline;/*height:209px;width:391px*/">
 											<div class="gradient"></div>
 											<div class="tourimg_content3 offset1"></div>
 											<div class="prize_tag" style="top:190px">
