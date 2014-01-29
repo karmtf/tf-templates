@@ -224,17 +224,15 @@
 									<div class="span12 gradient_holder share_hover">
 										<a href="<%=pkgDetailUrl%>">
 											<img class="lazy" src="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" data-original="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" style="display: inline;">
-											<div class="gradient"></div>
-											<div class="tourimg_content3 offset1"></div>
-											<div class="prize_tag" style="top:210px">
-												<% if(dealConfig != null) { %>
-													<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
-												<% } else { %>
-													<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
-												<% } %>
-											</div>
-											<div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
-											<div class="deal_text2"></div>
+												<div class="prize_tag" style="top:94%">
+													<% if(dealConfig != null) { %>
+														<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
+													<% } else { %>
+														<div class="tag_text1" style="font-size:15px"><%=PackageDataBean.getPackagePricePerPersonDisplay(request, packageConfiguration, false)%></div>
+													<% } %>
+												</div>
+												<div class="deal_text1"><%=UIHelper.cutLargeText(StringUtility.toCamelCase(packageConfiguration.getPackageName()), 30)%></div>
+												<div class="deal_text2"></div>
 										 </a>
 									</div>
 								</div>
@@ -290,7 +288,7 @@
 											<img class="lazy" src="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" data-original="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" style="display: inline;">
 											<div class="gradient"></div>
 											<div class="tourimg_content3 offset1"></div>
-											<div class="prize_tag" style="top:130px">
+											<div class="prize_tag" style="top:91%">
 												<% if(dealConfig != null) { %>
 													<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
 												<% } else { %>
@@ -351,7 +349,7 @@
 											<img class="lazy" src="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" data-original="/static/css/themes/touroperator4/images_1/20_0_Havelock_Island-001_b.jpg" style="display: inline;">
 											<div class="gradient"></div>
 											<div class="tourimg_content3 offset1"></div>
-											<div class="prize_tag" style="top:230px">
+											<div class="prize_tag" style="top:95%">
 												<% if(dealConfig != null) { %>
 													<div class="tag_text1" style="font-size:15px" ><%=PackageDataBean.getPackageDealPricePerPerson(request, packageConfiguration, dealConfig, false)%></div>
 												<% } else { %>
