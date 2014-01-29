@@ -183,14 +183,15 @@
     </div>
   </div>
 </div>     
+</div>     
     <!-------------------------- list Ends -------------------------->
 
 
 
 
 
-<div class="row-fluid margin_top15">
-	<div class="span4">
+<div class="row-fluid">
+	<div class="span4" style="margin-left: 0.66%">
 		<div class="container wrapper">
 		<!-------------------------- span4 starts -------------------------->
 			<div class="span4 clearfix">
@@ -254,7 +255,7 @@
 
 
 
-	<div class="span3">
+	<div class="span3" style="margin-left: 0%">
 		<div class="container wrapper">
 		<!-------------------------- span3 starts -------------------------->
 			<div class="span3 clearfix">
@@ -315,7 +316,7 @@
 
 
 
-	<div class="span5">
+	<div class="span5" style="margin-left: 0%">
 		<div class="container wrapper">
 		<!-------------------------- span5 starts -------------------------->
 			<div class="span5 clearfix">
