@@ -98,6 +98,7 @@ h1 {
 	color: #000;
 	line-height: 19px !important;
 	padding-top: 10px;
+	padding-bottom: 0px;
 }
 .btn-inverse {
 	background-color: #999 !important;

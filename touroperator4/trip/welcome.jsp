@@ -54,7 +54,6 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.eos.ui.SessionManager"%>
-<link href="/static/css/themes/touroperator4/css/master-main.css" rel="stylesheet" type="text/css">
 <%@ page session="true" %>
 <%	
 	String title = "Browse our best vacation package deals";
@@ -87,6 +86,7 @@
 <div class="body-outer-wrapper">
 	<div class="body-wrapper">
 		<jsp:include page="/common/includes/viacom/header_new.jsp" />
+<link href="/static/css/themes/touroperator4/css/master-main.css" rel="stylesheet" type="text/css">
 		
 		
 		
@@ -145,7 +145,7 @@
 				<div class="header1">
 					<div class="row-fluid" >
 						<div class="span12">
-                    <h1 style="margin-bottom:-30px"><a href="/tours/packages"> Specials</a></h1>
+                    <h1><a href="/tours/packages"> Specials</a></h1>
                 </div>
               </div>
                           	

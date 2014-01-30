@@ -52,7 +52,6 @@
 <%@page import="com.via.database.page.AbstractPage"%>
 <%@page import="com.eos.b2c.user.wall.UserWallItemWrapper"%>
 <%@ page session="true" %>
-<link href="/static/css/themes/touroperator4/css/master-main.css" rel="stylesheet" type="text/css">
 
 <%	
 	String title = "Contact us";
@@ -70,6 +69,12 @@
 			json = new JSONObject(socialContacts.getValue());
 		}		
 	}
+	
+	UserProfileData profile = (UserProfileData)request.getAttribute(Attributes.USER_PROFILE_DATA.toString());
+    List<TravelServicesType> services =  null;
+    if (profile != null) {
+        services = profile.getTravelServices();
+    }
 %>
 <html>
 <head>
@@ -85,121 +90,125 @@
 <div class="body-outer-wrapper">
 	<div class="body-wrapper">
 		<jsp:include page="/common/includes/viacom/header_new.jsp" />
+		<link href="/static/css/themes/touroperator4/css/master-main.css" rel="stylesheet" type="text/css">
 
 
 
 
+		<div class="row-fluid" style="margin-top:100px">
 
+			<div class="span12">
+				<div class="container about wrapper1 margin_top15">
+				  <!-------------- about holder ----------------->
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="span12 margin_left0">
+								<div class="margin_top17">
+								<h1 class="offset1">About us</h1>
+								
+								
+								
+								<% if(profile != null && profile.getUserProfileDescription() != null && !profile.getUserProfileDescription().equals("null")) { %>
+								<p class="margin_top15 offset1"><%=profile.getUserProfileDescription()%></p>
+								<% } %>
+								
+								<% if (services != null) {%>
+								<p class="margin_top15 offset1" style="padding-left:10px">
+										<%        int k = 0;
+												for(TravelServicesType service : services) { 
+														if(k > 7) {
+																break;
+														}
+										%>
+										<%=service.getDisplayName()%><br>
+										<% k++;} %>                  
+								</p>                                                      
+								<% } %>
 
+								
+								
+								
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				  <!-------------- about holder -----------------> 
+			</div>
+		
+				<div class="container contact1 wrapper1 margin_top15">
+			
+					<div class="row-fluid contact_us">
+					<h1>Contact Us</h1>
+					</div>
+				</div>
+			<div class="container contact1 wrapper1 margin_top15" >
 
-
-<div class="row-fluid" style="margin-top:100px">
-  <div class="span12">
-    <div class="container contact1 wrapper1 margin_top15">
-    
-      <div class="row-fluid contact_us">
-      <h1>Contact Us</h1>
-      
-      
-        </div>
-
-    </div>
-
-  </div>
-        <div class="container contact1 wrapper1 margin_top15" >
-
-       <div class="row-fluid">
-                  <div class="span12">
-                      <div id="thank_you"> 
-                      
-                      
-                      
-                      <div class="span6">
-                    <div class=" contact_contents">
-                        <h1 >Address</h1>
-                        <p>Hammock Leisure Holidays Pvt Ltd<br />
-                            3291, 1st Floor, 12th Main,<br />
-                            HAL II Stage, Indiranagar,<br />
-                            Bangalore - 560 008<br />
-                            (near Snap Fitness) 
-                            </p>
-                          <h1>Phone</h1>
-                          <p>+ 91 - 80 - 4202 3333, 2521 9000</p>
-                          <h1>Fax</h1>
-                          <p>+ 91 - 80 - 4204 3902</p>
-                          <h1>Email</h1>
-                          <p><a href="mailto:leisure@hammockholidays.com"> leisure@hammockholidays.com</a></p> 
-                          <h1>Office Timings</h1>
-                          <p>Monday to Friday : 09:30 hrs to 18:00 hrs<br />
-                                Saturdays : 09:30 hrs to 15:00 hrs<br />
-                                Closed on Sundays, National & Public holidays.</p>
-                      </div>
-                </div>
-                      
-                      
-                      
-                        
-                        <div class="span6 contact_form ">
-                                <span id="enq_error"></span>  
-                               
-                             <form class="contact_form" name="contact_form" action="http://hammockholidays.com/main/contactform_sendmail" method="post" >
-                                 <div id="cnt_error"></div>  
-                            
-                              <input type="hidden" name="source" id="hidden_val" type="text" value="contact_page" />
-                             <div class="row-fluid">
-                                <div class="span6">
-                                <label>Name*</label>
-                                <input type="text" class="span12" placeholder="Your Name" name="name"  pattern="[a-zA-Z ]+" title="Please Enter only letters of the alphabet" value="" required/>
-                                 <p class="err-msg"></p>
-                                </div>
-                                <div class="span6">
-                                <label>Phone Number*</label>
-                                <input type="text" class="span12" placeholder="Your Phone Number" name="mobile" value="" pattern="[0-9]+" required  title="Please Enter only numbers"/>
-                                <p class="err-msg"></p>
-                                </div>
-                            </div>
-                          <div class="row-fluid">
-                                <div class="span6">
-                                <label>Email ID*</label>
-                                <input type="email" class="span12" placeholder="Your Email ID" required title="Please Enter Valid Email ID" name="email" value="" />
-                                <p class="err-msg"></p>
-                                </div>
-                                <div class="span6">
-                                <label>City*</label>
-                                <input type="text" class="span12" placeholder="Your City" name="city"  pattern="[a-zA-Z ]+" title="Please Enter only letters of the alphabet" value="" required/>
-                                <p class="err-msg"></p>
-                                </div>
-                          </div>
-                          <div class="row-fluid">
-                                <div class="span12">
-                                <label>Place You Love</label>
-                                <textarea class="span12"  id="inputEmail" placeholder="Place You Love" name="message"></textarea>
-                                </div>
-                            </div>
-                        <div class="controls">
-                            <button class="btn2 margin_left0" type="submit" name="submit" >Submit</button>
-                        </div>
-                              </form> 
-                         </div>           
-                        </div>
-                     
-                 </div>
-          </div>
-      </div>
-
-        </div>     
-        </div>
-      <!-- about holder -->
+				<div class="row-fluid">
+					<div class="span12">
+							<div class="span6 contact_form">
+								<div class=" ">
+									<h1 >Address</h1>
+									<p><%=partnerUser.m_street%><br>
+										<%=LocationData.getCityNameFromId(partnerUser.getCityId())%> - <%=partnerUser.m_pincode%><br> </p>
+									<h1>Phone</h1>
+									<p><%=partnerUser.m_mobile%></p>
+									<h1>Email</h1>
+									<p><a href="mailto:<%=partnerUser.m_email%>"> <%=partnerUser.m_email%></a></p> 
+								</div>
+							</div>
+							  
+							  
+							<div class="span6 contact_form ">
+								<span id="enq_error"></span>  
+									<form class="contact_form" name="contact_form" action="http://hammockholidays.com/main/contactform_sendmail" method="post" >
+										<div id="cnt_error"></div>  
+										<input type="hidden" name="source" id="hidden_val" type="text" value="contact_page" />
+										
+										<div class="row-fluid">
+											<div class="span6">
+												<label>Name*</label>
+												<input type="text" class="span12" placeholder="Your Name" name="name"  pattern="[a-zA-Z ]+" title="Please Enter only letters of the alphabet" value="" required/>
+												<p class="err-msg"></p>
+											</div>
+											<div class="span6">
+												<label>Phone Number*</label>
+												<input type="text" class="span12" placeholder="Your Phone Number" name="mobile" value="" pattern="[0-9]+" required  title="Please Enter only numbers"/>
+												<p class="err-msg"></p>
+											</div>
+										</div>
+										
+										<div class="row-fluid">
+											<div class="span6">
+												<label>Email ID*</label>
+												<input type="email" class="span12" placeholder="Your Email ID" required title="Please Enter Valid Email ID" name="email" value="" />
+												<p class="err-msg"></p>
+											</div>
+											<div class="span6">
+												<label>City*</label>
+												<input type="text" class="span12" placeholder="Your City" name="city"  pattern="[a-zA-Z ]+" title="Please Enter only letters of the alphabet" value="" required/>
+												<p class="err-msg"></p>
+											</div>
+										</div>
+										
+										<div class="row-fluid">
+											<div class="span12">
+												<label>Place You Love</label>
+												<textarea class="span12"  id="inputEmail" placeholder="Place You Love" name="message"></textarea>
+											</div>
+										</div>
+										<div class="controls">
+										<button class="btn2 margin_left0" type="submit" name="submit" >Submit</button>
+										</div>
+									 </form> 
+									</div>           
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>     
+			</div>
 		</div>
- 
-
-
-
-
-
-
-
-
 	</div>
 </div>
 

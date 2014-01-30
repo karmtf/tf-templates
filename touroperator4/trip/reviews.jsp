@@ -67,6 +67,7 @@
 <div class="body-outer-wrapper">
 	<div class="body-wrapper">
 		<jsp:include page="/common/includes/viacom/header_new.jsp" />
+	<link href="/static/css/themes/touroperator4/css/master-main.css" rel="stylesheet" type="text/css">
 		
 		<div class="row-fluid"  style="margin-top: 98px;">
 			<div class="span12">
@@ -74,7 +75,7 @@
 					<div class="span3 margin_left0">
 						<div class="row-fluid header1">
 							<div class="span12">
-								<h1 style="color:#0088CC !important;margin-bottom:-30px">Travel Tips</h1>    
+								<h1 style="color:#0088CC !important">Travel Tips</h1>    
 							</div>
 						</div>
 						<div class="row-fluid">
