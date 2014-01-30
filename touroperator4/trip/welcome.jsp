@@ -125,8 +125,8 @@
 						
 						<% }%>
                </div>
-               <a class="left carousel-control" data-slide="prev" href="http://hammockholidays.com/#myCarousel" style="display: none;" id="right_link"><img src="/static/css/themes/touroperator4/images/slider_arrow_left.png" width="31" height="46"></a>
-               <a class="right carousel-control" data-slide="next" href="http://hammockholidays.com/#myCarousel" style="display: none;" id="left_link"><img src="/static/css/themes/touroperator4/images/slider_arrow_right.png" width="31" height="46"></a>
+               <a class="left carousel-control" data-slide="prev" href="#myCarousel" style="display: none;" id="right_link"><img src="/static/css/themes/touroperator4/images/slider_arrow_left.png" width="31" height="46"></a>
+               <a class="right carousel-control" data-slide="next" href="#myCarousel" style="display: none;" id="left_link"><img src="/static/css/themes/touroperator4/images/slider_arrow_right.png" width="31" height="46"></a>
                </div></div></div>   
 
 
