@@ -87,7 +87,7 @@
 			json = new JSONObject(socialContacts.getValue());
 		}		
 	}
-
+	UserProfileData profile = (UserProfileData)request.getAttribute(Attributes.USER_PROFILE_DATA.toString());
 %>
 
 
@@ -347,16 +347,17 @@ ul li {font-size:14px;font-weight:bold}
     		<div class="container">
                	<div class="span3">
                 <h1><a href="/tours/contactus">Info</a></h1>
-                <a href="/tours/contactus"><img src="http://hammockholidays.com/images/about.jpg" title="Know more"/></a>
-                        <p>Descriptions kuch kuch <a href="/tours/contactus">More</a></p>
-						<div class="hide_pannel"><img src="http://hammockholidays.com/images/hide.png" width="80" height="26" id="arrow_up1" /></div><br />
+                <a href="/tours/contactus"><img src="/static/css/themes/touroperator4/images/about.jpg" title="Know more"/></a>
+					<% if(profile != null) {%>
+                        <p><%=profile.getUserProfileDescription()%><a href="/tours/contactus">More</a></p>
+                    <% }%>
+						<div class="hide_pannel"><img src="/static/css/themes/touroperator4/images/hide.png" width="80" height="26" id="arrow_up1" /></div><br />
               </div>
                 <div class="span3">
                 <h1><a href="/tours/contactus">Contact</a></h1>
-                <a href="/tours/contactus"><img src="http://hammockholidays.com/images/why.jpg" title="Know more"/></a>
-                        <p>Phone: + 91 - 80 - 4202 3333, 2521 9000<br />
-                        Fax: + 91 - 80 - 4204 3902<br />
-			<a style="color:#000" href="mailto:leisure@hammockholidays.com"> meri email id</a> <br />
+                <a href="/tours/contactus"><img src="/static/css/themes/touroperator4/images/contact.jpg" title="Know more"/></a>
+                        <p>Phone: <%=partnerUser.m_mobile%><br />
+			<a style="color:#000" href="mailto:<%=partnerUser.m_email%>"><%=partnerUser.m_email%></a> <br />
 			<a href="/tours/contactus"> More</a></p>
               </div>
     		</div>
