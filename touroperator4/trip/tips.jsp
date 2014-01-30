@@ -40,13 +40,16 @@
 <%@page import="com.poc.server.secondary.database.model.PackageConfigData"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
+<%@page import="com.eos.b2c.secondary.database.model.Destination"%>
 <%@page import="com.eos.ui.SessionManager"%>
+
 <%@page session="true" %>
 <%	
 	String title = "Browse our best vacation package deals";
 	String keywords = "";
 	String description = "";
 	List<Integer> countries = (List<Integer>) request.getAttribute(Attributes.DESTINATION_LIST.toString());
+	Destination cityDestination = (Destination) request.getAttribute(Attributes.DESTINATION_DATA.toString());
 %>
 <html>
 <head>
@@ -62,26 +65,83 @@
 <div class="body-outer-wrapper">
 	<div class="body-wrapper">
 		<jsp:include page="/common/includes/viacom/header_new.jsp" />
-<style type="text/css">
-.tab-content {width:100%;}
-.pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:26%;min-height:350px;margin-right:20px !important;margin-bottom:20px !important}
-@media screen and (max-width: 960px) {
-.one-fourth{width:99% !important;height:400px;}
-.pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:33% !important;}
-}
-@media screen and (max-width: 600px) {
-.one-fourth{width:99% !important;height:400px;}
-.pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:46% !important;}
-}
-@media screen and (max-width: 540px) {
-.one-fourth{width:99% !important;height:400px;}
-.pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:94% !important;}
-}
-@media screen and (max-width: 480px) {
-.one-fourth{width:99% !important;height:400px;}
-.pkgdeal {box-shadow:1px 2px 2px #CECECE;-webkit-box-shadow:1px 2px 2px #CECECE;-moz-box-shadow:1px 2px 2px #CECECE;border:1px solid #cecece !important;padding:15px;width:94% !important;}
-}
-</style>
+
+
+        <link href="/static/css/themes/touroperator4/css/master-main.css" rel="stylesheet" type="text/css">
+                
+			<div class="row-fluid"  style="margin-top: 98px;">
+				<div class="span12">
+					<div class="container wrapper">
+						<div class="span3 margin_left0">
+							<div class="row-fluid header1">
+								<div class="span12">
+									<h1 style="color:#0088CC !important">Travel Tips</h1>    
+								</div>
+							</div>
+							<div class="row-fluid">
+								<div class="span12">
+									<div class="caret"></div>
+								</div>
+							</div>
+							<br>
+							<div class="row-fluid" id="menu">
+								<div class="span12">
+					  
+							<% 
+								if(countries != null) {
+									for (Integer country : countries) {        
+							%>
+								<a class="package_link" href="/tours/tips?destId=<%=country%>" >
+									<div><%=LocationData.getCityNameFromId(country)%></div>
+										<span class="menu_arrow"></span> </a>
+
+							<%}  
+							} 
+							%>
+							</div>
+						</div>
+					</div>
+                                        
+      
+                                          
+					<div class="row-fluid">
+						<div class="span8">
+							<div class="container wrapper">
+							
+							<div class="row-fluid header1">
+								<div class="span8">
+									<h1 ><%=cityDestination.getName()%></h1>    
+								</div>
+							</div>
+							<div class="row-fluid">
+								<div class="span8">
+									<div class="caret"></div>
+								</div>
+							</div>
+
+								
+								
+								
+							<div class="row-fluid">
+								<div class="span8"></div>
+							</div>
+							<div class="row-fluid new_thumbnail">
+								<div class="span8">
+									<jsp:include page="city_general_details.jsp" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>  
+		</div>
+	</div>  
+</div>
+
+
+
+
+
 <!--//main-->
 <jsp:include page="/common/includes/viacom/footer_new.jsp" />
 </body>

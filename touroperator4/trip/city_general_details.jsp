@@ -63,8 +63,7 @@
 .big{width:100%;}
 .hide{display:none;}
 </style>
-<div class="grid_9 carousel_3">
-	<h2><%=cityDestination.getName()%></h2>
+<div class="span12">
 	<iframe
 	   src="http://www.panoramio.com/wapi/template/list.html?tag=<%=cityDestination.getName()%>&width=670&height=150&columns=7&rows=1&orientation=horizontal"
 	   frameborder="0" width="670" height="150" scrolling="no" marginwidth="0" marginheight="0">
