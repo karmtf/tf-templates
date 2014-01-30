@@ -54,7 +54,7 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.eos.ui.SessionManager"%>
-<link href="/static/css/themes/touroperator4/css/master.css" rel="stylesheet" type="text/css">
+<link href="/static/css/themes/touroperator4/css/master-main.css" rel="stylesheet" type="text/css">
 <%@ page session="true" %>
 <%	
 	String title = "Browse our best vacation package deals";
@@ -145,7 +145,7 @@
 				<div class="header1">
 					<div class="row-fluid" >
 						<div class="span12">
-                    <h1 style="margin-bottom:-30px"><a href="/tours/packages"> Special</a></h1>
+                    <h1 style="margin-bottom:-30px"><a href="/tours/packages"> Specials</a></h1>
                 </div>
               </div>
                           	

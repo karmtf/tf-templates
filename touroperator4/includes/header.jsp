@@ -91,83 +91,6 @@
 %>
 
 
-<style type="text/css">  
-.content{height:800px; overflow:auto;}
-.content-perspective .content{ height:auto;}
-/*.content p:nth-child(even){ font-family:Georgia,serif; font-size:17px; font-style:italic;}*/
-</style>
-
-<style>    
- 
-
-.meeting
-{
-		opacity:1;
-	-webkit-transition: all .6s ease;
--moz-transition: all .6s ease;
--o-transition: all .6s ease;
-transition: all .6s ease;	
-}
-.meeting:hover
-{
-
-	opacity:.5;
-	-webkit-transition: all .6s ease;
--moz-transition: all .6s ease;
--o-transition: all .6s ease;
-transition: all .6s ease;	
-
-}
-
-.hiden
-{
-   height: 320px;
-    overflow: hidden;
-    position: relative;
-    width: 300px;
-	cursor:pointer;
-}    
-    
-input.btncrud {
-        background-color:#CCCCCC;
-        margin:5px 0pt 2pt;
-        border:1px solid;
-        padding:3px 8px;
-        font-size:12px;
-        color:#000000;
-}
-.btn4{display:none;}
-		
-#share *{
-   filter:alpha(opacity=0.1); 
-   opacity:0.01;/*Hide Facebook button*/
-}
-
-.inside
-{
-	position:absolute;
-	top:318px;
-	left:0;
-
-}
-.meeting
-{
-	position:absolute;
-	top:0;
-	left:0;
-}
-
-#share{
-  display:inline-block;
-
-  /*The width and height of your image. Not bigger than the Like button!*/
-  width: 10px;
-  height: 10px;
-
-  /*Your image*/
-  background:url(fb.png);
-}
-</style>
 
  <script src="/static/css/themes/touroperator4/js/jsapi" type="text/javascript"></script>
  <link type="text/css" href="/static/css/themes/touroperator4/css/default+en.css" rel="stylesheet">
@@ -320,7 +243,14 @@ color: #000000;
 .gs-promotion .gs-visibleUrl-short {
 color: #008000;
 }
-</style></head>
+</style>
+
+
+<style type="text/css">
+ul li {font-size:14px;font-weight:bold}
+</style>
+
+</head>
 
 <div class="topmenu" style="position: fixed;top: 0; width: 100%;z-index: 100; ">
     
