@@ -333,7 +333,7 @@ ul li {font-size:14px;font-weight:bold}
                           </div>
                         <% } else { break; } } }%> 
 
-                <div class="hide_pannel hide_pannel2"><img id="arrow_up3" width="80" height="26" src="http://hammockholidays.com/images/hide.png" /></div><div class="read_more pull-right"><a href="/tours/packages">More packages</a></div></div></div>
+                <div class="hide_pannel hide_pannel2"><img id="arrow_up3" width="80" height="26" src="/static/css/themes/touroperator4/images/hide.png" /></div><div class="read_more pull-right"><a href="/tours/packages">More packages</a></div></div></div>
    	  </div>
   </div>
 </div>
@@ -349,8 +349,12 @@ ul li {font-size:14px;font-weight:bold}
                 <h1><a href="/tours/contactus">Info</a></h1>
                 <a href="/tours/contactus"><img src="/static/css/themes/touroperator4/images/about.jpg" title="Know more"/></a>
 					<% if(profile != null) {%>
-                        <p><%=profile.getUserProfileDescription()%><a href="/tours/contactus">More</a></p>
-                    <% }%>
+                        <p><%=profile.getUserProfileDescription()%>
+							<a href="/tours/contactus">More</a>
+                        </p>
+                    <% } else {%>
+                        <p><a href="/tours/contactus">More</a></p>
+                    <% } %>
 						<div class="hide_pannel"><img src="/static/css/themes/touroperator4/images/hide.png" width="80" height="26" id="arrow_up1" /></div><br />
               </div>
                 <div class="span3">

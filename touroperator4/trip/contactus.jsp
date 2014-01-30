@@ -161,7 +161,7 @@
 							  
 							<div class="span6 contact_form ">
 								<span id="enq_error"></span>  
-									<form class="contact_form" name="contact_form" action="http://hammockholidays.com/main/contactform_sendmail" method="post" >
+									<form class="contact_form" name="contact_form" action="#" method="post" >
 										<div id="cnt_error"></div>  
 										<input type="hidden" name="source" id="hidden_val" type="text" value="contact_page" />
 										
