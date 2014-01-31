@@ -120,12 +120,7 @@
 							</div>
 
 								
-								
-								
 							<div class="row-fluid">
-								<div class="span8"></div>
-							</div>
-							<div class="row-fluid new_thumbnail">
 								<div class="span8">
 									<jsp:include page="city_general_details.jsp" />
 								</div>

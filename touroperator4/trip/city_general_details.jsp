@@ -69,15 +69,14 @@
 	   frameborder="0" width="670" height="150" scrolling="no" marginwidth="0" marginheight="0">
 	</iframe>
 	<div class="clearfix"></div>
-	<%=StringUtils.trimToEmpty(cityDestination.getDescription().replaceAll("\\?",""))%><br><br>
+	<p><%=StringUtils.trimToEmpty(cityDestination.getDescription().replaceAll("\\?",""))%></p>
 <% if(tips != null && !tips.isEmpty()) { %>
-	<dd style="font-weight:bold" font-size:"18px">Travel Tips for <%=cityDestination.getName()%></dd><br>
+	<h5 style="font-weight:bold">Travel Tips for <%=cityDestination.getName()%></h5>
 	<% for (TravelTip tip : tips) { %>
-		<dd style="font-weight:normal"><%=tip.getType().getDisplayName()%></dd>
+		<h5 style="padding-top:10px"><%=tip.getType().getDisplayName()%></h5>
 			<% for(String text : tip.getTips()) { %>
-			<dd><%=text%></dd>
+			<%=text%><br>
 			<% } %>
-			<br>
 	<% } %>
 <% } %>
 <!--//General information-->
@@ -88,14 +87,14 @@
 			DestinationType type = entry.getKey();
 			List<Destination> thingsToDoList = entry.getValue();
 %>
-<dd style="font-weight:bold">Top <%=type.getDesc()%></dd>
+<br><h5 style="font-weight:bold">Top <%=type.getDesc()%></h5>
 <%
 	request.setAttribute(Attributes.DESTINATION_LIST.toString(), thingsToDoList);
 %>
 <jsp:include page="small_places_list.jsp">
 	<jsp:param name="viewClass" value="nopad" />
 </jsp:include>
-<div class="clearfix"></div>
+<div ></div>
 <div>
 	<br><a href="<%=DestinationContentBean.getDestinationTagURL(request, cityDestination, type)%>" style="font-size:12px;">View all <%=type.getDesc()%></a><br><br><br>
 </div>

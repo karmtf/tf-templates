@@ -40,7 +40,7 @@
 			<jsp:param name="expertReview" value="<%=(review != null)?review.getExpertContent():""%>"/>
 		</jsp:include>
 	</div>
-	<% } if (placesCount % numPlacesInRow == (numPlacesInRow - 1)  || placesCount == (placesList.size()-1)) { %><div class="u_clear"></div><% } %>
+	<% } if (placesCount % numPlacesInRow == (numPlacesInRow - 1)  || placesCount == (placesList.size()-1)) { %><% } %>
 <% 
 		placesCount++;
 		if (placesCount / numPlacesInRow != 0) {

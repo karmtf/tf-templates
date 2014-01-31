@@ -79,20 +79,16 @@
 <%@page import="com.poc.server.config.step.DestinationConfigStep"%>
 	<!-- Results -->
 	<ul >
-	
-                <div>
-                  <a href="<%=destinationURL%>"><img src="<%=UIHelper.getDestinationImageURLForDataType(request, place.getMainImage(), FileDataType.I200X100)%>" style="height:150px;width:200px" alt="" class="span4" ></a>
-                  <div class="span8">
-                    <span ><a href="<%=destinationURL%>"><%=com.eos.gds.util.StringUtility.toCamelCase(DestinationContentManager.getDisplayNameForPlace(place))%></a></span>
-                    		<p><%=UIHelper.cutLargeText(place.getAddress(),70)%></p>
-		<% if(StringUtils.isNotBlank(expertText)) { %>
-		<font style="font-weight:bold">Expert Tip:</font>"<%=StringUtility.truncateAtWord(expertText, 150, true).replaceAll("\\?","")%>"<br>
-		<% } else { %>
-		
-			<%=StringUtility.truncateAtWord(descriptionText, 150, true)%>
-		
-		<% } %>    </div>
-                  <div class="clear"></div>
-                </div>
+	<div class="row-fluid">
+		<a href="<%=destinationURL%>"><img src="<%=UIHelper.getDestinationImageURLForDataType(request, place.getMainImage(), FileDataType.I200X100)%>" style="height:150px;width:200px" alt="" class="span4" ></a>
+			<div class="span8">
+				<span ><a href="<%=destinationURL%>"><%=com.eos.gds.util.StringUtility.toCamelCase(DestinationContentManager.getDisplayNameForPlace(place))%></a></span>
+					<p><%=UIHelper.cutLargeText(place.getAddress(),70)%></p>
+					<% if(StringUtils.isNotBlank(expertText)) { %>
+						<font style="font-weight:bold">Expert Tip:</font>"<%=StringUtility.truncateAtWord(expertText, 150, true).replaceAll("\\?","")%>"<br>
+					<% } else { %>
+						<%=StringUtility.truncateAtWord(descriptionText, 150, true)%>
+					<% } %>
+		    </div>
+	</div>
 	</ul>
-</article>
