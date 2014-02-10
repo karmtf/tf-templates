@@ -124,9 +124,12 @@ public class FileUploadPracticeBean {
                 }
             	String images = contentData.getData();
             	System.out.println("image:" + images);
+            	JSONObject newURLJSON = new JSONObject();
+
             	for (FileSizeGroupType fileSizeGroupType : FileSizeGroupType.values()){
-            		System.out.println("fileSizeGroupType " + fileSizeGroupType);
-                	List<String> imageURLS = extractURLs(images, fileSizeGroupType.toString());;
+            		System.out.println("fileSizeGroupType TOBESTORED " + fileSizeGroupType);
+                	List<String> imageURLS = extractURLs(images, fileSizeGroupType.toString());
+                	JSONArray imageList = new JSONArray();
     				for (String imageURL : imageURLS) {	
     	    			InputStream inputStream = null;
     	    			if(imageURL.contains("tripfactory.com") || imageURL.startsWith("/static")) {
@@ -156,20 +159,21 @@ public class FileUploadPracticeBean {
     	    					imageName, creatorUser, publish, FileDataType.NORMAL,
     	    					oldPicId, false);
     	    			String newLocation = contentFile.getFileSystemLocation();
-    	    			System.out.println("location :" + newLocation);
+    	    			System.out.println("location : TOBESTORED" + newLocation);
+    	    			imageList.put(newLocation);
     	    			} catch (ImagingException e) {
     	    				e.printStackTrace();
     	    				System.out.println(imageURL + "is not uploaded at TF location");
     	    			}
-    	    			/*dest.setMainImage(newLocation);
-    	    			SecondaryDBHibernateDAOFactory.getDestinationDAO().update(dest);
-    	            	DAOUtil.commitAll();*/
-
                 	}
+    				newURLJSON.put(fileSizeGroupType.toString(), imageList);
 
-            		
-            		
+	    			/*dest.setMainImage(newLocation);
+	    			SecondaryDBHibernateDAOFactory.getDestinationDAO().update(dest);
+	            	DAOUtil.commitAll();*/
             	}
+            	System.out.println(newURLJSON.toString());
+            	
             }
             	DAOUtil.commitAll();
 			} catch (com.via.database.util.DAOException e) {
