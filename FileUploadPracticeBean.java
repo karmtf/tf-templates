@@ -6,7 +6,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Arrays;
-import java.util.List;
 
 import com.eos.accounts.data.User;
 import com.eos.b2c.secondary.database.dao.hibernate.SecondaryDBHibernateDAOFactory;
@@ -24,7 +23,8 @@ import com.via.database.page.PageFactory;
 import com.via.database.util.DAOUtil;
 
 public class FileUploadPracticeBean {
-    public void modifyImageLocation(DestinationSearchQueryVO query, int pageNum)
+	
+    private void updateImageLocation(DestinationSearchQueryVO query, int pageNum)
             throws Exception {
         SystemProperties.initialize();
         LocationData.initialize();	
@@ -91,7 +91,7 @@ public class FileUploadPracticeBean {
 		
 		FileUploadPracticeBean fileUploadPracticeBean = new FileUploadPracticeBean();
 		try {
-			fileUploadPracticeBean.modifyImageLocation(null, 0);
+			fileUploadPracticeBean.updateImageLocation(null, 0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
