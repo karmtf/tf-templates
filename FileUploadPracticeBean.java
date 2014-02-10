@@ -167,6 +167,10 @@ public class FileUploadPracticeBean {
     	    			}
                 	}
     				newURLJSON.put(fileSizeGroupType.toString(), imageList);
+    				
+    				contentData.setData(newURLJSON.toString());
+	    			SecondaryDBHibernateDAOFactory.getContentDataDAO().update(contentData);
+	    			DAOUtil.commitAll();
 
 	    			/*dest.setMainImage(newLocation);
 	    			SecondaryDBHibernateDAOFactory.getDestinationDAO().update(dest);
