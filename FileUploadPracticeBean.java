@@ -53,7 +53,7 @@ public class FileUploadPracticeBean {
                 String mainImage = dest.getMainImage();
             	System.out.println("image:" + mainImage);
     			InputStream inputStream = null;
-    			if(mainImage.contains("tripfactory.com") && mainImage.startsWith("/static")) {
+    			if(mainImage.contains("tripfactory.com") || mainImage.startsWith("/static")) {
     				continue;
     			} else if(mainImage.startsWith("http")){
     		    	URL url = new URL(mainImage);
@@ -126,10 +126,13 @@ public class FileUploadPracticeBean {
                 	List<String> imageURLS = extractURLs(images, fileSizeGroupType.toString());;
     				for (String imageURL : imageURLS) {	
     	    			InputStream inputStream = null;
-    	    			if(imageURL.contains("tripfactory.com") && imageURL.startsWith("/static")) {
+    	    			if(imageURL.contains("tripfactory.com") || imageURL.startsWith("/static")) {
     	    				continue;
-    	    			} else if (imageURL.contains("wiki") && imageURL.contains("jpg")){
-    	    		    	URL url = new URL("http:"+imageURL);
+    	    			} else if (imageURL.startsWith("http://") || imageURL.startsWith("//")){
+    	    				if(imageURL.startsWith("//")) {
+    	    					imageURL = "http:"+imageURL;
+    	    				}
+    	    		    	URL url = new URL(imageURL);
     	    		        URLConnection connection = url.openConnection();
     	    		        inputStream = connection.getInputStream();
     	    		    } else {
