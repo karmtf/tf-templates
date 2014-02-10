@@ -15,7 +15,6 @@ import com.eos.b2c.data.LocationData;
 import com.eos.b2c.secondary.database.model.ContentFile;
 import com.eos.b2c.secondary.database.search.DestinationSearchQueryVO;
 import com.eos.b2c.util.SystemProperties;
-import com.tripfactory.platform.database.util.DAOException;
 import com.via.content.ContentFileCategoryType;
 import com.via.content.FileDataType;
 import com.via.content.FileSizeGroupType;
@@ -25,9 +24,10 @@ import com.via.database.page.PageFactory;
 import com.via.database.util.DAOUtil;
 
 public class FileUploadPracticeBean {
-	
     public void modifyImageLocation(DestinationSearchQueryVO query, int pageNum)
-            throws DAOException {
+            throws Exception {
+        SystemProperties.initialize();
+        LocationData.initialize();	
         if (query == null) {
             query = new DestinationSearchQueryVO();
         }
