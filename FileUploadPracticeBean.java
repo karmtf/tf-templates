@@ -7,6 +7,7 @@ import java.net.URLConnection;
 import java.util.Arrays;
 
 import com.eos.accounts.data.User;
+import com.eos.b2c.secondary.database.dao.hibernate.SecondaryDBHibernateDAOFactory;
 import com.eos.b2c.secondary.database.model.Destination;
 import com.eos.b2c.content.DestinationContentManager;
 import com.eos.b2c.data.LocationData;
@@ -50,6 +51,7 @@ public class FileUploadPracticeBean {
 				String newLocation = contentFile.getFileSystemLocation();
 				System.out.println("location :" + newLocation);
 				dest.setMainImage(newLocation);
+				SecondaryDBHibernateDAOFactory.getDestinationDAO().update(dest);
 	            DAOUtil.commitAll();
             }
         }
