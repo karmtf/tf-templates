@@ -1,5 +1,6 @@
 package com.eos.b2c.beans;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -8,6 +9,8 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.media.jai.util.ImagingException;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -147,15 +150,21 @@ public class FileUploadPracticeBean {
     	    			String imageName = "";
     	    			String mimeType = imageURL.substring(imageURL.lastIndexOf('.') + 1);
     	    			System.out.println("mimeType " + mimeType);
+    	    			try {
     	    			ContentFile contentFile = FileUploadBean.createContentImageFile(null, inputStream, "",
     	    					mimeType, Arrays.asList(dataTypes), fileCategoryType,
     	    					imageName, creatorUser, publish, FileDataType.NORMAL,
     	    					oldPicId, false);
     	    			String newLocation = contentFile.getFileSystemLocation();
     	    			System.out.println("location :" + newLocation);
+    	    			} catch (ImagingException e) {
+    	    				e.printStackTrace();
+    	    				System.out.println(imageURL + "is not uploaded at TF location");
+    	    			}
     	    			/*dest.setMainImage(newLocation);
     	    			SecondaryDBHibernateDAOFactory.getDestinationDAO().update(dest);
     	            	DAOUtil.commitAll();*/
+
                 	}
 
             		
