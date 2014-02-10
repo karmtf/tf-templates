@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Arrays;
+import java.util.List;
 
 import com.eos.accounts.data.User;
 import com.eos.b2c.secondary.database.dao.hibernate.SecondaryDBHibernateDAOFactory;
@@ -23,8 +24,8 @@ public class FileUploadPracticeBean {
     private void updateMainImagesLocation() throws Exception {
         SystemProperties.initialize();
         LocationData.initialize();
-        for (Long destId : DestinationContentManager.getAllCityDestinations()) {
-            Destination dest = DestinationContentManager.getDestinationFromId(destId);
+        List<Destination> destIds = SecondaryDBHibernateDAOFactory.getDestinationDAO().findAll();
+        for (Destination dest : destIds) {
             String mainImage = dest.getMainImage();
             if(!mainImage.equals("")) {
             	System.out.println("image:" + mainImage);
