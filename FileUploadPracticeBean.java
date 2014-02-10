@@ -27,29 +27,31 @@ public class FileUploadPracticeBean {
             String mainImage = dest.getMainImage();
             if(!mainImage.equals("")) {
             	System.out.println("image:" + mainImage);
+				InputStream inputStream = null;
+				if(mainImage.contains("tripfactory.com") && mainImage.startsWith("/static")) {
+			    	inputStream = new FileInputStream(mainImage);
+			    } else {
+			    	URL url = new URL(mainImage);
+			        URLConnection connection = url.openConnection();
+			        inputStream = connection.getInputStream();
+			    }
+	
+				FileDataType[] dataTypes = FileSizeGroupType.RECT_2_1
+						.getFileDataTypes();
+				boolean publish = true;
+				User creatorUser = null;
+				Long oldPicId = null;
+				ContentFileCategoryType fileCategoryType = ContentFileCategoryType.DESTINATION;
+				String imageName = "";
+				ContentFile contentFile = FileUploadBean.createContentImageFile(null, inputStream, "me.jpg",
+						"jpg", Arrays.asList(dataTypes), fileCategoryType,
+						imageName, creatorUser, publish, FileDataType.NORMAL,
+						oldPicId, false);
+				String newLocation = contentFile.getFileSystemLocation();
+				System.out.println("location :" + newLocation);
+				dest.setMainImage(newLocation);
+	            DAOUtil.commitAll();
             }
-			InputStream inputStream = null;
-			if(mainImage.contains("tripfactory.com") && mainImage.startsWith("/static")) {
-		    	inputStream = new FileInputStream(mainImage);
-		    } else {
-		    	URL url = new URL(mainImage);
-		        URLConnection connection = url.openConnection();
-		        inputStream = connection.getInputStream();
-		    }
-
-			FileDataType[] dataTypes = FileSizeGroupType.RECT_2_1
-					.getFileDataTypes();
-			boolean publish = true;
-			User creatorUser = null;
-			Long oldPicId = null;
-			ContentFileCategoryType fileCategoryType = ContentFileCategoryType.DESTINATION;
-			String imageName = "";
-			ContentFile contentFile = FileUploadBean.createContentImageFile(null, inputStream, "me.jpg",
-					"jpg", Arrays.asList(dataTypes), fileCategoryType,
-					imageName, creatorUser, publish, FileDataType.NORMAL,
-					oldPicId, false);
-            
-            DAOUtil.commitAll();
         }
     }
 	
