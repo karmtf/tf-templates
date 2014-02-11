@@ -1,6 +1,8 @@
 package com.eos.b2c.beans;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import com.eos.accounts.data.User;
 import com.eos.b2c.secondary.database.dao.hibernate.SecondaryDBHibernateDAOFactory;
 import com.eos.b2c.secondary.database.model.ContentData;
 import com.eos.b2c.secondary.database.model.Destination;
+import com.eos.b2c.content.DestinationContentManager;
 import com.eos.b2c.data.LocationData;
 import com.eos.b2c.secondary.database.model.ContentFile;
 import com.eos.b2c.secondary.database.search.DestinationSearchQueryVO;
@@ -46,9 +49,11 @@ public class UpdateImageURLs {
 
 			destinationsPage = PageFactory.getPage(query.getDatabaseType(),
 					query.getHQL(), page);
+			DestinationContentManager.loadDataInDestinations(
+					destinationsPage.getList(), false, false, true);
 
 			for (Destination dest : destinationsPage.getList()) {
-				updateDestination(dest);
+				 updateDestination(dest);
 				updateContentData(dest);
 			}
 			System.out.println("Destinations processed..." + pageNum + "/"
@@ -59,7 +64,7 @@ public class UpdateImageURLs {
 		} while (pageNum <= destinationsPage.getLastPageNumber());
 	}
 
-	private InputStream getInputStream(String imageURL) throws Exception {
+	private InputStream getInputStream(String imageURL) {
 		InputStream inputStream = null;
 		if (imageURL.contains("tripfactory.com")
 				|| imageURL.startsWith("/static")) {
@@ -68,17 +73,33 @@ public class UpdateImageURLs {
 			if (imageURL.startsWith("//")) {
 				imageURL = "http:" + imageURL;
 			}
-			URL url = new URL(imageURL);
-			URLConnection connection = url.openConnection();
-			inputStream = connection.getInputStream();
+			try {
+				URL url = new URL(imageURL);
+				URLConnection connection = url.openConnection();
+				inputStream = connection.getInputStream();
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		} else {
 			return null;
 		}
 		return inputStream;
 	}
 
+	private boolean validTFUrl(String imageURL) {
+		if (imageURL.contains("tripfactory.com")
+				|| imageURL.startsWith("/static")) {
+			return true;
+		} else {
+			return false;
+		}
+			
+	}
+
+	
 	private void updateDestination(Destination dest) throws Exception {
-		SystemProperties.initialize();
 		LocationData.initialize();
 		String mainImage = dest.getMainImage();
 		InputStream inputStream = getInputStream(mainImage);
@@ -103,7 +124,6 @@ public class UpdateImageURLs {
 	}
 
 	private void updateContentData(Destination dest) throws Exception {
-		SystemProperties.initialize();
 		LocationData.initialize();
 		/*
 		 * have to CHANGE TO DESTINATION_IMAGES in production
@@ -121,9 +141,13 @@ public class UpdateImageURLs {
 					fileSizeGroupType.toString());
 			JSONArray imageList = new JSONArray();
 			for (String imageURL : imageURLS) {
-				InputStream inputStream = getInputStream(imageURL);
-				if (inputStream == null)
+				InputStream inputStream = getInputStream(imageURL); 
+				if (validTFUrl(imageURL) == true) {
+					imageList.put(imageURL);
 					continue;
+				} else if (inputStream == null) {
+					continue;
+				}
 				FileDataType[] dataTypes = fileSizeGroupType.getFileDataTypes();
 				boolean publish = true;
 				User creatorUser = null;
@@ -165,7 +189,6 @@ public class UpdateImageURLs {
 					JSONArray data = response.optJSONArray(type);
 					if (data != null) {
 						for (int i = 0; i < data.length(); i++) {
-							System.out.println(data.get(i).toString());
 							urls.add(data.get(i).toString());
 						}
 					}
