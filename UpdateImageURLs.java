@@ -53,26 +53,25 @@ public class UpdateImageURLs {
 					destinationsPage.getList(), false, false, true);
 
 			for (Destination dest : destinationsPage.getList()) {
-				 updateDestination(dest);
+				updateDestination(dest);
 				updateContentData(dest);
 			}
 			System.out.println("Destinations processed..." + pageNum + "/"
 					+ destinationsPage.getLastPageNumber());
-
 			totalResults = destinationsPage.getTotalResults();
 			pageNum++;
 		} while (pageNum <= destinationsPage.getLastPageNumber());
 	}
 
 	private InputStream getInputStream(String imageURL) {
-		InputStream inputStream = null;
-		if (imageURL.contains("tripfactory.com")
-				|| imageURL.startsWith("/static")) {
+		if((imageURL.contains("tripfactory.com"))){
 			return null;
-		} else if (imageURL.startsWith("http://") || imageURL.startsWith("//")) {
-			if (imageURL.startsWith("//")) {
-				imageURL = "http:" + imageURL;
-			}
+		}
+		if(imageURL.startsWith("//")) {
+			imageURL = "http:" + imageURL;
+		}
+		if (imageURL.startsWith("http://")) {
+			InputStream inputStream = null;
 			try {
 				URL url = new URL(imageURL);
 				URLConnection connection = url.openConnection();
@@ -82,10 +81,10 @@ public class UpdateImageURLs {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			return inputStream;
 		} else {
 			return null;
 		}
-		return inputStream;
 	}
 
 	private boolean validTFUrl(String imageURL) {
@@ -95,10 +94,8 @@ public class UpdateImageURLs {
 		} else {
 			return false;
 		}
-			
 	}
 
-	
 	private void updateDestination(Destination dest) throws Exception {
 		LocationData.initialize();
 		String mainImage = dest.getMainImage();
@@ -141,7 +138,7 @@ public class UpdateImageURLs {
 					fileSizeGroupType.toString());
 			JSONArray imageList = new JSONArray();
 			for (String imageURL : imageURLS) {
-				InputStream inputStream = getInputStream(imageURL); 
+				InputStream inputStream = getInputStream(imageURL);
 				if (validTFUrl(imageURL) == true) {
 					imageList.put(imageURL);
 					continue;
