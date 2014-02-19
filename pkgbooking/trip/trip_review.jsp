@@ -267,81 +267,59 @@ border-color: #499a05;
 		<div class="content clearfix">	
 		<!--//inner navigation-->
 		<section class="three-fourth">
-			<% if(!isPrint) { %>
-			<article class="deals" id="how_it_works">
-				<h1 style="font-weight:bold">Request Sent - Status <%=tripRequest.getStatus().getDisplayText()%></h1>
-				  <% if(isSupplier) { %>
-				  <p>
-					Following is the trip summary. You are allowed to do changes to the trip like changing travel dates or number of rooms and guests traveling. You can also edit individual trip items, delete them or add new ones upon the customers request.
-				  </p>
-				  <p>Once the trip is finalized, you can send a payment request to your customer.</p>
-				  <p>Once payments are collected, you can change the trip status to CONFIRMED to let the customer know that the trip is confirmed.</p>
-				  <% } else { %>
-				  <p>
-					Following is your trip summary. We recommend you to keep communicating with the expert to do any changes to this trip.
-				  </p>
-				  <p>You will be required to make payment once the expert sends you a payment request.</p>
-				  <p>Your Trip will not be confirmed until the trip status changes to CONFIRMED.</p>
-				  <% } %>
-				  <% if(isSupplier && tripRequest.getStatus() != TripStatus.ABORTED) { %>
-				  <form class="booking def-form" name="tripStatusForm" id="tripStatusForm" style="background:transparent" action="/trip/save-trip-status" method="post">
-				  <input type="hidden" name="cnf" value="<%=tripRequest.getReferenceId()%>"/>
-				  <div class="mrgnT">
-				  	<div class="left">
-				  		<select name="status">
-				  			<option value="<%=TripStatus.CONFIRMED%>">Confirm</option>
-				  			<option value="<%=TripStatus.ABORTED%>">Abort</option>
-				  		</select>
-				  		&nbsp;
-				  		<a class="search-button" style="font-size:12px;padding:0 15px;height:30px;line-height:30px" href="#" onclick="submitTripStatus()">Update Trip Status</a>
-				  	</div>
-				  </div>
-				  </form>
-				  <div class="clearfix"></div>
-				  <% } %>
-			</article>
-			<% } %>
+
 			<article id="book_it" class="deals">
 				<form class="booking def-form" name="tripPRForm" id="tripPRForm" style="background:transparent" action="/trip/save-trip" method="post">
 					<input type="hidden" name="paxData" value='<%=paxData.toJSON()%>' />
 					<input type="hidden" name="cnf" value="<%=tripRequest.getReferenceId()%>"/>
 					<div id="trip-dates" class="book_it_section first">
-						<h1>Trip Reference - <%=tripRequest.getReferenceId()%>
-							<span class="right">
-								<a href="/trip/trip-review?cnf=<%=tripRequest.getReferenceId()%>&print=true" style="font-size:11px">View Printable Summary</a>
-							</span>
-						</h1>
+						<h1>Trip Reference - <%=tripRequest.getReferenceId()%></h1>
 						<% if(isSupplier) { %>
-						<div class="row row1 triplets">
-							<div class="f-item">
-								<label for="when">Currency</label>
-								<select name="currency" id="currency">
-									<% for (CurrencyType curr: CurrencyType.values()) { %>
-										<option <%=curr.getCurrencyCode().equals(tripRequest.getCurrency()) ? "selected=\"selected\"" : ""%> value="<%=curr.getCurrencyCode()%>"><%=curr.getCurrencyCode()%></option>
-									<% } %>
-								</select>		
-							</div>
-							<div class="f-item">
-								<label for="when">Total Price</label>
-								<input type="text" name="totalPrice" style="min-width:100px" value="<%=tripRequest.getAmountChargedToBuyer()%>" />
-							</div>
-						</div>						
+						
+						
+										<h1>Traveler Information</h1>
+				<p>
+					Traveler names and age information who are traveling on this trip. Please note traveler names once booked can't be changed.
+				</p>				
+				<form class="booking def-form" name="tripPaxForm" id="tripPaxForm" style="background:transparent" action="/trip/save-pax-info" method="post">
+					<input type="hidden" name="cnf" value="<%=tripRequest.getReferenceId()%>"/>
+					<div id="pax-information" class="book_it_section first">
+
+						<% if(passengers != null) { %>
+						<ul id="details_breakdown" class="unstyled dashed_table clearfix">
+							<% 
+								int counter = 1;
+								for (Passenger pax : passengers) { 
+							%>
+							<li class="top">
+								<span class="label_old">
+									<span class="inner">
+										<%=counter++%>.
+									</span>
+								</span>
+								<span class="data">
+									<span class="inner">
+										<%=pax.title%> <%=pax.firstName%> <%=pax.lastName%> <%=(pax.age > 0)? "(" + pax.age + " yrs)" : ""%> 
+									</span>								
+								</span>
+							</li>
+							<% } %>
+						</ul>
 						<% } %>
-						<% if(isSupplier) { %>
-						<div class="row row1 triplets">
-							<div class="f-item">
-								<label for="when">Date of travel</label>
-								<input type="text" name="travelDate" class="calInput" value="<%=ThreadSafeUtil.getDateFormat(false, false).format(tripRequest.getTravelDate())%>" />
-							</div>
-						</div>
-						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+				</form>
+				<div class="clearfix"></div>
+
+						
+						
+						
 						<div class="fldCtr1 u_block row4 mrgnT">
 							<div class="icCtr u_floatL"><div class="spGnIc pplIc"></div></div>
 							<% if(tripRequest.getType() == TripOrderType.PACKAGE) { %>
 							<div class="row">
 								<div class="f-item">
-									<label for="rooms">Total rooms</label>
-									<select name="numRooms" id="numRooms" class="smPad" onchange="selectRooms();" style="width:25%"><% for (int i=1; i<=4; i++) { %><option value="<%=i%>" <%=(i == paxData.getNumberOfRooms())?"selected":""%>><%=i%></option><% } %></select>
+									<label for="rooms">Total rooms: <%=paxData.getNumberOfRooms()%></label>
 								</div>
 							</div>
 							<% 
@@ -366,31 +344,13 @@ border-color: #499a05;
 								<div class="roomd room<%=i%> <%=(i > roomsInfo.size())?"u_invisible":""%>">
 									<div class="row penta">
 										<div class="f-item">
-											<label style="padding-top:20px" class="dCityNm u_floatL">Room <%=i%></label>
+											<label  class="dCityNm u_floatL">Room <%=i%>: </label>
 										</div>
 										<div class="f-item">
-											<label>Adults (12+ yrs)</label>
-											<select name="adults<%=i%>" id="adults<%=i%>" class="smPad"><option value="1" <%=(numAdults == 1)?"selected":""%>>1</option><option value="2" <%=(numAdults == 2)?"selected":""%>>2</option><option value="3" <%=(numAdults == 3)?"selected":""%>>3</option></select>
+											<label><%=numAdults%> Adult</label>
 										</div>
 										<div class="f-item">
-											<label>Children</label>
-											<select name="child<%=i%>" id="child<%=i%>" class="smPad" onchange="selectChildren(<%=i%>)"><option value="0" <%=(numChildren == 0)?"selected":""%>>0</option><option value="1" <%=(numChildren == 1)?"selected":""%>>1</option><option value="2" <%=(numChildren == 2)?"selected":""%>>2</option></select>
-										</div>
-										<div id="room<%=i%>child1" class="f-item <%=(childAge1 > 0)?"":"u_invisible"%>">
-											<label>Age Child 1</label>
-											<select id="room<%=i%>child1Age" name="room<%=i%>child1Age" class="smPad">
-												<% for(int j=1;j < 12;j++){ %>
-												<option value="<%=j%>" <%=(childAge1 == j)?"selected":""%>><%=j%> yrs</option>
-												<% } %>
-											</select>
-										</div>
-										<div id="room<%=i%>child2" class="f-item <%=(childAge2 > 0)?"":"u_invisible"%>">
-											<label>Age Child 2</label>
-											<select id="room<%=i%>child2Age" name="room<%=i%>child2Age" class="smPad">
-												<% for(int j=1;j < 12;j++){ %>
-												<option value="<%=j%>" <%=(childAge2 == j)?"selected":""%>><%=j%> yrs</option>
-												<% } %>
-											</select>
+											<label><%=numChildren%> Child</label>
 										</div>
 									</div>
 								</div>
@@ -533,19 +493,7 @@ border-color: #499a05;
 									}
 								}
 				    	%>
-				    	<h2 style="margin-top:10px;font-weight:bold"><%=LocationData.getCityNameFromId(cityId)%>
-				    		<% if(isSupplier) { %>
-							<span style="margin-left:10px">
-								<select name="<%=cityId%>nts">
-									<option value="<%=duration%>"><%=duration%> nights</option>
-									<option value="<%=duration+1%>"><%=duration+1%> nights</option>
-									<option value="<%=duration+2%>"><%=duration+2%> nights</option>
-									<option value="<%=duration+3%>"><%=duration+3%> nights</option>
-									<option value="<%=duration+4%>"><%=duration+4%> nights</option>
-								</select>
-							</span>
-							<% } %>  	
-				    	</h2>
+				    	<h2 style="margin-top:10px;font-weight:bold"><%=LocationData.getCityNameFromId(cityId)%>: <%=duration%> nights</h2>
 						<ul id="details_breakdown" class="unstyled dashed_table clearfix">
 							<%
 								for(TripItem item : items) {									
@@ -563,9 +511,6 @@ border-color: #499a05;
 								</span>
 								<span class="data">
 									<span class="inner"><%=item.getTitle()%></span>
-									<% if(isSupplier) { %>
-									<span class="inner" style="float:right"><a href="/partner/add-trip?cnf=<%=tripRequest.getReferenceId()%>&tripId=<%=item.getId()%>">Edit</a></span>
-									<% } %>
 								</span>						
 							</li>
 							<% if(StringUtils.isNotBlank(item.getConfirmationNumber())) { %>
@@ -652,9 +597,6 @@ border-color: #499a05;
 							<% } } %>
 						</ul>
 						<% if(isSupplier) { %>
-						<div class="mrgnT">
-							<a class="gradient-button" style="font-size:12px;padding:0 15px;height:30px;line-height:30px" href="/partner/add-trip?cnf=<%=tripRequest.getReferenceId()%>">Add New Item</a>
-						</div>
 						<% } %>
 						<% } %>
 						<% } else { %>
@@ -706,93 +648,27 @@ border-color: #499a05;
 						</ul>
 						<% } %>
 					</div>
-					<% if(isSupplier) { %>
-					<div id="trip-requirements" class="book_it_section">
-					  <div class="row" style="margin-top:30px">
-						<div class="f-item">
-							<a href="#" onclick="submitBookingRequest();return false;" class="search-button">Save Changes to Trip</a>
-						</div>
-					  </div>
-					  <div class="clearfix"></div>					  
-      				</div>
-      				<% } %>
-      				<div style="margin-top:30px">
-						<h2 class="sideHeading" style="font-size:18px">Total Price: <%=CurrencyType.getShortCurrencyCode(tripRequest.getCurrency())%> <%=tripRequest.getAmountChargedToBuyer()%></h2>	
-						<% if(!tripRequest.getCurrency().equals(currentCurrency)) { %>
-							<%=CurrencyType.getShortCurrencyCode(tripRequest.getCurrency())%> <%=tripRequest.getAmountChargedToBuyer()%> is equal to <%=CurrencyType.getShortCurrencyCode(currentCurrency)%> <%=CurrencyConverter.convert(tripRequest.getCurrency(), currentCurrency, tripRequest.getAmountChargedToBuyer())%>
-						<% } %>
-      				</div>
 				</form>
 				<div class="clearfix"></div>
-			</article>
-			<article id="pax_info" class="deals mrgnT" style="margin-top:20px">
-				<h1>Traveler Information</h1>
-				<p>
-					Please update traveler names and age information who are traveling on this trip. Please note traveler names once entered can't be changed.
-				</p>				
-				<form class="booking def-form" name="tripPaxForm" id="tripPaxForm" style="background:transparent" action="/trip/save-pax-info" method="post">
-					<input type="hidden" name="cnf" value="<%=tripRequest.getReferenceId()%>"/>
-					<div id="pax-information" class="book_it_section first">
-
-						<% if(passengers != null) { %>
-						<ul id="details_breakdown" class="unstyled dashed_table clearfix">
-							<% 
-								int counter = 1;
-								for (Passenger pax : passengers) { 
-							%>
-							<li class="top">
-								<span class="label_old">
-									<span class="inner">
-										<%=counter++%>.
-									</span>
-								</span>
-								<span class="data">
-									<span class="inner">
-										<%=pax.title%> <%=pax.firstName%> <%=pax.lastName%> <%=(pax.age > 0)? "(" + pax.age + " yrs)" : ""%> 
-									</span>								
-								</span>
-							</li>
-							<% } %>
-						</ul>
-						<% } %>
-					</div>
-					<div class="clearfix"></div>
-				</form>
-				<div class="clearfix"></div>
-			</article>
-			<article id="payment_info" class="deals mrgnT" style="margin-top:20px">
-				<h1>Payment Details</h1>
-				<% if(isSupplier) { %>
-				<p>
-					Please raise payment requests and send it to the guest for payments. You can collect payments as many times as you need till the complete order has been paid.
-				</p>
-				<% } %>
 				<form class="booking def-form" name="payForm" id="payForm" style="background:transparent" action="/trip/send-payment" method="post">
 					<input type="hidden" name="cnf" value="<%=tripRequest.getReferenceId()%>"/>
+					<input type="hidden" name="amount" value="<%=tripRequest.getAmountChargedToBuyer()%>"/>
 					<div id="pax-information" class="book_it_section first">
+
 						<% if(!isPrint && isSupplier) { %>
 						<div class="roomd pax">
 							<div class="row triplets">
 								<div class="f-item">
-									<label style="padding-top:10px;font-weight:bold" class="dCityNm u_floatL"><%=tripRequest.getCurrency()%></label>
+									<h2 class="sideHeading" style="font-size:18px">Total Price: <%=CurrencyType.getShortCurrencyCode(tripRequest.getCurrency())%> <%=tripRequest.getAmountChargedToBuyer()%></h2>	
 								</div>
 								<div class="f-item">
-									<input type="text" name="amount" value="0.0" style="min-width:95%" />
-								</div>
-								<div class="f-item">
-									<a href="#" onclick="document.payForm.submit();return false;" style="padding:0.2em 0.7em;height:25px" class="search-button">Send Payment Request</a>
+									<a href="#" onclick="document.payForm.submit();return false;" style="padding:0.2em 0.7em;height:25px" class="search-button">Pay Now</a>
 								</div>
 							</div>
 						</div>
 						<% } %>
 					</div>
 					<div class="clearfix"></div>
-      				<div style="margin-top:20px">
-						<h2 class="sideHeading" style="font-size:18px">Total Price: <%=CurrencyType.getShortCurrencyCode(tripRequest.getCurrency())%> <%=tripRequest.getAmountChargedToBuyer()%></h2>	
-						<% if(!tripRequest.getCurrency().equals(currentCurrency)) { %>
-							<%=CurrencyType.getShortCurrencyCode(tripRequest.getCurrency())%> <%=tripRequest.getAmountChargedToBuyer()%> is equal to <%=CurrencyType.getShortCurrencyCode(currentCurrency)%> <%=CurrencyConverter.convert(tripRequest.getCurrency(), currentCurrency, tripRequest.getAmountChargedToBuyer())%>
-						<% } %>
-      				</div>
       				<% if(payments != null && !payments.isEmpty()) { 
       				%>
       				<p>
@@ -840,11 +716,6 @@ border-color: #499a05;
 							<% } %>
 						</div>      				
       				<% } } %>
-					<div class="mrgn2T">
-						<p style="color:#999">
-						TripFactory is authorized to accept payments on behalf of the expert as its limited agent. This means that your payment obligation to the expert is satisfied by your payment to TripFactory. Any disagreements by the expert regarding that payment must be settled between the Expert and TripFactory.
-						</p>
-					</div>
 				</form>
 				<div class="clearfix"></div>
 			</article>
