@@ -81,6 +81,7 @@
 						<tr>
 							<th>#</th>
 							<th style="width:500px">Hotel</th>
+							<th>Status</th>
 							<th>Mapped</th>
 							<th>Manage</th>
 						</tr>
@@ -92,6 +93,12 @@
 								for (MarketPlaceHotel hotel : hotels.keySet()) {
 									String mappedId = hotels.get(hotel);
 									if(hotel != null) { 
+							boolean hasImage = StringUtils.isNotBlank(hotel.getImage()) || (hotel.getImages() != null && !hotel.getImages().isEmpty());
+							boolean hasDescription = StringUtils.isNotBlank(hotel.getDesc());
+							boolean hasAddress = StringUtils.isNotBlank(hotel.getAddrLine1());
+							boolean hasPhone = StringUtils.isNotBlank(hotel.getPhoneNo());
+							boolean hasLat = hotel.getLatLngLocation() != null;
+							boolean isCurated = hasImage && hasDescription && hasPhone && hasAddress && hasLat;									
 						%>
 						<% if(mappedId != null && !mappedId.equals("")) { %>
 						<td></td>
@@ -99,6 +106,14 @@
 						<td><input type="radio" name="maphotelid" value="<%=hotel.getId()%>" /></td>
 						<% } %>
 						<td><%=hotel.getName()%></td>
+						<td>
+						<% if(isCurated) { %><div style="color:green;font-weight:bold">Done</div><% } else { %>
+						<div style="color:red;font-weight:bold">
+							<%=(hasImage)?"":"No Image,"%><%=(hasAddress)?"":"No Address,"%><%=(hasPhone)?"":"No Phone,"%><%=(hasDescription)?"":"No Description"%>
+							<%=(hasLat)?"":"No Lat,Long,"%>
+						</div>
+						<% } %>						
+						</td>
 						<% if(mappedId != null && !mappedId.equals("")) { %>
 						<td><a target="_blank" href="<%=HotelDataBean.getHotelDetailsURL(request, hotel)%>">Details</a></td>
 						<% } else { %>

@@ -196,7 +196,7 @@ public class TripNavigation {
             break;
             
         case BOOK_TRIP:
-            TripBean.storeTripBookingRequestInstant(request);
+            TripBean.storeTripBookingRequest(request);
             TripRequest tripReq = (TripRequest) request.getAttribute(Attributes.PACKAGE.toString());
             Map<String, String> paramsMap = new HashMap<String, String>();
             paramsMap.put("cnf", tripReq.getReferenceId());

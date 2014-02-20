@@ -1290,7 +1290,7 @@ public class PartnerNavigation {
             dispatcher.forward(request, response);            
         }
         break;
-        
+
         case MY_BOOKINGS: {
             TripBean.getSupplierTrips(request);
             dispatcher = request.getRequestDispatcher(PackagePages.MY_BOOKINGS.getPageURL());

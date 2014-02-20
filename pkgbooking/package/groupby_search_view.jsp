@@ -76,7 +76,7 @@
 .deals .full-width figure {width:100%;}
 }
 .mtchRtC{margin-right:10px;}
-.sideHeading {color:#333;border-bottom:1px solid #ccc}
+.sideHeading {color:#333;margin-bottom:15px}
 </style>
 <!--main-->
 <div class="main" role="main" style="background:#fff">		

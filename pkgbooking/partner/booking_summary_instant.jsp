@@ -61,6 +61,8 @@
 	JSONObject json = (JSONObject) request.getAttribute(Attributes.PACKAGEDATA.toString());
 	FlightSelection flightSelection = (FlightSelection) request.getAttribute(Attributes.FLIGHT_SELECTION.toString());
 	PackagePaxData paxData = (PackagePaxData) request.getAttribute(Attributes.PACKAGE_PAX_DATA.toString());
+	int totalPax = paxData.getTotalNumberOfAdults() + paxData.getTotalNumberOfChildren();
+	Passenger[] passengers = new Passenger[totalPax];
 %>
 <%@page import="com.eos.b2c.util.SystemProperties"%>
 <%@page import="com.eos.accounts.data.User"%>
@@ -132,6 +134,7 @@
 <body>
 <jsp:include page="/common/includes/viacom/header_new.jsp" />
 <style type="text/css">
+.booking .penta .f-item {width:18%}
 .three-fourth {width:62%;}
 .deals h1 {font-weight:bold;margin:15px 0;font-size:20px}
 .right-sidebar {width:33%;}
@@ -229,16 +232,13 @@ a.search-button {font-size:14px;line-height:35px;padding:0 25px;height:35px;}
 					Provide your booking details below. <b>The booking request will go directly to the travel expert.</b> They'll have 24 hours to reply further to which you can converse and finalize your trip.
 				</p>
 				<p>If the expert declines or does not respond, then you can try booking another trip with someone else.</p>
-				<h1 style="font-weight:bold">When do you pay?</h1>
-			    <p>
-			    	Once your trip is finalized, the expert sends you payment requests, which you can pay online using your credit/debit cards. You may need to pay once or multiple times (if the trip amount is large, payments can be split into multiple parts) depending on the payment conditions of the expert.
-			  	</p>
 			</article>
 			<article id="book_it" class="deals">
 				<form class="booking def-form" name="tlkLeadForm" id="tlkLeadForm" style="background:transparent" action="/trip/book-trip" method="post">
 					<input type="hidden" name="paxData" value='<%=paxData.toJSON()%>'/>
 					<input type="hidden" name="selectionStr" value='<%=json.toString()%>' />
 					<input type="hidden" name="pkgId" value="<%=(pkgConfig != null) ? pkgConfig.getId(): -1%>"/>
+					<input type="hidden" name="instantBook" value='true' />
 					<div id="message-host" class="book_it_section first">
 						<h1>1. Include a message to the expert</h1>
 						<p class="description">Experts like to know the purpose of your trip and the others traveling with you. They also appreciate knowing any specific inclusions you would like to include on your trip.</p>
@@ -314,46 +314,11 @@ a.search-button {font-size:14px;line-height:35px;padding:0 25px;height:35px;}
 							</li>
 						</ul>
 					</div>
-					<div id="trip-requirements" class="book_it_section">
-						<h1>3. Your Contact Details</h1>
-						<p class="description">Please enter your contact details.</p>
-						<div>
-						  <div class="row">
-						  	<div class="f-item">		  	
-						  		<label>Your Name</label>
-						  		<input type="text" name="name" value="" />
-        					</div>
-      					  </div>
-						  <div class="row">
-						  	<div class="f-item">		  	
-						  		<label>Your Email</label>
-						  		<input type="text" name="email" value="" />
-        					</div>
-      					  </div>
-						  <div class="row">
-						  	<div class="f-item">		  	
-						  		<label>Your Contact No.</label>
-						  		<input type="text" name="mobile" value="" />
-        					</div>
-      					  </div>
-						  <div class="row" style="margin-top:20px">
-						  	<div class="f-item">		  	
-						  		<a href="#" onclick="submitBookingRequest();return false;" class="search-button">Submit Booking Request</a>
-        					</div>
-      					  </div>
-      				   </div>
-      				</div>
-				</form>
-				<div class="clearfix"></div>
-			</article>
-			
-			
-						<article id="pax_info" class="deals mrgnT" style="margin-top:20px">
-				<h1>Traveler Information</h1>
+				<div class="clearfix"></div>	
+				<h1>3. Traveler Information</h1>
 				<p>
 					Please update traveler names and age information who are traveling on this trip. Please note traveler names once entered can't be changed.
 				</p>				
-				<form class="booking def-form" name="tripPaxForm" id="tripPaxForm" style="background:transparent" action="/trip/save-pax-info" method="post">
 					<div id="pax-information" class="book_it_section first">
 							<%
 								int index = 0;
@@ -432,18 +397,32 @@ a.search-button {font-size:14px;line-height:35px;padding:0 25px;height:35px;}
 							</div>
 						<% } } %> 
 						<div id="trip-requirements" class="book_it_section">
-						  <div class="row" style="margin-top:30px">
-							<div class="f-item">
-								<a href="#" onclick="savePaxInfo();return false;" class="search-button">Save Traveler Information</a>
-							</div>
-						  </div>
 						  <div class="clearfix"></div>					  
 						</div>
 					</div>
 					<div class="clearfix"></div>
 				</form>
 				<div class="clearfix"></div>
+				<h1>4. Payment Details</h1>
+					<div class="clearfix"></div>
+      				<div style="margin-top:20px">
+						<h2 class="sideHeading" style="font-size:18px">Total Price: <%=CurrencyType.getShortCurrencyCode((String)json.get("currency"))%> <%=json.get("tprc")%></h2>	
+      				</div>
+					<div class="mrgn2T">
+						<p style="color:#999">
+						TripFactory is authorized to accept payments on behalf of the expert as its limited agent. This means that your payment obligation to the expert is satisfied by your payment to TripFactory. Any disagreements by the expert regarding that payment must be settled between the Expert and TripFactory.
+						</p>
+					</div>
+					<div id="trip-requirements" class="book_it_section">
+				  <div class="row" style="margin-top:30px">
+					<div class="f-item">
+						<a href="#" onclick="submitBookingRequest();return false;" class="search-button">Book Now</a>
+					</div>
+					</div>
+					</div>
+				<div class="clearfix"></div>
 			</article>
+
 
 			
 			

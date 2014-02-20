@@ -75,13 +75,17 @@
 <jsp:include page="includes/search_tabs.jsp"/>
 <!--main-->
 <style type="text/css">
-.three-fourth {width:69%;}
+.three-fourth {width:79%;}
 .right-section {width:33%;}
+.left-sidebar {width:17%;}
 .mainMpVwS {position:relative; padding:0; height:100%; min-height:inherit;}
 .rsltMapVwCtr {text-align:left; position:relative; height:100%;}
 .rsltVwActCtr {position:absolute; top:3px; right:10px; font-weight:bold; z-index:10;}
 .deals .full-width figure {width:24%;}
 .deals .full-width figure img {height:130px}
+@media screen and (max-width: 1024px) {
+.left-sidebar {width:19%;}
+}
 @media screen and (max-width: 768px) {
 .three-fourth {width:100%;}
 }

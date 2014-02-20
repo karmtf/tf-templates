@@ -1264,6 +1264,7 @@ public class TripBean {
         String email = RequestUtil.getStringRequestParameter(request, "email", "");
         String mobile = RequestUtil.getStringRequestParameter(request, "mobile", "");
         String comments = RequestUtil.getStringRequestParameter(request, "comments", "");
+        boolean instantBook = RequestUtil.getBooleanRequestParameter(request, "instantBook", false);
         TripRequest tripRequest = new TripRequest();
         tripRequest.setContactEmail(email);
         tripRequest.setContactPhone(mobile);
@@ -1273,6 +1274,7 @@ public class TripBean {
         tripRequest.setPkgId(pkgId);
         tripRequest.setUserComments(comments);
         tripRequest.setPreBookingInfo(selections);
+        tripRequest.setInstantBook(instantBook);
         JSONObject json = new JSONObject(selections);
         tripRequest.setAmountChargedToBuyer(json.getDouble("tprc"));
         tripRequest.setCurrency(json.getString("currency"));
@@ -1320,11 +1322,13 @@ public class TripBean {
         TripRequest.saveTrip(tripRequest);
         DAOUtil.commitAll();
         request.setAttribute(Attributes.PACKAGE.toString(), tripRequest);
-        User supplier = UserManager.findUserById(tripRequest.getSupplierId());
-        sendUserMailForTripRequestSubmission(tripRequest, tripRequest.getPassengerName(),
-                tripRequest.getContactEmail(), supplier);
-        sendSupplierMailForTripRequestSubmission(tripRequest, tripRequest.getPassengerName(), tripRequest
-                .getContactEmail(), supplier);
+        if(!instantBook) {
+        	User supplier = UserManager.findUserById(tripRequest.getSupplierId());
+	        sendUserMailForTripRequestSubmission(tripRequest, tripRequest.getPassengerName(),
+	                tripRequest.getContactEmail(), supplier);
+	        sendSupplierMailForTripRequestSubmission(tripRequest, tripRequest.getPassengerName(), tripRequest
+	                .getContactEmail(), supplier);
+        }
     }
 
     public static void addTripItemsForActivity(HttpServletRequest request, TripRequest tripRequest,
@@ -1575,104 +1579,6 @@ public class TripBean {
         }
     }
 
-    public static void storeTripBookingRequestInstant(HttpServletRequest request) throws JSONException, DAOException {
-        User loggedInUser = SessionManager.getUser(request);
-        String selections = RequestUtil.getStringRequestParameter(request, "selectionStr", "");
-        String paxDataStr = RequestUtil.getStringRequestParameter(request, "paxData", null);
-        long pkgId = RequestUtil.getLongRequestParameter(request, "pkgId", -1L);
-        String name = RequestUtil.getStringRequestParameter(request, "name", "");
-        String email = RequestUtil.getStringRequestParameter(request, "email", "");
-        String mobile = RequestUtil.getStringRequestParameter(request, "mobile", "");
-        String comments = RequestUtil.getStringRequestParameter(request, "comments", "");
-        TripRequest tripRequest = new TripRequest();
-        tripRequest.setContactEmail(email);
-        tripRequest.setContactPhone(mobile);
-        tripRequest.setPassengerName(name);
-        tripRequest.setGenerationTime(new Date());
-        tripRequest.setUserId(loggedInUser.getUserId());
-        tripRequest.setPkgId(pkgId);
-        tripRequest.setUserComments(comments);
-        tripRequest.setPreBookingInfo(selections);
-        JSONObject json = new JSONObject(selections);
-        tripRequest.setAmountChargedToBuyer(json.getDouble("tprc"));
-        tripRequest.setCurrency(json.getString("currency"));
-        try {
-            tripRequest.setAvgBudgetPerPerson(Double.parseDouble((String) json.get("budget")));
-        } catch (Exception e) {
-        }
-        Date travelDate = new Date();
-        try {
-            travelDate = ThreadSafeUtil.getShortDisplayDateFormat(false, false).parse((String) json.get("travelDt"));
-        } catch (Exception e) {
-        }
-        tripRequest.setTravelDate(travelDate);
-        tripRequest.setStatus(TripStatus.PENDING_SUPPLIER_CONFIRMATION);
-        if (paxDataStr != null) {
-            JSONObject paramsSelected = (JSONObject) json.get("params");
-            PackageConfigData pkgConfig = SecondaryDBHibernateDAOFactory.getPackageConfigDataDAO().findById(pkgId);
-            tripRequest.setTripName(pkgConfig.getPackageName());
-            tripRequest.setSupplierId(pkgConfig.getCreatedByUser());
-            tripRequest.setPackageConfig(pkgConfig);
-            PackagePaxData paxData = PackagePaxData.parseJSON(paxDataStr);
-            tripRequest.setPackagePaxData(paxData);
-            tripRequest.setType(TripOrderType.PACKAGE);
-            addTripItemsForPackage(request, tripRequest, paxData, pkgConfig, paramsSelected, travelDate);
-
-        } else {
-            tripRequest.setType(TripOrderType.ACTIVITY);
-            PackagePaxData paxData = new PackagePaxData();
-            int adults = json.getInt("adults");
-            int children = json.getInt("children");
-            PaxRoomInfo roomInfo = new PaxRoomInfo();
-            roomInfo.setNumAdult(adults);
-            roomInfo.setNumChild(children);
-            paxData.addRoomInfo(roomInfo);
-            tripRequest.setPackagePaxData(paxData);
-            SupplierPackage pkgConfig = SecondaryDBHibernateDAOFactory.getSupplierPackageDAO().findById(pkgId);
-            pkgConfig.loadDeeply(null, false);
-            tripRequest.setTripName(pkgConfig.getName());
-            tripRequest.setSupplierId(pkgConfig.getSupplierId());
-            addTripItemsForActivity(request, tripRequest, paxData, pkgConfig, travelDate);
-        }
-        // Trip request initialization over
-        // Start generating trip items
-        // trip items addition finished
-        TripRequest.saveTrip(tripRequest);
-        DAOUtil.commitAll();
-        request.setAttribute(Attributes.PACKAGE.toString(), tripRequest);
-        
-        PackagePaxData paxData = tripRequest.getPackagePaxData();
-        int totalPax = paxData.getTotalNumberOfAdults() + paxData.getTotalNumberOfChildren();
-        Passenger[] passengers = new Passenger[totalPax];
-        for (int i = 1; i <= totalPax; i++) {
-            String title = RequestUtil.getStringRequestParameter(request, "paxTitle" + i, "");
-            String firstName = RequestUtil.getStringRequestParameter(request, "paxFirstName" + i, "");
-            String lastName = RequestUtil.getStringRequestParameter(request, "paxLastName" + i, "");
-            int age = RequestUtil.getIntegerRequestParameter(request, "paxAge" + i, -1);
-            passengers[i - 1] = new Passenger();
-            passengers[i - 1].title = title;
-            passengers[i - 1].firstName = firstName;
-            passengers[i - 1].lastName = lastName;
-            if (age > 0) {
-                passengers[i - 1].age = age;
-            }
-        }
-        tripRequest.setPassengers(passengers);
-        AccountsHibernateDAOFactory.getTripRequestDAO().update(tripRequest);
-        DAOUtil.commitAll();
-        request.setAttribute(Attributes.PACKAGE.toString(), tripRequest);
-
-        
-        
-        User supplier = UserManager.findUserById(tripRequest.getSupplierId());
-        sendUserMailForTripRequestSubmission(tripRequest, tripRequest.getPassengerName(),
-                tripRequest.getContactEmail(), supplier);
-        sendSupplierMailForTripRequestSubmission(tripRequest, tripRequest.getPassengerName(), tripRequest
-                .getContactEmail(), supplier);
-    }
-
-    
-    
     public static void getMyTrips(HttpServletRequest request) throws Exception {
         boolean isPast = RequestUtil.getBooleanRequestParameter(request, "past", false);
         User user = SessionManager.getUser(request);

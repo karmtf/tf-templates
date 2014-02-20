@@ -373,7 +373,7 @@ function recalculatePkgPrice() {
 			var html = '<a class="search-button" style="cursor:pointer;font-size:13px;line-height:35px;height:35px;" onclick="sendBookingRequest();return false;">Send Booking Request</a>';
 			$jQ('#bookButton').html(html);
 		} else if(bookable == 'instant') {
-			var html = '<a class="search-button" style="cursor:pointer;font-size:13px;line-height:35px;height:35px;" onclick="sendBookingRequest();return false;">Book Now</a>';
+			var html = '<a class="search-button" style="cursor:pointer;font-size:13px;line-height:35px;height:35px;" onclick="instantBooking();return false;">Book Now</a>';
 			$jQ('#bookButton').html(html);
 		} else {
 			var html = '<p style="font-size:14px;font-weight:bold">Sorry enough seats are not available for booking</p>';

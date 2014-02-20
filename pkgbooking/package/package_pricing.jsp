@@ -190,6 +190,14 @@ function sendBookingRequest() {
 		LOGIN_REGISTER.login();
 	<% } %>
 }
+function instantBooking() {
+	<% if (isLoggedIn) { %>
+		document.tripPRForm.action="/partner/booking-summary-instant";
+		document.tripPRForm.submit();
+	<% } else { %>
+		LOGIN_REGISTER.login();
+	<% } %>
+}
 var organize = <%=organizeTrip%>;
 </script>
 <body>

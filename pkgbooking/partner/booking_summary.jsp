@@ -61,8 +61,6 @@
 	JSONObject json = (JSONObject) request.getAttribute(Attributes.PACKAGEDATA.toString());
 	FlightSelection flightSelection = (FlightSelection) request.getAttribute(Attributes.FLIGHT_SELECTION.toString());
 	PackagePaxData paxData = (PackagePaxData) request.getAttribute(Attributes.PACKAGE_PAX_DATA.toString());
-	int totalPax = paxData.getTotalNumberOfAdults() + paxData.getTotalNumberOfChildren();
-	Passenger[] passengers = new Passenger[totalPax];
 %>
 <%@page import="com.eos.b2c.util.SystemProperties"%>
 <%@page import="com.eos.accounts.data.User"%>
@@ -120,9 +118,6 @@
 <%@page import="com.poc.server.secondary.database.model.BestTimeToVisit"%>
 <%@page import="com.poc.server.flight.FlightSelection"%>
 <%@page import="com.eos.gds.data.FlightInformation"%>
-<%@page import="com.poc.server.model.PaxRoomInfo"%>
-<%@page import="com.eos.accounts.data.Passenger"%>
-<%@page import="com.eos.gds.data.PassengerInfo"%>
 <html>
 <head>
 <title>Submit Booking Request</title>
@@ -134,7 +129,6 @@
 <body>
 <jsp:include page="/common/includes/viacom/header_new.jsp" />
 <style type="text/css">
-.booking .penta .f-item {width:18%}
 .three-fourth {width:62%;}
 .deals h1 {font-weight:bold;margin:15px 0;font-size:20px}
 .right-sidebar {width:33%;}
@@ -232,12 +226,17 @@ a.search-button {font-size:14px;line-height:35px;padding:0 25px;height:35px;}
 					Provide your booking details below. <b>The booking request will go directly to the travel expert.</b> They'll have 24 hours to reply further to which you can converse and finalize your trip.
 				</p>
 				<p>If the expert declines or does not respond, then you can try booking another trip with someone else.</p>
+				<h1 style="font-weight:bold">When do you pay?</h1>
+			    <p>
+			    	Once your trip is finalized, the expert sends you payment requests, which you can pay online using your credit/debit cards. You may need to pay once or multiple times (if the trip amount is large, payments can be split into multiple parts) depending on the payment conditions of the expert.
+			  	</p>
 			</article>
 			<article id="book_it" class="deals">
 				<form class="booking def-form" name="tlkLeadForm" id="tlkLeadForm" style="background:transparent" action="/trip/book-trip" method="post">
 					<input type="hidden" name="paxData" value='<%=paxData.toJSON()%>'/>
 					<input type="hidden" name="selectionStr" value='<%=json.toString()%>' />
 					<input type="hidden" name="pkgId" value="<%=(pkgConfig != null) ? pkgConfig.getId(): -1%>"/>
+					<input type="hidden" name="instantBook" value='false' />
 					<div id="message-host" class="book_it_section first">
 						<h1>1. Include a message to the expert</h1>
 						<p class="description">Experts like to know the purpose of your trip and the others traveling with you. They also appreciate knowing any specific inclusions you would like to include on your trip.</p>
@@ -313,7 +312,7 @@ a.search-button {font-size:14px;line-height:35px;padding:0 25px;height:35px;}
 							</li>
 						</ul>
 					</div>
-<!--					<div id="trip-requirements" class="book_it_section">
+					<div id="trip-requirements" class="book_it_section">
 						<h1>3. Your Contact Details</h1>
 						<p class="description">Please enter your contact details.</p>
 						<div>
@@ -341,119 +340,10 @@ a.search-button {font-size:14px;line-height:35px;padding:0 25px;height:35px;}
         					</div>
       					  </div>
       				   </div>
-      				</div>	-->
-				<div class="clearfix"></div>	
-				<h1>3. Traveler Information</h1>
-				<p>
-					Please update traveler names and age information who are traveling on this trip. Please note traveler names once entered can't be changed.
-				</p>				
-					<div id="pax-information" class="book_it_section first">
-							<%
-								int index = 0;
-								int counter = 0;
-								for (int i=1; i <= paxData.getRoomsInfo().size(); i++) {
-									PaxRoomInfo roomInfo = paxData.getRoomsInfo().get(i-1);
-									int numAdults = roomInfo.getNumAdult();
-									int numChildren = roomInfo.getNumChild();
-									for (int j = 0; j < numAdults; j++) {
-										counter++;
-										Passenger pax = null;
-										if(passengers != null && passengers.length >= counter) {
-											pax = passengers[index++];
-										}
-							%>
-							<div class="roomd pax<%=counter%>">
-								<div class="row penta">
-									<div class="f-item">
-										<label style="padding-top:20px" class="dCityNm u_floatL"><%=(pkgConfig != null) ? "Room " + i : ""%> Adult <%=(j+1)%></label>
-									</div>
-									<div class="f-item">
-										<label>Title</label>
-										<select name="paxTitle<%=counter%>" class="smPad">
-											<% for(String titleInfo : PassengerInfo.s_allTitles) { %>
-											<option value="<%=titleInfo%>"><%=titleInfo%></option>
-											<% } %>
-										</select>
-									</div>
-									<div class="f-item">
-										<label>First Name</label>
-										<input type="text" name="paxFirstName<%=counter%>" value="<%=(pax != null)?pax.firstName:""%>" style="min-width:95%" <%=(pax != null && StringUtils.isNotBlank(pax.firstName))?"readonly=true":""%> />
-									</div>
-									<div class="f-item">
-										<label>Last Name</label>
-										<input type="text" name="paxLastName<%=counter%>" value="<%=(pax != null)?pax.lastName:""%>" style="min-width:95%" <%=(pax != null && StringUtils.isNotBlank(pax.lastName))?"readonly=true":""%> />
-									</div>
-								</div>
-							</div>
-							<% } for (int j = 0; j < numChildren; j++) {
-									counter++;
-									Passenger pax = null;
-									if(passengers != null && passengers.length >= counter) {
-										pax = passengers[index++];
-									}
-							%>
-							<div class="roomd pax<%=counter%>">
-								<div class="row penta">
-									<div class="f-item">
-										<label style="padding-top:20px" class="dCityNm u_floatL"><%=(pkgConfig != null) ? "Room " + i : ""%> Child <%=(j+1)%></label>
-									</div>
-									<div class="f-item">
-										<label>Title</label>
-										<select name="paxTitle<%=counter%>" class="smPad">
-											<% for(String titleInfo : PassengerInfo.s_allTitles) { %>
-											<option value="<%=titleInfo%>"><%=titleInfo%></option>
-											<% } %>
-										</select>
-									</div>
-									<div class="f-item">
-										<label>First Name</label>
-										<input type="text" name="paxFirstName<%=counter%>" value="<%=(pax != null)?pax.firstName:""%>" style="min-width:95%" <%=(pax != null && StringUtils.isNotBlank(pax.firstName))?"readonly=true":""%> />
-									</div>
-									<div class="f-item">
-										<label>Last Name</label>
-										<input type="text" name="paxLastName<%=counter%>" value="<%=(pax != null)?pax.lastName:""%>" style="min-width:95%" <%=(pax != null && StringUtils.isNotBlank(pax.lastName))?"readonly=true":""%> />
-									</div>
-									<div class="f-item">
-										<label>Age</label>
-										<select id="paxAge<%=counter%>" name="paxAge<%=counter%>" class="smPad">
-										<% for(int k =1; k < 12;k++) { %>
-										<option value="<%=k%>" <%=(pax != null && pax.age == k)?"selected":""%>><%=k%> yrs</option>
-										<% } %>
-										</select>
-									</div>
-								</div>
-							</div>
-						<% } } %> 
-						<div id="trip-requirements" class="book_it_section">
-						  <div class="clearfix"></div>					  
-						</div>
-					</div>
-					<div class="clearfix"></div>
+      				</div>
 				</form>
 				<div class="clearfix"></div>
-				<h1>4. Payment Details</h1>
-					<div class="clearfix"></div>
-      				<div style="margin-top:20px">
-						<h2 class="sideHeading" style="font-size:18px">Total Price: <%=CurrencyType.getShortCurrencyCode((String)json.get("currency"))%> <%=json.get("tprc")%></h2>	
-      				</div>
-					<div class="mrgn2T">
-						<p style="color:#999">
-						TripFactory is authorized to accept payments on behalf of the expert as its limited agent. This means that your payment obligation to the expert is satisfied by your payment to TripFactory. Any disagreements by the expert regarding that payment must be settled between the Expert and TripFactory.
-						</p>
-					</div>
-					<div id="trip-requirements" class="book_it_section">
-				  <div class="row" style="margin-top:30px">
-					<div class="f-item">
-						<a href="#" onclick="submitBookingRequest();return false;" class="search-button">Book Now</a>
-					</div>
-					</div>
-					</div>
-				<div class="clearfix"></div>
 			</article>
-
-
-			
-			
 		</section>
 		<aside class="right-sidebar">
 			<ol class="track-progress" data-steps="4" style="margin-bottom:10px">

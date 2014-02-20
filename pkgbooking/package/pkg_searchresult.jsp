@@ -67,11 +67,15 @@
 <jsp:include page="/common/includes/viacom/header_new.jsp" />
 <jsp:include page="includes/search_tabs.jsp"/>
 <style type="text/css">
-.three-fourth {width:75%;}
+.three-fourth {width:79%;}
+.left-sidebar {width:17%;}
 .right-section {width:28%;}
 .mainMpVwS {position:relative; padding:0; height:100%; min-height:inherit;}
 .rsltMapVwCtr {text-align:left; position:relative; height:100%;}
 .rsltVwActCtr {position:absolute; top:3px; right:10px; font-weight:bold; z-index:10;}
+@media screen and (max-width: 1024px) {
+.left-sidebar {width:19%;}
+}
 @media screen and (max-width: 768px) {
 .three-fourth {width:100%;} 
 .deals .full-width .details {width:70%;}
