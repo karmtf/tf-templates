@@ -1264,7 +1264,7 @@ public class TripBean {
         String email = RequestUtil.getStringRequestParameter(request, "email", "");
         String mobile = RequestUtil.getStringRequestParameter(request, "mobile", "");
         String comments = RequestUtil.getStringRequestParameter(request, "comments", "");
-        boolean instantBook = RequestUtil.getBooleanRequestParameter(request, "instantBook", false);
+        boolean isInstantBook = RequestUtil.getBooleanRequestParameter(request, "instantBook", false);
         TripRequest tripRequest = new TripRequest();
         tripRequest.setContactEmail(email);
         tripRequest.setContactPhone(mobile);
@@ -1274,7 +1274,7 @@ public class TripBean {
         tripRequest.setPkgId(pkgId);
         tripRequest.setUserComments(comments);
         tripRequest.setPreBookingInfo(selections);
-        tripRequest.setInstantBook(instantBook);
+        tripRequest.setInstantBook(isInstantBook);
         JSONObject json = new JSONObject(selections);
         tripRequest.setAmountChargedToBuyer(json.getDouble("tprc"));
         tripRequest.setCurrency(json.getString("currency"));
@@ -1323,27 +1323,15 @@ public class TripBean {
         DAOUtil.commitAll();
         request.setAttribute(Attributes.PACKAGE.toString(), tripRequest);
 
-        if(instantBook) {
+        if(isInstantBook) {
 	        double amount = RequestUtil.getDoubleRequestParameter(request, "amount", 0.0);
 	        if (amount > 0) {
-	            PaymentRequest payment = new PaymentRequest();
-	            payment.setAmount(amount);
-	            payment.setCurrency("USD");
-	            payment.setGenerationTime(new Date());
-	            payment.setPaymentFee(Math.round(PAYMENT_FEE * amount) * 1.0);
-	            payment.setStatus(PaymentStatus.NEW);
-	            payment.setSupplierId(tripRequest.getSupplierId());
-	            payment.setTripId(tripRequest.getId());
-	            payment.setUserId(tripRequest.getUserId());
-	            payment.setReferenceId(tripRequest.getReferenceId());
+                PaymentRequest payment = createPaymentRequest(tripRequest, amount);
 	            AccountsHibernateDAOFactory.getPaymentRequestDAO().create(payment);
 	            DAOUtil.commitAll();
-	            User supplier = UserManager.findUserById(tripRequest.getSupplierId());
-	            sendUserMailForTripRequestPayment(tripRequest, payment, tripRequest.getPassengerName(), tripRequest
-	                    .getContactEmail(), supplier);
 	        }
         }
-        if(!instantBook) {
+        if(!isInstantBook) {
         	User supplier = UserManager.findUserById(tripRequest.getSupplierId());
 	        sendUserMailForTripRequestSubmission(tripRequest, tripRequest.getPassengerName(),
 	                tripRequest.getContactEmail(), supplier);
@@ -2002,22 +1990,27 @@ public class TripBean {
         return UIHelper.getDataUsingJSP(request, response, EmailPages.TRIP_CONFIRMATION.getPageURL(), null);
     }
 
+    private static PaymentRequest createPaymentRequest(TripRequest tripRequest, double amount) {
+        PaymentRequest payment = new PaymentRequest();
+        payment.setAmount(amount);
+        payment.setCurrency("USD");
+        payment.setGenerationTime(new Date());
+        payment.setPaymentFee(Math.round(PAYMENT_FEE * amount) * 1.0);
+        payment.setStatus(PaymentStatus.NEW);
+        payment.setSupplierId(tripRequest.getSupplierId());
+        payment.setTripId(tripRequest.getId());
+        payment.setUserId(tripRequest.getUserId());
+        payment.setReferenceId(tripRequest.getReferenceId());
+        return payment;
+    }
+    
     public static void storePaymentRequest(HttpServletRequest request) throws JSONException, DAOException {
         String code = RequestUtil.getStringRequestParameter(request, "cnf", null);
         if (code != null) {
             TripRequest tripRequest = AccountsHibernateDAOFactory.getTripRequestDAO().findByReferenceId(code);
             double amount = RequestUtil.getDoubleRequestParameter(request, "amount", 0.0);
             if (amount > 0) {
-                PaymentRequest payment = new PaymentRequest();
-                payment.setAmount(amount);
-                payment.setCurrency(tripRequest.getCurrency());
-                payment.setGenerationTime(new Date());
-                payment.setPaymentFee(Math.round(PAYMENT_FEE * amount) * 1.0);
-                payment.setStatus(PaymentStatus.NEW);
-                payment.setSupplierId(tripRequest.getSupplierId());
-                payment.setTripId(tripRequest.getId());
-                payment.setUserId(tripRequest.getUserId());
-                payment.setReferenceId(tripRequest.getReferenceId());
+                PaymentRequest payment = createPaymentRequest(tripRequest, amount);
                 AccountsHibernateDAOFactory.getPaymentRequestDAO().create(payment);
                 DAOUtil.commitAll();
                 User supplier = UserManager.findUserById(tripRequest.getSupplierId());
