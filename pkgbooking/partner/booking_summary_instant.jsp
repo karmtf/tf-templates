@@ -63,6 +63,7 @@
 	PackagePaxData paxData = (PackagePaxData) request.getAttribute(Attributes.PACKAGE_PAX_DATA.toString());
 	int totalPax = paxData.getTotalNumberOfAdults() + paxData.getTotalNumberOfChildren();
 	Passenger[] passengers = new Passenger[totalPax];
+	boolean instantBooking = true;
 %>
 <%@page import="com.eos.b2c.util.SystemProperties"%>
 <%@page import="com.eos.accounts.data.User"%>
@@ -238,7 +239,8 @@ a.search-button {font-size:14px;line-height:35px;padding:0 25px;height:35px;}
 					<input type="hidden" name="paxData" value='<%=paxData.toJSON()%>'/>
 					<input type="hidden" name="selectionStr" value='<%=json.toString()%>' />
 					<input type="hidden" name="pkgId" value="<%=(pkgConfig != null) ? pkgConfig.getId(): -1%>"/>
-					<input type="hidden" name="instantBook" value='true' />
+					<input type="hidden" name="instantBook" value='<%=instantBooking%>' />
+					<input type="hidden" name="amount" value='<%=json.get("tprc")%>' />
 					<div id="message-host" class="book_it_section first">
 						<h1>1. Include a message to the expert</h1>
 						<p class="description">Experts like to know the purpose of your trip and the others traveling with you. They also appreciate knowing any specific inclusions you would like to include on your trip.</p>
@@ -416,7 +418,7 @@ a.search-button {font-size:14px;line-height:35px;padding:0 25px;height:35px;}
 					<div id="trip-requirements" class="book_it_section">
 				  <div class="row" style="margin-top:30px">
 					<div class="f-item">
-						<a href="#" onclick="submitBookingRequest();return false;" class="search-button">Book Now</a>
+						<a href="#" onclick="submitBookingRequest();return false;" class="search-button">Pay Now</a>
 					</div>
 					</div>
 					</div>

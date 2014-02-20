@@ -69,6 +69,7 @@
 	String currentCurrency = SessionManager.getCurrentUserCurrency(request);
 	PackageConfigData pkgConfig = tripRequest.getPackageConfig();	
 	SupplierPackage supplierPackage = tripRequest.getSupplierPackage();
+	boolean isInstantBook = tripRequest.isInstantBook();
 	User creatorUser = null;
 	if(pkgConfig != null) { 
 		creatorUser = pkgConfig.getCreatorUser();
@@ -267,6 +268,7 @@ border-color: #499a05;
 		<div class="content clearfix">	
 		<!--//inner navigation-->
 		<section class="three-fourth">
+		<% if(!isInstantBook) {%>
 			<% if(!isPrint) { %>
 			<article class="deals" id="how_it_works">
 				<h1 style="font-weight:bold">Request Sent - Status <%=tripRequest.getStatus().getDisplayText()%></h1>
@@ -844,9 +846,10 @@ border-color: #499a05;
 				</form>
 				<div class="clearfix"></div>
 			</article>
+			<%}%>
 			<article id="payment_info" class="deals mrgnT" style="margin-top:20px">
 				<h1>Payment Details</h1>
-				<% if(isSupplier) { %>
+				<% if(!isInstantBook && isSupplier) { %>
 				<p>
 					Please raise payment requests and send it to the guest for payments. You can collect payments as many times as you need till the complete order has been paid.
 				</p>
@@ -854,7 +857,7 @@ border-color: #499a05;
 				<form class="booking def-form" name="payForm" id="payForm" style="background:transparent" action="/trip/send-payment" method="post">
 					<input type="hidden" name="cnf" value="<%=tripRequest.getReferenceId()%>"/>
 					<div id="pax-information" class="book_it_section first">
-						<% if(!isPrint && isSupplier) { %>
+						<% if(!isInstantBook && !isPrint && isSupplier) { %>
 						<div class="roomd pax">
 							<div class="row triplets">
 								<div class="f-item">
@@ -933,6 +936,8 @@ border-color: #499a05;
 				<div class="clearfix"></div>
 			</article>
 		</section>
+
+		<% if(!isInstantBook) {%>
 		<% if(!isPrint) { %>
 		<aside class="right-sidebar">
 			<div id="summaryDiv" class="deals" style="top:245px;">
@@ -977,7 +982,7 @@ border-color: #499a05;
 			</div>
 			<% } %>
 		</aside>
-		<% } %>
+		<% } } %>
 		</div>
 <!--//main content-->
 </div>

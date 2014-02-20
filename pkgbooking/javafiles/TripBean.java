@@ -1322,6 +1322,27 @@ public class TripBean {
         TripRequest.saveTrip(tripRequest);
         DAOUtil.commitAll();
         request.setAttribute(Attributes.PACKAGE.toString(), tripRequest);
+
+        if(instantBook) {
+	        double amount = RequestUtil.getDoubleRequestParameter(request, "amount", 0.0);
+	        if (amount > 0) {
+	            PaymentRequest payment = new PaymentRequest();
+	            payment.setAmount(amount);
+	            payment.setCurrency("USD");
+	            payment.setGenerationTime(new Date());
+	            payment.setPaymentFee(Math.round(PAYMENT_FEE * amount) * 1.0);
+	            payment.setStatus(PaymentStatus.NEW);
+	            payment.setSupplierId(tripRequest.getSupplierId());
+	            payment.setTripId(tripRequest.getId());
+	            payment.setUserId(tripRequest.getUserId());
+	            payment.setReferenceId(tripRequest.getReferenceId());
+	            AccountsHibernateDAOFactory.getPaymentRequestDAO().create(payment);
+	            DAOUtil.commitAll();
+	            User supplier = UserManager.findUserById(tripRequest.getSupplierId());
+	            sendUserMailForTripRequestPayment(tripRequest, payment, tripRequest.getPassengerName(), tripRequest
+	                    .getContactEmail(), supplier);
+	        }
+        }
         if(!instantBook) {
         	User supplier = UserManager.findUserById(tripRequest.getSupplierId());
 	        sendUserMailForTripRequestSubmission(tripRequest, tripRequest.getPassengerName(),

@@ -61,6 +61,7 @@
 	JSONObject json = (JSONObject) request.getAttribute(Attributes.PACKAGEDATA.toString());
 	FlightSelection flightSelection = (FlightSelection) request.getAttribute(Attributes.FLIGHT_SELECTION.toString());
 	PackagePaxData paxData = (PackagePaxData) request.getAttribute(Attributes.PACKAGE_PAX_DATA.toString());
+	boolean instantBooking = false;
 %>
 <%@page import="com.eos.b2c.util.SystemProperties"%>
 <%@page import="com.eos.accounts.data.User"%>
@@ -236,7 +237,7 @@ a.search-button {font-size:14px;line-height:35px;padding:0 25px;height:35px;}
 					<input type="hidden" name="paxData" value='<%=paxData.toJSON()%>'/>
 					<input type="hidden" name="selectionStr" value='<%=json.toString()%>' />
 					<input type="hidden" name="pkgId" value="<%=(pkgConfig != null) ? pkgConfig.getId(): -1%>"/>
-					<input type="hidden" name="instantBook" value='false' />
+					<input type="hidden" name="instantBook" value='<%=instantBooking%>' />
 					<div id="message-host" class="book_it_section first">
 						<h1>1. Include a message to the expert</h1>
 						<p class="description">Experts like to know the purpose of your trip and the others traveling with you. They also appreciate knowing any specific inclusions you would like to include on your trip.</p>
